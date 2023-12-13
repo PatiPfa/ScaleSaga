@@ -6,6 +6,7 @@ public class ScaleSaga {
         Test1.printHelloWorld();
         while (true){
             System.out.println("Patrick <3");
+
         }
     }
 
