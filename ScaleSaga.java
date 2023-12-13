@@ -3,6 +3,7 @@ public class ScaleSaga {
         System.out.println("Hello");
         System.out.println("ScaleSaga");
         System.out.println("Ich mag Züge");
+        Test1.printHelloWorld();
     }
 
 }
