@@ -24,12 +24,10 @@ public class MainMenuController {
     @FXML
     private Button btn_return;
 
-
     private Stage stage;
     private Scene scene;
     private Parent root;
     private boolean singleplayer = false;
-
 
     public void Singleplayer(){
         singleplayer = true;
@@ -91,8 +89,6 @@ public class MainMenuController {
         btn_2cards.setVisible(false);
         btn_3cards.setVisible(false);
         btn_return.setVisible(false);
-
-
     }
 
 }
