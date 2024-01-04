@@ -62,7 +62,6 @@ public class MemoryController implements Initializable {
                 if ((!game.getCardsInGame().get((int) imageView.getUserData()).getRevealed()) && !game.getBothCardsAreFlipped()){
                     game.flipCard((int) imageView.getUserData());
                 }
-
             });
         }
     }
