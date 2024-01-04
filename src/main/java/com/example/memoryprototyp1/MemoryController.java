@@ -2,13 +2,10 @@ package com.example.memoryprototyp1;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import static com.example.memoryprototyp1.Card.getBackOfCards;
 
 public class MemoryController implements Initializable {
 
@@ -32,7 +29,7 @@ public class MemoryController implements Initializable {
          * In der Klasse MultiplayerForTwo habe ich Testweise die flipCard Methode überschrieben. Wenn man dieses Spiel lädt kann mann all Karten sofort aufdecken,
          * nicht wie im BaseGame wo man nur zwei gleichzeitig aufdecken kann.
          */
-        MultiplayerForTwo multiplayerForTwo = new MultiplayerForTwo(imagesFlowPane.getChildren().size(), imagesFlowPane);
+        MultiplayerForTwo_2Cards multiplayerForTwo = new MultiplayerForTwo_2Cards(imagesFlowPane.getChildren().size(), imagesFlowPane);
         this.game = multiplayerForTwo;
 
       game.playTheGame();
