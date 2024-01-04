@@ -39,6 +39,8 @@ public class MainMenuController {
     }
 
     public void Multiplayer(){
+        //ToDO: da sollte man die visibility irgendwie sehen
+        //
         btn_singleplayer.setVisible(false);
         btn_multiplayer.setVisible(false);
         btn_2cards.setVisible(true);
@@ -48,6 +50,8 @@ public class MainMenuController {
 
     public void twoCards(ActionEvent event) throws IOException{
         if(singleplayer){
+            //ToDO: ev den fxml namen durch ne variable ersetzen und den code in eine eigene funtkion setzen
+            //und dann immer die funktion aufrufen und den variablennamen übergeben
             root = FXMLLoader.load(getClass().getResource("Singleplayer_2Cards.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
