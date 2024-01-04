@@ -28,12 +28,7 @@ public class BaseGame {
     protected ArrayList<MemoryCard> cardsInGame;
     protected MemoryCard firstCard, secondCard;
     protected boolean bothCardsAreFlipped;
-
-    public boolean getBothCardsAreFlipped() {
-        return bothCardsAreFlipped;
-    }
-
-    private boolean isInMotion;
+    protected boolean isInMotion;
 
 
     public BaseGame(int flowPaneSize, FlowPane imagesFlowPane) {
@@ -41,13 +36,17 @@ public class BaseGame {
         this.imagesFlowPane = imagesFlowPane;
     }
 
-    public void playTheGame(){
-        play();
-        initializeImageView();
+    public boolean getBothCardsAreFlipped() {
+        return bothCardsAreFlipped;
     }
 
     public ArrayList<MemoryCard> getCardsInGame() {
         return cardsInGame;
+    }
+
+    public void playTheGame(){
+        play();
+        initializeImageView();
     }
 
     public void playAgaing(){
