@@ -2,8 +2,8 @@ package com.example.memoryprototyp1;
 
 import javafx.scene.layout.FlowPane;
 
-public class MultiplayerForTwo extends BaseGame {
-    public MultiplayerForTwo(int flowPaneSize, FlowPane imagesFlowPane) {
+public class MultiplayerForTwo_2Cards extends BaseGame {
+    public MultiplayerForTwo_2Cards(int flowPaneSize, FlowPane imagesFlowPane) {
         super(flowPaneSize, imagesFlowPane);
     }
     @Override
