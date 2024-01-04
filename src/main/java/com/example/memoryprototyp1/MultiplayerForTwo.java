@@ -1,7 +1,25 @@
 package com.example.memoryprototyp1;
 
-public class MultiplayerForTwo extends MemoryController {
-    public void tsetButton(){
-        System.out.println("Ja");
+import javafx.scene.layout.FlowPane;
+
+public class MultiplayerForTwo extends BaseGame {
+    public MultiplayerForTwo(int flowPaneSize, FlowPane imagesFlowPane) {
+        super(flowPaneSize, imagesFlowPane);
+    }
+    @Override
+    public void flipCard(int cardPosition){
+
+        cardsInGame.get(cardPosition).setRevealed(true);
+
+        if (firstCard == null){
+            firstCard = cardsInGame.get(cardPosition);
+            rotate(cardPosition, cardsInGame.get(cardPosition).getImage(), 0);
+        } else {
+            secondCard = cardsInGame.get(cardPosition);
+            bothCardsAreFlipped = false;
+            rotate(cardPosition, cardsInGame.get(cardPosition).getImage(), 0);
+
+            checkForMatch();
+        }
     }
 }

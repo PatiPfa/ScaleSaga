@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="558.0" prefWidth="1200.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.memoryprototyp1.MemoryController">
    <children>
@@ -103,6 +104,10 @@
             </FlowPane>
          </children>
       </VBox>
-      <Button layoutX="760.0" layoutY="621.0" mnemonicParsing="false" onAction="#playAgaing" text="Button" />
+      <Button layoutX="879.0" layoutY="561.0" mnemonicParsing="false" onAction="#playAgain" text="PLAY AGAIN" textOverrun="CLIP">
+         <font>
+            <Font name="Imprint MT Shadow" size="36.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
