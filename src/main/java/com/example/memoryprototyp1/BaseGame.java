@@ -41,6 +41,11 @@ public class BaseGame {
         this.imagesFlowPane = imagesFlowPane;
     }
 
+    public void playTheGame(){
+        play();
+        initializeImageView();
+    }
+
     public ArrayList<MemoryCard> getCardsInGame() {
         return cardsInGame;
     }
@@ -48,6 +53,31 @@ public class BaseGame {
     public void playAgaing(){
         if (!isInMotion){
             play();
+        }
+    }
+
+    public void initializeImageView() {
+
+        for (int i = 0; i < imagesFlowPane.getChildren().size(); i++) {
+            ImageView imageView = (ImageView) imagesFlowPane.getChildren().get(i);
+            imageView.setImage(getBackOfCards());
+            imageView.setUserData(i);
+
+            imageView.setOnMouseEntered(mouseEnteredEvent ->{
+                if (!this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()){
+                    this.setImageScale((int) imageView.getUserData(), 1.05);
+                }
+            });
+
+            imageView.setOnMouseExited(mouseEnteredEvent ->{
+                this.setImageScale((int) imageView.getUserData(), 1);
+            });
+
+            imageView.setOnMouseClicked(mouseEvent -> {
+                if ((!this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()) && !this.getBothCardsAreFlipped()){
+                    this.flipCard((int) imageView.getUserData());
+                }
+            });
         }
     }
 

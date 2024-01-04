@@ -18,7 +18,6 @@ public class MemoryController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-      initializeImageView();
 
         /**
          * Wenn man das BaseGame spielen möchte, ruft man den Konstruktor BaseGame auf und setzt this.game = baseGame.
@@ -33,38 +32,12 @@ public class MemoryController implements Initializable {
          * In der Klasse MultiplayerForTwo habe ich Testweise die flipCard Methode überschrieben. Wenn man dieses Spiel lädt kann mann all Karten sofort aufdecken,
          * nicht wie im BaseGame wo man nur zwei gleichzeitig aufdecken kann.
          */
-
         MultiplayerForTwo multiplayerForTwo = new MultiplayerForTwo(imagesFlowPane.getChildren().size(), imagesFlowPane);
-      this.game = multiplayerForTwo;
+        this.game = multiplayerForTwo;
 
-      game.play();
+      game.playTheGame();
     }
 
-
-    public void initializeImageView() {
-
-        for (int i = 0; i < imagesFlowPane.getChildren().size(); i++) {
-            ImageView imageView = (ImageView) imagesFlowPane.getChildren().get(i);
-            imageView.setImage(getBackOfCards());
-            imageView.setUserData(i);
-
-            imageView.setOnMouseEntered(mouseEnteredEvent ->{
-                if (!game.getCardsInGame().get((int) imageView.getUserData()).getRevealed()){
-                    game.setImageScale((int) imageView.getUserData(), 1.05);
-                }
-            });
-
-            imageView.setOnMouseExited(mouseEnteredEvent ->{
-                game.setImageScale((int) imageView.getUserData(), 1);
-            });
-
-            imageView.setOnMouseClicked(mouseEvent -> {
-                if ((!game.getCardsInGame().get((int) imageView.getUserData()).getRevealed()) && !game.getBothCardsAreFlipped()){
-                    game.flipCard((int) imageView.getUserData());
-                }
-            });
-        }
-    }
 
     public void playAgain(){
         game.playAgaing();
