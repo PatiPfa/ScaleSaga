@@ -3,6 +3,7 @@ package com.example.memoryprototyp1;
 import javafx.scene.layout.FlowPane;
 
 public class MultiplayerForTwo_2Cards extends BaseGame {
+
     public MultiplayerForTwo_2Cards(int flowPaneSize, FlowPane imagesFlowPane) {
         super(flowPaneSize, imagesFlowPane);
     }
@@ -16,10 +17,11 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
             rotate(cardPosition, cardsInGame.get(cardPosition).getImage(), 0);
         } else {
             secondCard = cardsInGame.get(cardPosition);
-            bothCardsAreFlipped = false;
+            CardsAreFlipped = false;
             rotate(cardPosition, cardsInGame.get(cardPosition).getImage(), 0);
 
             checkForMatch();
         }
     }
+
 }

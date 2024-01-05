@@ -3,8 +3,6 @@ package com.example.memoryprototyp1;
 import javafx.animation.PauseTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
-import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
@@ -12,10 +10,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.ResourceBundle;
 
 import static com.example.memoryprototyp1.Card.getBackOfCards;
 
@@ -27,8 +23,10 @@ public class BaseGame {
     protected int flowPaneSize;
     protected ArrayList<MemoryCard> cardsInGame;
     protected MemoryCard firstCard, secondCard;
-    protected boolean bothCardsAreFlipped;
+    protected boolean CardsAreFlipped;
     protected boolean isInMotion;
+
+    protected static int timeCardsAreReveledInMillSec = 1500;
 
 
 
@@ -37,8 +35,8 @@ public class BaseGame {
         this.imagesFlowPane = imagesFlowPane;
     }
 
-    public boolean getBothCardsAreFlipped() {
-        return bothCardsAreFlipped;
+    public boolean getCardsAreFlipped() {
+        return CardsAreFlipped;
     }
 
     public ArrayList<MemoryCard> getCardsInGame() {
@@ -74,7 +72,7 @@ public class BaseGame {
             });
 
             imageView.setOnMouseClicked(mouseEvent -> {
-                if ((!this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()) && !this.getBothCardsAreFlipped()){
+                if ((!this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()) && !this.getCardsAreFlipped()){
                     this.flipCard((int) imageView.getUserData());
                 }
             });
@@ -87,7 +85,7 @@ public class BaseGame {
         CardDeck deck = new CardDeck();
         deck.shuffle();
         cardsInGame = new ArrayList<>();
-        bothCardsAreFlipped = false;
+        CardsAreFlipped = false;
 
 
         Player player1 = new Player("Player1");
@@ -119,7 +117,7 @@ public class BaseGame {
             rotate(cardPosition, cardsInGame.get(cardPosition).getImage(), 0);
         } else {
             secondCard = cardsInGame.get(cardPosition);
-            bothCardsAreFlipped = true;
+            CardsAreFlipped = true;
             rotate(cardPosition, cardsInGame.get(cardPosition).getImage(), 0);
 
             checkForMatch();
@@ -131,7 +129,7 @@ public class BaseGame {
 
         if (firstCard.sameCardAs(secondCard)){
             System.out.println("same");
-            bothCardsAreFlipped = false;
+            CardsAreFlipped = false;
 
             //hier noch Player update einfügen
             firstCard.setCorrectPair(true);
@@ -145,7 +143,7 @@ public class BaseGame {
         PauseTransition delay = new PauseTransition(Duration.millis(1500));
         delay.play();
         delay.setOnFinished(delayEvent ->{
-            bothCardsAreFlipped = false;});
+            CardsAreFlipped = false;});
     }
 
     public void rotate(int cardPosition, Image imageToBeShown, double firstDelay){
@@ -221,7 +219,7 @@ public class BaseGame {
             }
         }
         isInMotion = true;
-        PauseTransition delay = new PauseTransition(Duration.millis(1000));
+        PauseTransition delay = new PauseTransition(Duration.millis(timeCardsAreReveledInMillSec));
         delay.play();
         delay.setOnFinished(setIsInMotionFalse -> {isInMotion = false;});
     }
