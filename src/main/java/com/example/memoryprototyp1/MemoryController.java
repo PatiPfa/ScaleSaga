@@ -2,19 +2,31 @@ package com.example.memoryprototyp1;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MemoryController implements Initializable {
 
     @FXML
     private FlowPane imagesFlowPane;
     private BaseGame game;
+    @FXML
+    private Label highscoreLabel;
+    @FXML
+    private Label scoreLabel;
+
+    private int counter = 0;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        startTimer();
+
+
 
         /**
          * Wenn man das BaseGame spielen möchte, ruft man den Konstruktor BaseGame auf und setzt this.game = baseGame.
@@ -58,6 +70,25 @@ public class MemoryController implements Initializable {
 
     public void playAgain(){
         game.playAgaing();
+    }
+    private void startTimer() {
+
+
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+
+
+            @Override
+            public void run() {
+
+                javafx.application.Platform.runLater(() -> {
+                    counter++;
+                    scoreLabel.setText(Integer.toString(counter));
+                });
+            }
+        };
+        timer.scheduleAtFixedRate(task, 0, 1000);
+
     }
 }
 

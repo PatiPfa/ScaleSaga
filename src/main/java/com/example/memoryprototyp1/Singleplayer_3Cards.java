@@ -6,5 +6,8 @@ public class Singleplayer_3Cards extends BaseGame {
     public Singleplayer_3Cards(int flowPaneSize, FlowPane imagesFlowPane) {
         super(flowPaneSize, imagesFlowPane);
     }
+    @Override
+    public void checkForMatch() {
 
+    }
 }

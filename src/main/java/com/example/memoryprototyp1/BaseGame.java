@@ -13,9 +13,7 @@ import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import static com.example.memoryprototyp1.Card.getBackOfCards;
 
@@ -29,12 +27,19 @@ public class BaseGame {
     protected MemoryCard firstCard, secondCard;
     protected boolean bothCardsAreFlipped;
     protected boolean isInMotion;
+    protected boolean startTime;
+    private int counter;
 
 
+
+    public int getCounter() {
+        return counter;
+    }
 
     public BaseGame(int flowPaneSize, FlowPane imagesFlowPane) {
         this.flowPaneSize = flowPaneSize;
         this.imagesFlowPane = imagesFlowPane;
+
     }
 
     public boolean getBothCardsAreFlipped() {
@@ -48,6 +53,8 @@ public class BaseGame {
     public void playTheGame(){
         play();
         initializeImageView();
+
+
     }
 
     public void playAgaing(){
@@ -76,6 +83,8 @@ public class BaseGame {
             imageView.setOnMouseClicked(mouseEvent -> {
                 if ((!this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()) && !this.getBothCardsAreFlipped()){
                     this.flipCard((int) imageView.getUserData());
+
+
                 }
             });
         }
