@@ -37,21 +37,19 @@ public class MainMenuController {
 
     public void Singleplayer(){
         singleplayer = true;
-        btn_singleplayer.setVisible(false);
-        btn_multiplayer.setVisible(false);
-        btn_2cards.setVisible(true);
-        btn_3cards.setVisible(true);
-        btn_return.setVisible(true);
+        btnVisible();
     }
 
     public void Multiplayer(){
-        //ToDO: da sollte man die visibility irgendwie abfragen können und dann
-        // jeweils das umgekehrte machen und in eine Methode machen und dann nur mehr die Methode aufrufen
-        btn_singleplayer.setVisible(false);
-        btn_multiplayer.setVisible(false);
-        btn_2cards.setVisible(true);
-        btn_3cards.setVisible(true);
-        btn_return.setVisible(true);
+        btnVisible();
+    }
+
+    public void btnVisible(){
+        btn_singleplayer.setVisible(!btn_singleplayer.isVisible());
+        btn_multiplayer.setVisible(!btn_multiplayer.isVisible());
+        btn_2cards.setVisible(!btn_2cards.isVisible());
+        btn_3cards.setVisible(!btn_3cards.isVisible());
+        btn_return.setVisible(!btn_return.isVisible());
     }
 
     public Stage switchToGame(ActionEvent event, String mode) throws IOException{
@@ -93,11 +91,7 @@ public class MainMenuController {
 
     public void returnbtn(){
         singleplayer = false;
-        btn_singleplayer.setVisible(true);
-        btn_multiplayer.setVisible(true);
-        btn_2cards.setVisible(false);
-        btn_3cards.setVisible(false);
-        btn_return.setVisible(false);
+        btnVisible();
     }
 
 }
