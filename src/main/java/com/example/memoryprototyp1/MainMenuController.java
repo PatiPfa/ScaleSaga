@@ -28,71 +28,70 @@ public class MainMenuController {
     private Scene scene;
     private Parent root;
     private boolean singleplayer = false;
+    private static int gamemode = 0;
+    //1: Singleplayer 2 Cards, 2: Singleplayer 3 Cards
+    //3: Multiplayer 2 Cards, 4: Multiplayer 3 Cards
+    public static int getGamemode() {
+        return gamemode;
+    }
 
     public void Singleplayer(){
         singleplayer = true;
-        btn_singleplayer.setVisible(false);
-        btn_multiplayer.setVisible(false);
-        btn_2cards.setVisible(true);
-        btn_3cards.setVisible(true);
-        btn_return.setVisible(true);
+        btnVisible();
     }
 
     public void Multiplayer(){
-        //ToDO: da sollte man die visibility irgendwie sehen
-        //
-        btn_singleplayer.setVisible(false);
-        btn_multiplayer.setVisible(false);
-        btn_2cards.setVisible(true);
-        btn_3cards.setVisible(true);
-        btn_return.setVisible(true);
+        btnVisible();
+    }
+
+    public void btnVisible(){
+        btn_singleplayer.setVisible(!btn_singleplayer.isVisible());
+        btn_multiplayer.setVisible(!btn_multiplayer.isVisible());
+        btn_2cards.setVisible(!btn_2cards.isVisible());
+        btn_3cards.setVisible(!btn_3cards.isVisible());
+        btn_return.setVisible(!btn_return.isVisible());
+    }
+
+    public Stage switchToGame(ActionEvent event, String mode) throws IOException{
+        root = FXMLLoader.load(getClass().getResource(mode));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        return stage;
     }
 
     public void twoCards(ActionEvent event) throws IOException{
         if(singleplayer){
-            //ToDO: ev den fxml namen durch ne variable ersetzen und den code in eine eigene funtkion setzen
-            //und dann immer die funktion aufrufen und den variablennamen übergeben
-            root = FXMLLoader.load(getClass().getResource("Singleplayer_2Cards.fxml"));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
+            gamemode= 1;
+            Stage stage = switchToGame(event, "Singleplayer_2Cards.fxml");
             stage.setTitle("Singleplayer 2 Cards");
-            stage.setScene(scene);
             stage.show();
         }else{
-            root = FXMLLoader.load(getClass().getResource("MultiplayerForTwo_2Cards.fxml"));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
+            gamemode = 3;
+            Stage stage = switchToGame(event, "MultiplayerForTwo_2Cards.fxml");
             stage.setTitle("Multiplayer 2 Cards");
-            stage.setScene(scene);
             stage.show();
         }
     }
 
     public void threeCards(ActionEvent event) throws IOException{
         if(singleplayer){
-            root = FXMLLoader.load(getClass().getResource("Singleplayer_3Cards.fxml"));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
+            gamemode = 2;
+            Stage stage = switchToGame(event, "Singleplayer_3Cards.fxml");
             stage.setTitle("Singleplayer 3 Cards");
-            stage.setScene(scene);
             stage.show();
         }else{
-            root = FXMLLoader.load(getClass().getResource("MultiplayerForTwo_3Cards.fxml"));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
+            gamemode = 4;
+            Stage stage = switchToGame(event, "MultiplayerForTwo_3Cards.fxml");
             stage.setTitle("Multiplayer 3 Cards");
-            stage.setScene(scene);
             stage.show();
         }
     }
 
     public void returnbtn(){
         singleplayer = false;
-        btn_singleplayer.setVisible(true);
-        btn_multiplayer.setVisible(true);
-        btn_2cards.setVisible(false);
-        btn_3cards.setVisible(false);
-        btn_return.setVisible(false);
+        btnVisible();
     }
 
 }

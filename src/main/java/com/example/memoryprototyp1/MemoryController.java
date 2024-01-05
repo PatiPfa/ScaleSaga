@@ -7,7 +7,7 @@ import javafx.scene.layout.FlowPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Singleplayer_3Cards_Controller implements Initializable {
+public class MemoryController implements Initializable {
 
     @FXML
     private FlowPane imagesFlowPane;
@@ -29,8 +29,25 @@ public class Singleplayer_3Cards_Controller implements Initializable {
          * In der Klasse MultiplayerForTwo habe ich Testweise die flipCard Methode überschrieben. Wenn man dieses Spiel lädt kann mann all Karten sofort aufdecken,
          * nicht wie im BaseGame wo man nur zwei gleichzeitig aufdecken kann.
          */
-        Singleplayer_3Cards singleplayer_3Cards = new Singleplayer_3Cards(imagesFlowPane.getChildren().size(), imagesFlowPane);
-        this.game = singleplayer_3Cards;
+
+        //1: Singleplayer 2 Cards, 2: Singleplayer 3 Cards
+        //3: Multiplayer 2 Cards, 4: Multiplayer 3 Cards
+        switch (MainMenuController.getGamemode()){
+            case 1:
+                Singleplayer_2Cards singleplayer_2Cards = new Singleplayer_2Cards(imagesFlowPane.getChildren().size(), imagesFlowPane);
+                this.game = singleplayer_2Cards;
+                break;
+            case 2:
+                Singleplayer_3Cards singleplayer_3Cards = new Singleplayer_3Cards(imagesFlowPane.getChildren().size(), imagesFlowPane);
+                this.game = singleplayer_3Cards;
+            case 3:
+                MultiplayerForTwo_2Cards multiplayerForTwo_2Cards = new MultiplayerForTwo_2Cards(imagesFlowPane.getChildren().size(), imagesFlowPane);
+                this.game = multiplayerForTwo_2Cards;
+            case 4:
+                MultiplayerForTwo_3Cards multiplayerForTwo_3Cards = new MultiplayerForTwo_3Cards(imagesFlowPane.getChildren().size(), imagesFlowPane);
+                this.game = multiplayerForTwo_3Cards;
+        }
+
 
       game.playTheGame();
     }
