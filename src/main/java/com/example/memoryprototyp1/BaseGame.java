@@ -31,6 +31,7 @@ public class BaseGame {
     protected boolean isInMotion;
 
 
+
     public BaseGame(int flowPaneSize, FlowPane imagesFlowPane) {
         this.flowPaneSize = flowPaneSize;
         this.imagesFlowPane = imagesFlowPane;
