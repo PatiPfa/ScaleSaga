@@ -40,12 +40,15 @@ public class MemoryController implements Initializable {
             case 2:
                 Singleplayer_3Cards singleplayer_3Cards = new Singleplayer_3Cards(imagesFlowPane.getChildren().size(), imagesFlowPane);
                 this.game = singleplayer_3Cards;
+                break;
             case 3:
                 MultiplayerForTwo_2Cards multiplayerForTwo_2Cards = new MultiplayerForTwo_2Cards(imagesFlowPane.getChildren().size(), imagesFlowPane);
                 this.game = multiplayerForTwo_2Cards;
+                break;
             case 4:
                 MultiplayerForTwo_3Cards multiplayerForTwo_3Cards = new MultiplayerForTwo_3Cards(imagesFlowPane.getChildren().size(), imagesFlowPane);
                 this.game = multiplayerForTwo_3Cards;
+                break;
         }
 
 

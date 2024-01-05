@@ -10,7 +10,7 @@ public class CardDeck {
      * number of usable card-images in src/main/resources/com/example/memoryprototyp1/imagese
      */
 
-    private final int NUMBER_OF_IMAGES = 6;
+    private final int NUMBER_OF_IMAGES = 9;
 
     public CardDeck(){
         this.deck = new ArrayList<>();
