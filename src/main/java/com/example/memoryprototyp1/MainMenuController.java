@@ -54,25 +54,25 @@ public class MainMenuController {
         btn_return.setVisible(true);
     }
 
+    public Stage switchToGame(ActionEvent event, String mode) throws IOException{
+        root = FXMLLoader.load(getClass().getResource(mode));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        return stage;
+    }
+
     public void twoCards(ActionEvent event) throws IOException{
         if(singleplayer){
-            //ToDO: ev den fxml namen durch ne variable ersetzen und den code in eine eigene funtkion setzen
-            //und dann immer die funktion aufrufen und den variablennamen übergeben
             gamemode= 1;
-            root = FXMLLoader.load(getClass().getResource("Singleplayer_2Cards.fxml"));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
+            Stage stage = switchToGame(event, "Singleplayer_2Cards.fxml");
             stage.setTitle("Singleplayer 2 Cards");
-            stage.setScene(scene);
             stage.show();
-
         }else{
             gamemode = 3;
-            root = FXMLLoader.load(getClass().getResource("MultiplayerForTwo_2Cards.fxml"));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
+            Stage stage = switchToGame(event, "MultiplayerForTwo_2Cards.fxml");
             stage.setTitle("Multiplayer 2 Cards");
-            stage.setScene(scene);
             stage.show();
         }
     }
@@ -80,19 +80,13 @@ public class MainMenuController {
     public void threeCards(ActionEvent event) throws IOException{
         if(singleplayer){
             gamemode = 2;
-            root = FXMLLoader.load(getClass().getResource("Singleplayer_3Cards.fxml"));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
+            Stage stage = switchToGame(event, "Singleplayer_3Cards.fxml");
             stage.setTitle("Singleplayer 3 Cards");
-            stage.setScene(scene);
             stage.show();
         }else{
             gamemode = 4;
-            root = FXMLLoader.load(getClass().getResource("MultiplayerForTwo_3Cards.fxml"));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
+            Stage stage = switchToGame(event, "MultiplayerForTwo_3Cards.fxml");
             stage.setTitle("Multiplayer 3 Cards");
-            stage.setScene(scene);
             stage.show();
         }
     }
