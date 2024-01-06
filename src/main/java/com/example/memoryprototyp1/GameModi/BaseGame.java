@@ -1,5 +1,9 @@
-package com.example.memoryprototyp1;
+package com.example.memoryprototyp1.GameModi;
 
+import com.example.memoryprototyp1.Card;
+import com.example.memoryprototyp1.CardDeck;
+import com.example.memoryprototyp1.MemoryCard;
+import com.example.memoryprototyp1.Player;
 import javafx.animation.PauseTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
@@ -89,10 +93,7 @@ public class BaseGame {
 
 
         Player player1 = new Player("Player1");
-        Player player2 = new Player("Player2");
-
         player1.setColor(Color.RED);
-        player2.setColor(Color.BLUE);
 
         for (int i = 0; i < flowPaneSize / 2; i++) {
             Card topCardFromDeck = deck.giveTopCard();

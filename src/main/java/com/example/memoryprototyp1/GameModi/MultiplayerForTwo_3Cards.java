@@ -1,5 +1,10 @@
-package com.example.memoryprototyp1;
+package com.example.memoryprototyp1.GameModi;
 
+import com.example.memoryprototyp1.Card;
+import com.example.memoryprototyp1.CardDeck;
+import com.example.memoryprototyp1.GameModi.BaseGame;
+import com.example.memoryprototyp1.MemoryCard;
+import com.example.memoryprototyp1.Player;
 import javafx.animation.PauseTransition;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
@@ -36,9 +41,9 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
         for (int i = 0; i < flowPaneSize / 3; i++) {
             Card topCardFromDeck = deck.giveTopCard();
 
-            cardsInGame.add(new MemoryCardFor3Cards(topCardFromDeck.getName()));
-            cardsInGame.add(new MemoryCardFor3Cards(topCardFromDeck.getName()));
-            cardsInGame.add(new MemoryCardFor3Cards(topCardFromDeck.getName()));
+            cardsInGame.add(new MemoryCard(topCardFromDeck.getName()));
+            cardsInGame.add(new MemoryCard(topCardFromDeck.getName()));
+            cardsInGame.add(new MemoryCard(topCardFromDeck.getName()));
 
 
         }

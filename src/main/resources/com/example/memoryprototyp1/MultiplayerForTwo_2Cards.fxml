@@ -16,7 +16,7 @@
             <Image url="@images/Background2.png" />
          </image>
       </ImageView>
-      <VBox layoutX="228.0" layoutY="-5.6" prefHeight="571.0" prefWidth="695.0" AnchorPane.bottomAnchor="131.0" AnchorPane.leftAnchor="228.0" AnchorPane.rightAnchor="277.0" AnchorPane.topAnchor="-6.0">
+      <VBox layoutX="228.0" layoutY="-5.6" prefHeight="571.0" prefWidth="695.0" AnchorPane.bottomAnchor="131.0" AnchorPane.leftAnchor="228.0" AnchorPane.rightAnchor="277.0" AnchorPane.topAnchor="20.0">
          <children>
             <FlowPane fx:id="imagesFlowPane" alignment="CENTER" prefHeight="669.0" prefWidth="1200.0">
                <children>
