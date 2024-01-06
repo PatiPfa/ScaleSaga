@@ -11,12 +11,17 @@ import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.scene.control.Button;
 
 public class TimerController implements Initializable {
     int i = 0;
 
     @FXML
     private Text text;
+
+    @FXML
+    private Button button;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -30,6 +35,7 @@ public class TimerController implements Initializable {
 
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
+
 
     }
 }

@@ -20,6 +20,7 @@ public class Singleplayer_3Cards_Controller implements Initializable {
     @FXML
     private Text text;
     int i = 0;
+    private Timeline timeline;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -41,14 +42,20 @@ public class Singleplayer_3Cards_Controller implements Initializable {
         this.game = singleplayer_3Cards;
 
       game.playTheGame();
+      timer();
 
+    }
+
+    private void timer() {
+        if(timeline != null) {
+            timeline.stop();
+        }
+        i = 0;
         text.setText(String.valueOf(i));
-
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), e ->{
+        timeline = new Timeline(new KeyFrame(Duration.seconds(1),e ->{
             i++;
             text.setText(String.valueOf(i));
-        }));
-
+        } ));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
     }
@@ -56,6 +63,7 @@ public class Singleplayer_3Cards_Controller implements Initializable {
 
     public void playAgain(){
         game.playAgaing();
+        timer();
     }
 }
 
