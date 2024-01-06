@@ -22,6 +22,8 @@ public class Singleplayer_2Cards_Controller implements Initializable {
     private Text text;
     int i = 0;
     private Timeline timeline;
+    @FXML
+    private Text timeText;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
