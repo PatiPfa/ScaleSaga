@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="558.0" prefWidth="1200.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.memoryprototyp1.Singleplayer_3Cards_Controller">
    <children>
@@ -109,5 +110,10 @@
             <Font name="Imprint MT Shadow" size="36.0" />
          </font>
       </Button>
+      <Text fx:id="text" fill="WHITE" layoutX="477.0" layoutY="627.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+         <font>
+            <Font size="79.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
