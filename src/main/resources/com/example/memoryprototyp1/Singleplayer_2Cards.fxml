@@ -190,12 +190,17 @@
             <Font name="Imprint MT Shadow" size="36.0" />
          </font>
       </Button>
-      <Text fx:id="text" fill="WHITE" layoutX="305.0" layoutY="624.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+      <Text fx:id="sec" fill="WHITE" layoutX="372.0" layoutY="647.0" strokeType="OUTSIDE" strokeWidth="0.0" text="sec">
          <font>
             <Font name="Imprint MT Shadow" size="70.0" />
          </font>
       </Text>
-      <Text fx:id="timeText" fill="WHITE" layoutX="58.0" layoutY="618.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time:">
+      <Text fx:id="timeText" fill="WHITE" layoutX="48.0" layoutY="649.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Time:">
+         <font>
+            <Font name="Imprint MT Shadow" size="70.0" />
+         </font>
+      </Text>
+      <Text fx:id="min" fill="WHITE" layoutX="262.0" layoutY="648.0" strokeType="OUTSIDE" strokeWidth="0.0" text="min">
          <font>
             <Font name="Imprint MT Shadow" size="70.0" />
          </font>

@@ -21,9 +21,12 @@ public class MemoryController implements Initializable {
     private FlowPane imagesFlowPane;
     private BaseGame game;
     @FXML
-    private Text text;
+    private Text sec;
+    @FXML
+    private Text min;
     private Timeline timeline;
-    int i = 0;
+    int seconds = 0;
+    int minutes= 0;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -54,11 +57,18 @@ public class MemoryController implements Initializable {
         if (timeline != null) {
             timeline.stop();
         }
-        i = 0;
-        text.setText(String.valueOf(i));
+        seconds = 0;
+        minutes = 0;
+        sec.setText(String.valueOf(seconds));
+        min.setText(String.valueOf(minutes));
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
-            i++;
-            text.setText(String.valueOf(i));
+            seconds++;
+            if (seconds >= 60) {
+                seconds = 0;
+                minutes++;
+            }
+            sec.setText(String.valueOf(seconds));
+            min.setText(String.valueOf(minutes));
         }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
