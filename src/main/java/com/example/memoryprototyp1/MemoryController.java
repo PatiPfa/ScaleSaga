@@ -4,16 +4,21 @@ import com.example.memoryprototyp1.GameModi.*;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.ImageCursor;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.layout.FlowPane;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -30,14 +35,13 @@ public class MemoryController implements Initializable {
     private Text sec;
     @FXML
     private Text min;
-    @FXML
-    private Button btn_MainMenu;
     private Timeline timeline;
     int seconds = 0;
     int minutes= 0;
     private Stage stage;
     private Scene scene;
     private Parent root;
+    private Image curser = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/sword.png")));
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -90,13 +94,15 @@ public class MemoryController implements Initializable {
         timer();
     }
 
-    private void returnToMainMenu() throws IOException {
+    public void returnToMainMenu(ActionEvent event) throws IOException {
         MainMenuController.setSingleplayer(false);
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("MainMenu.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
+        root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("ScaleSaga!");
         stage.setResizable(false);
         stage.setFullScreen(false);
-        stage.setTitle("ScaleSaga!");
+        scene = new Scene(root);
+        scene.setCursor(new ImageCursor(curser));
         stage.setScene(scene);
         stage.show();
     }
