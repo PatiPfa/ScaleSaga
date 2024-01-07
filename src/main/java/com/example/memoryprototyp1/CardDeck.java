@@ -1,7 +1,10 @@
 package com.example.memoryprototyp1;
 
+import javafx.scene.image.Image;
+
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Objects;
 
 public class CardDeck {
     private ArrayList<Card> deck;
@@ -10,13 +13,13 @@ public class CardDeck {
      * number of usable card-images in src/main/resources/com/example/memoryprototyp1/imagese
      */
 
-    private final int NUMBER_OF_IMAGES = 19;
+    private final int NUMBER_OF_IMAGES = 14;
 
     public CardDeck(){
         this.deck = new ArrayList<>();
 
         for (int i = 1; i <= NUMBER_OF_IMAGES ; i++) {
-            deck.add(new Card("card" + i + ".png" ));
+            deck.add(new Card("card" + i + ".png" , new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/card"+ i +".png")))));
         }
     }
 

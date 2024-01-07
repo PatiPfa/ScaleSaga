@@ -10,9 +10,11 @@ public class Card {
     private boolean isRevealed;
 
     private static final Image backOfCards = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/back.png")));
+    private Image frontOfCards;
 
-    public Card(String name) {
+    public Card(String name, Image frontOfCards) {
         this.name = name;
+        this.frontOfCards = frontOfCards;
         this.isRevealed = false;
     }
 
@@ -33,8 +35,7 @@ public class Card {
         return backOfCards;
     }
 
-    public Image getImage(){
-        String pathName = "images/" + this.getName();
-        return new Image(Objects.requireNonNull(Card.class.getResourceAsStream(pathName)));
+    public Image getFrontOfCards(){
+        return frontOfCards;
     }
 }

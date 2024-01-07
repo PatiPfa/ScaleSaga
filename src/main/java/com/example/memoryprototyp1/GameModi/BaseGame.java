@@ -98,8 +98,8 @@ public class BaseGame {
         for (int i = 0; i < flowPaneSize / 2; i++) {
             Card topCardFromDeck = deck.giveTopCard();
 
-            cardsInGame.add(new MemoryCard(topCardFromDeck.getName()));
-            cardsInGame.add(new MemoryCard(topCardFromDeck.getName()));
+            cardsInGame.add(new MemoryCard(topCardFromDeck.getName(), topCardFromDeck.getFrontOfCards()));
+            cardsInGame.add(new MemoryCard(topCardFromDeck.getName(), topCardFromDeck.getFrontOfCards()));
 
         }
         Collections.shuffle(cardsInGame);
@@ -115,11 +115,11 @@ public class BaseGame {
 
         if (firstCard == null){
             firstCard = cardsInGame.get(cardPosition);
-            rotate(cardPosition, cardsInGame.get(cardPosition).getImage(), 0);
+            rotate(cardPosition, cardsInGame.get(cardPosition).getFrontOfCards(), 0);
         } else {
             secondCard = cardsInGame.get(cardPosition);
             CardsAreFlipped = true;
-            rotate(cardPosition, cardsInGame.get(cardPosition).getImage(), 0);
+            rotate(cardPosition, cardsInGame.get(cardPosition).getFrontOfCards(), 0);
 
             checkForMatch();
         }
