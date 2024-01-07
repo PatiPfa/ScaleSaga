@@ -2,7 +2,6 @@ package com.example.memoryprototyp1.GameModi;
 
 import com.example.memoryprototyp1.Card;
 import com.example.memoryprototyp1.CardDeck;
-import com.example.memoryprototyp1.GameModi.BaseGame;
 import com.example.memoryprototyp1.MemoryCard;
 import com.example.memoryprototyp1.Player;
 import javafx.animation.PauseTransition;
@@ -41,10 +40,9 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
         for (int i = 0; i < flowPaneSize / 3; i++) {
             Card topCardFromDeck = deck.giveTopCard();
 
-            cardsInGame.add(new MemoryCard(topCardFromDeck.getName()));
-            cardsInGame.add(new MemoryCard(topCardFromDeck.getName()));
-            cardsInGame.add(new MemoryCard(topCardFromDeck.getName()));
-
+            cardsInGame.add(new MemoryCard(topCardFromDeck.getName(), topCardFromDeck.getFrontOfCards()));
+            cardsInGame.add(new MemoryCard(topCardFromDeck.getName(), topCardFromDeck.getFrontOfCards()));
+            cardsInGame.add(new MemoryCard(topCardFromDeck.getName(), topCardFromDeck.getFrontOfCards()));
 
         }
         Collections.shuffle(cardsInGame);
@@ -58,13 +56,13 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
 
         if (firstCard == null) {
             firstCard = cardsInGame.get(cardPosition);
-            rotate(cardPosition, cardsInGame.get(cardPosition).getImage(), 0);
+            rotate(cardPosition, cardsInGame.get(cardPosition).getFrontOfCards(), 0);
         } else if (secondCard == null) {
             secondCard = cardsInGame.get(cardPosition);
-            rotate(cardPosition, cardsInGame.get(cardPosition).getImage(), 0);
+            rotate(cardPosition, cardsInGame.get(cardPosition).getFrontOfCards(), 0);
         } else {
             thirdCard = cardsInGame.get(cardPosition);
-            rotate(cardPosition, cardsInGame.get(cardPosition).getImage(), 0);
+            rotate(cardPosition, cardsInGame.get(cardPosition).getFrontOfCards(), 0);
             CardsAreFlipped = true;
             checkForMatch();
         }

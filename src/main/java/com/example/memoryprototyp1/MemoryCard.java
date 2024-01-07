@@ -1,5 +1,7 @@
 package com.example.memoryprototyp1;
 
+import javafx.scene.image.Image;
+
 public class MemoryCard extends Card{
 
     private boolean correctPair;
@@ -12,8 +14,8 @@ public class MemoryCard extends Card{
         this.correctPair = correctPair;
     }
 
-    public MemoryCard(String name) {
-        super(name);
+    public MemoryCard(String name, Image frontOfCards) {
+        super(name, frontOfCards);
         this.correctPair = false;
     }
     public boolean sameCardAs(MemoryCard secondCard){
