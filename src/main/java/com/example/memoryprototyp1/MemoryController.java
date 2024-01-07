@@ -62,18 +62,23 @@ public class MemoryController implements Initializable {
         sec.setText(String.valueOf(seconds));
         min.setText(String.valueOf(minutes));
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
+            if (game.gameFinished())
+                timeline.stop();
+            else
             seconds++;
-            if (seconds >= 60) {
-                seconds = 0;
-                minutes++;
-            }
+                if(seconds >= 60) {
+                    seconds = 0;
+                    minutes++;
+                }
             sec.setText(String.valueOf(seconds));
             min.setText(String.valueOf(minutes));
         }));
+
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
-    }
 
+
+    }
 
 
     public void playAgain(){

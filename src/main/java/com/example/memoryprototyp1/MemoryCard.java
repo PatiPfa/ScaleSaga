@@ -1,5 +1,7 @@
 package com.example.memoryprototyp1;
 
+import java.util.ArrayList;
+
 public class MemoryCard extends Card{
 
     private boolean correctPair;
@@ -19,4 +21,5 @@ public class MemoryCard extends Card{
     public boolean sameCardAs(MemoryCard secondCard){
         return (this.getName().equals(secondCard.getName()));
     }
-}
+
+    }

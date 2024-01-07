@@ -83,6 +83,10 @@ public class BaseGame {
         }
     }
 
+    public boolean gameFinished(){
+        return cardsInGame.stream().allMatch(MemoryCard::getRevealed);
+    }
+
     public void play(){
         firstCard = null;
         secondCard = null;
