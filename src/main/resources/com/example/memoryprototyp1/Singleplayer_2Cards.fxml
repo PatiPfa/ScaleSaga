@@ -227,5 +227,10 @@
             </Text>
          </children>
       </GridPane>
+      <Button fx:id="button" layoutX="1004.0" layoutY="147.0" mnemonicParsing="false" onAction="#handleButtonAction" text="Button">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

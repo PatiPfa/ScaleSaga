@@ -4,13 +4,21 @@ import com.example.memoryprototyp1.GameModi.*;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import static com.example.memoryprototyp1.MainMenuController.getGamemode;
@@ -19,6 +27,8 @@ public class MemoryController implements Initializable {
 
     @FXML
     private FlowPane imagesFlowPane;
+    @FXML
+    private Button button;
     private BaseGame game;
     @FXML
     private Text sec;
@@ -88,5 +98,22 @@ public class MemoryController implements Initializable {
         game.playAgaing();
         timer();
     }
+
+    @FXML
+    void handleButtonAction(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Won.fxml"));
+            Parent root = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Won");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            System.out.println("I");
+
+        }
+
+    }
+
 }
 
