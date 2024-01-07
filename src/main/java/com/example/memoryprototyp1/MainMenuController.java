@@ -31,7 +31,7 @@ public class MainMenuController {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    private boolean singleplayer = false;
+    private static boolean singleplayer = false;
     private Image curser = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/sword.png")));
     private double scaleCurser = 100;
     private static int gamemode = 0;
@@ -39,6 +39,10 @@ public class MainMenuController {
     //3: Multiplayer 2 Cards, 4: Multiplayer 3 Cards
     public static int getGamemode() {
         return gamemode;
+    }
+
+    public static void setSingleplayer(boolean newState) {
+    singleplayer = newState;
     }
 
     public void Singleplayer(){
