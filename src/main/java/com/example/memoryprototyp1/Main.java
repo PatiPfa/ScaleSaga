@@ -14,7 +14,7 @@ public class Main extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         stage.setResizable(false);
         stage.setFullScreen(false);
-        stage.setTitle("Prototyp!");
+        stage.setTitle("ScaleSaga!");
         stage.setScene(scene);
         stage.show();
     }

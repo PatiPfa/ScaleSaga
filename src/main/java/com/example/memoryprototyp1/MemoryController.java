@@ -5,12 +5,18 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import static com.example.memoryprototyp1.MainMenuController.getGamemode;
@@ -24,9 +30,14 @@ public class MemoryController implements Initializable {
     private Text sec;
     @FXML
     private Text min;
+    @FXML
+    private Button btn_MainMenu;
     private Timeline timeline;
     int seconds = 0;
     int minutes= 0;
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -74,11 +85,21 @@ public class MemoryController implements Initializable {
         timeline.play();
     }
 
-
-
     public void playAgain(){
         game.playAgaing();
         timer();
     }
+
+    private void returnToMainMenu() throws IOException {
+        MainMenuController.setSingleplayer(false);
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("MainMenu.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setResizable(false);
+        stage.setFullScreen(false);
+        stage.setTitle("ScaleSaga!");
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }
 
