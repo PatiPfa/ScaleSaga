@@ -1,13 +1,21 @@
 package com.example.memoryprototyp1.GameModi;
 
+import com.example.memoryprototyp1.Card;
+import com.example.memoryprototyp1.CardDeck;
+import com.example.memoryprototyp1.MemoryCard;
+import com.example.memoryprototyp1.Player;
 import javafx.animation.PauseTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.paint.Color;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 import static com.example.memoryprototyp1.Card.getBackOfCards;
 
@@ -20,6 +28,7 @@ public class Singleplayer_2Cards extends BaseGame{
     }
     @Override
     public void initializeImageView() {
+
 
         for (int i = 0; i < imagesFlowPane.getChildren().size(); i++) {
             ImageView imageView = (ImageView) imagesFlowPane.getChildren().get(i);
@@ -44,6 +53,32 @@ public class Singleplayer_2Cards extends BaseGame{
             });
         }
     }
+    @Override
+    public void play(){
+        firstCard = null;
+        secondCard = null;
+        CardDeck deck = new CardDeck();
+        deck.shuffle();
+        cardsInGame = new ArrayList<>();
+        CardsAreFlipped = false;
+
+
+        Player player1 = new Player("Player1");
+        player1.setColor(Color.RED);
+
+        for (int i = 0; i < flowPaneSize / 2; i++) {
+            Card topCardFromDeck = deck.giveTopCard();
+
+            cardsInGame.add(new MemoryCard(topCardFromDeck.getName(), topCardFromDeck.getFrontOfCards()));
+            cardsInGame.add(new MemoryCard(topCardFromDeck.getName(), topCardFromDeck.getFrontOfCards()));
+
+        }
+        Collections.shuffle(cardsInGame);
+        System.out.println(cardsInGame);
+        rotateAllCardsToBackSide();
+        rotateDisplayImageView(displayImageView, getBackOfCards());
+    }
+
     @Override
     public void checkForMatch(){
 
@@ -103,5 +138,6 @@ public class Singleplayer_2Cards extends BaseGame{
             rotateSecondHalf.play();
         });
     }
+
 
 }
