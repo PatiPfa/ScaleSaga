@@ -25,7 +25,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         CardDeck deck = new CardDeck();
         deck.shuffle();
         cardsInGame = new ArrayList<>();
-        CardsAreFlipped = false;
+        cardsAreFlipped = false;
 
 
         Player player1 = new Player("Player1");

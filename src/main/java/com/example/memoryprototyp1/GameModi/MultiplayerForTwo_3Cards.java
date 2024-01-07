@@ -28,7 +28,7 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
         CardDeck deck = new CardDeck();
         deck.shuffle();
         cardsInGame = new ArrayList<>();
-        CardsAreFlipped = false;
+        cardsAreFlipped = false;
 
 
         Player player1 = new Player("Player1");
@@ -63,7 +63,7 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
         } else {
             thirdCard = cardsInGame.get(cardPosition);
             rotate(cardPosition, cardsInGame.get(cardPosition).getFrontOfCards(), 0);
-            CardsAreFlipped = true;
+            cardsAreFlipped = true;
             checkForMatch();
         }
     }
@@ -72,7 +72,7 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
 
         if (firstCard.sameCardAs(secondCard) && firstCard.sameCardAs(thirdCard)){
             System.out.println("same");
-            CardsAreFlipped = false;
+            cardsAreFlipped = false;
 
             //hier noch Player update einfügen
             firstCard.setCorrectPair(true);
@@ -88,7 +88,7 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
         PauseTransition delay = new PauseTransition(Duration.millis(1500));
         delay.play();
         delay.setOnFinished(delayEvent ->{
-            CardsAreFlipped = false;});
+            cardsAreFlipped = false;});
     }
 
     public void rotateBack(){

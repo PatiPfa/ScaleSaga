@@ -60,7 +60,7 @@ public class Singleplayer_2Cards extends BaseGame{
         CardDeck deck = new CardDeck();
         deck.shuffle();
         cardsInGame = new ArrayList<>();
-        CardsAreFlipped = false;
+        cardsAreFlipped = false;
 
 
         Player player1 = new Player("Player1");
@@ -85,7 +85,7 @@ public class Singleplayer_2Cards extends BaseGame{
         if (firstCard.sameCardAs(secondCard)){
             System.out.println("same");
             rotateDisplayImageView(displayImageView ,cardsInGame.get(lastClickedCard).getFrontOfCards());
-            CardsAreFlipped = false;
+            cardsAreFlipped = false;
 
             //hier noch Player update einfügen
             firstCard.setCorrectPair(true);
@@ -99,7 +99,7 @@ public class Singleplayer_2Cards extends BaseGame{
         PauseTransition delay = new PauseTransition(Duration.millis(1500));
         delay.play();
         delay.setOnFinished(delayEvent ->{
-            CardsAreFlipped = false;});
+            cardsAreFlipped = false;});
     }
 
     public void rotateDisplayImageView(ImageView imageView, Image imageToBeShown) {

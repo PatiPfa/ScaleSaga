@@ -13,7 +13,7 @@ public class CardDeck {
      * number of usable card-images in src/main/resources/com/example/memoryprototyp1/imagese
      */
 
-    private static final int NUMBER_OF_IMAGES = 14;
+    private static final int NUMBER_OF_IMAGES = 15;
 
     public static int getNUMBER_OF_IMAGES() {
         return NUMBER_OF_IMAGES;
