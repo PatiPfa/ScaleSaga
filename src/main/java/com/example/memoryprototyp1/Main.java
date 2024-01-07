@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.media.Media;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -26,6 +27,8 @@ public class Main extends Application {
         stage.setTitle("Prototyp!");
         stage.setScene(scene);
         stage.show();
+        Media musicMedia = new Media(getClass().getResource("/com/example/memoryprototyp1/sounds/musicBackground.mp3").toExternalForm());
+        Music.MusicPlayer.playBackgroundMusic(musicMedia);
     }
 
     public static void main(String[] args) {

@@ -74,11 +74,13 @@ public class MainMenuController {
             Stage stage = switchToGame(event, "Singleplayer_2Cards.fxml");
             stage.setTitle("Singleplayer 2 Cards");
             stage.show();
+            Music.playButtonSound();
         }else{
             gamemode = 3;
             Stage stage = switchToGame(event, "MultiplayerForTwo_2Cards.fxml");
             stage.setTitle("Multiplayer 2 Cards");
             stage.show();
+            Music.playButtonSound();
         }
     }
 
@@ -88,11 +90,13 @@ public class MainMenuController {
             Stage stage = switchToGame(event, "Singleplayer_3Cards.fxml");
             stage.setTitle("Singleplayer 3 Cards");
             stage.show();
+            Music.playButtonSound();
         }else{
             gamemode = 4;
             Stage stage = switchToGame(event, "MultiplayerForTwo_3Cards.fxml");
             stage.setTitle("Multiplayer 3 Cards");
             stage.show();
+            Music.playButtonSound();
         }
     }
 
