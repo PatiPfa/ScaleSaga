@@ -9,10 +9,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
+import javafx.fxml.FXML;
+import javafx.scene.media.MediaView;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 
 
 public class MainMenuController {
 
+    public MediaView mediaView;
     @FXML
     private Button btn_singleplayer;
     @FXML
@@ -93,5 +99,6 @@ public class MainMenuController {
         singleplayer = false;
         btnVisible();
     }
+
 
 }
