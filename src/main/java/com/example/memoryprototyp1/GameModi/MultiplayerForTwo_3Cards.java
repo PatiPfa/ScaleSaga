@@ -1,9 +1,6 @@
 package com.example.memoryprototyp1.GameModi;
 
-import com.example.memoryprototyp1.Card;
-import com.example.memoryprototyp1.CardDeck;
-import com.example.memoryprototyp1.MemoryCard;
-import com.example.memoryprototyp1.Player;
+import com.example.memoryprototyp1.*;
 import javafx.animation.PauseTransition;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
@@ -73,6 +70,7 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
         if (firstCard.sameCardAs(secondCard) && firstCard.sameCardAs(thirdCard)){
             System.out.println("same");
             cardsAreFlipped = false;
+
 
             //hier noch Player update einfügen
             firstCard.setCorrectPair(true);

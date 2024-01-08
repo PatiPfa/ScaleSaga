@@ -1,9 +1,6 @@
 package com.example.memoryprototyp1.GameModi;
 
-import com.example.memoryprototyp1.Card;
-import com.example.memoryprototyp1.CardDeck;
-import com.example.memoryprototyp1.MemoryCard;
-import com.example.memoryprototyp1.Player;
+import com.example.memoryprototyp1.*;
 import javafx.animation.PauseTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
@@ -18,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import static com.example.memoryprototyp1.Card.getBackOfCards;
+import static com.example.memoryprototyp1.Music.playButtonSound;
 
 public class BaseGame {
 

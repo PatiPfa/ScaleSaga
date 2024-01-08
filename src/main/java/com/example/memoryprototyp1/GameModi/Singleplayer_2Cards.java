@@ -1,9 +1,6 @@
 package com.example.memoryprototyp1.GameModi;
 
-import com.example.memoryprototyp1.Card;
-import com.example.memoryprototyp1.CardDeck;
-import com.example.memoryprototyp1.MemoryCard;
-import com.example.memoryprototyp1.Player;
+import com.example.memoryprototyp1.*;
 import javafx.animation.PauseTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
@@ -86,6 +83,7 @@ public class Singleplayer_2Cards extends BaseGame{
         if (firstCard.sameCardAs(secondCard)){
             System.out.println("same");
             rotateDisplayImageView(displayImageView ,cardsInGame.get(lastClickedCard).getFrontOfCards());
+            Music.playButtonSound();
             cardsAreFlipped = false;
 
             //hier noch Player update einfügen
