@@ -40,17 +40,18 @@ public class MainMenuController {
     public static int getGamemode() {
         return gamemode;
     }
-
+    
     public static void setSingleplayer(boolean newState) {
     singleplayer = newState;
     }
-
-    public void Singleplayer(){
+    
+    
+    public void singleplayer(){
         singleplayer = true;
         btnVisible();
     }
 
-    public void Multiplayer(){
+    public void multiplayer(){
         btnVisible();
     }
 

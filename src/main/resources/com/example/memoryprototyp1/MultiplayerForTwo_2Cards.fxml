@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="558.0" prefWidth="1200.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.memoryprototyp1.MemoryController">
    <children>
@@ -216,19 +215,14 @@
             <Font size="29.0" />
          </font>
       </Label>
-      <Text fx:id="playerpoints" fill="WHITE" layoutX="139.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="100.0">
-         <font>
-            <Font size="38.0" />
-         </font>
-      </Text>
-      <Label layoutX="894.0" layoutY="68.0" text="Player on Turn:" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true">
+      <Label layoutX="940.0" layoutY="46.0" text="Player on Turn:" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true">
          <font>
             <Font size="29.0" />
          </font>
       </Label>
-      <Label layoutX="1070.0" layoutY="68.0" text="Player 1:" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true">
+      <Label fx:id="playerOnTurnLabel" layoutX="958.0" layoutY="80.0" prefHeight="128.0" prefWidth="156.0" text="Player 1" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true">
          <font>
-            <Font size="29.0" />
+            <Font size="43.0" />
          </font>
       </Label>
    </children>
