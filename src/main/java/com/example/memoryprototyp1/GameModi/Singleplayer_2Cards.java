@@ -7,6 +7,7 @@ import com.example.memoryprototyp1.Player;
 import javafx.animation.PauseTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
@@ -92,6 +93,14 @@ public class Singleplayer_2Cards extends BaseGame{
             secondCard.setCorrectPair(true);
         } else {
             rotateBack();
+        }
+
+        if (gameFinished()) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Winner!");
+            alert.setHeaderText(null);
+            alert.setContentText("You have won :D");
+            alert.showAndWait();
         }
 
         firstCard = null;
