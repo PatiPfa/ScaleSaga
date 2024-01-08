@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import static com.example.memoryprototyp1.Card.getBackOfCards;
+import static com.example.memoryprototyp1.Music.playButtonSound;
 
 public class Singleplayer_2Cards extends BaseGame{
     private int lastClickedCard;
@@ -83,7 +84,7 @@ public class Singleplayer_2Cards extends BaseGame{
         if (firstCard.sameCardAs(secondCard)){
             System.out.println("same");
             rotateDisplayImageView(displayImageView ,cardsInGame.get(lastClickedCard).getFrontOfCards());
-            Music.playButtonSound();
+            playButtonSound();
             cardsAreFlipped = false;
 
             //hier noch Player update einfügen

@@ -2,6 +2,9 @@ package com.example.memoryprototyp1;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+
+import java.util.Objects;
+
 public class Music {
 
 
@@ -21,7 +24,7 @@ public class Music {
     }
     public static void playButtonSound(){
         String soundPath = "/com/example/memoryprototyp1/sounds/buttonSound.mp3";
-        Media sound = new Media(Music.class.getResource(soundPath).toExternalForm());
+        Media sound = new Media(Objects.requireNonNull(Music.class.getResource(soundPath)).toExternalForm());
         MediaPlayer mediaPlayer = new MediaPlayer(sound);
         mediaPlayer.setVolume(0.5);
         mediaPlayer.play();

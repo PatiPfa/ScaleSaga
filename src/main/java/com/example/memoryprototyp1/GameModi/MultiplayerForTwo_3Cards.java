@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import static com.example.memoryprototyp1.Card.getBackOfCards;
+import static com.example.memoryprototyp1.Music.playButtonSound;
 
 public class MultiplayerForTwo_3Cards extends BaseGame {
 
@@ -69,6 +70,7 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
 
         if (firstCard.sameCardAs(secondCard) && firstCard.sameCardAs(thirdCard)){
             System.out.println("same");
+            playButtonSound();
             cardsAreFlipped = false;
 
 

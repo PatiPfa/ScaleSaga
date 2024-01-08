@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import static com.example.memoryprototyp1.Card.getBackOfCards;
+import static com.example.memoryprototyp1.Music.playButtonSound;
 
 public class MultiplayerForTwo_2Cards extends BaseGame {
 
@@ -69,6 +70,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
     public void checkForMatch(){
         if (firstCard.sameCardAs(secondCard)){
             System.out.println("same");
+            playButtonSound();
             cardsAreFlipped = false;
             firstCard.setCorrectPair(true);
             secondCard.setCorrectPair(true);

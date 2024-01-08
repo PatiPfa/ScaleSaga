@@ -132,6 +132,7 @@ public class BaseGame {
 
         if (firstCard.sameCardAs(secondCard)){
             System.out.println("same");
+            playButtonSound();
             cardsAreFlipped = false;
 
             //hier noch Player update einfügen

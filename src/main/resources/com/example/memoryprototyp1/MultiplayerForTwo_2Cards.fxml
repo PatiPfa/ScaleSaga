@@ -187,7 +187,7 @@
       </VBox>
       <Button layoutX="894.0" layoutY="575.0" mnemonicParsing="false" onAction="#playAgain" text="PLAY AGAIN" textOverrun="CLIP">
          <font>
-            <Font name="Georgia" size="36.0" />
+            <Font name="Imprint MT Shadow" size="36.0" />
          </font>
       </Button>
       <Button layoutX="14.0" layoutY="575.0" mnemonicParsing="false" onAction="#returnToMainMenu" text="Main Menu" textOverrun="CLIP">
@@ -197,32 +197,32 @@
       </Button>
       <Label layoutX="20.0" layoutY="68.0" text="Player 1:" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true">
          <font>
-            <Font size="29.0" />
+            <Font name="Imprint MT Shadow" size="29.0" />
          </font>
       </Label>
       <Label fx:id="player1PointsLabel" layoutX="139.0" layoutY="68.0" text="Punkte P1" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true">
          <font>
-            <Font size="29.0" />
+            <Font name="Imprint MT Shadow" size="29.0" />
          </font>
       </Label>
       <Label fx:id="player2PointsLabel" layoutX="139.0" layoutY="101.0" text="Punkte P2" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true">
          <font>
-            <Font size="29.0" />
+            <Font name="Imprint MT Shadow" size="29.0" />
          </font>
       </Label>
       <Label layoutX="20.0" layoutY="101.0" text="Player 2:" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true">
          <font>
-            <Font size="29.0" />
+            <Font name="Imprint MT Shadow" size="29.0" />
          </font>
       </Label>
       <Label layoutX="940.0" layoutY="46.0" text="Player on Turn:" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true">
          <font>
-            <Font size="29.0" />
+            <Font name="Imprint MT Shadow" size="29.0" />
          </font>
       </Label>
       <Label fx:id="playerOnTurnLabel" layoutX="958.0" layoutY="80.0" prefHeight="128.0" prefWidth="156.0" text="Player 1" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true">
          <font>
-            <Font size="43.0" />
+            <Font name="Imprint MT Shadow" size="43.0" />
          </font>
       </Label>
    </children>
