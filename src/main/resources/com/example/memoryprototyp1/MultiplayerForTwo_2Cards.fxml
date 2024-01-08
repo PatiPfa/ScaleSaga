@@ -186,7 +186,7 @@
       </VBox>
       <Button layoutX="894.0" layoutY="575.0" mnemonicParsing="false" onAction="#playAgain" text="PLAY AGAIN" textOverrun="CLIP">
          <font>
-            <Font name="Imprint MT Shadow" size="36.0" />
+            <Font name="Georgia" size="36.0" />
          </font>
       </Button>
    </children>
