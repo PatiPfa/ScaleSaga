@@ -15,14 +15,15 @@ public class Music {
             }
             backgroundMusic = new MediaPlayer(media);
             backgroundMusic.setOnEndOfMedia(() -> playBackgroundMusic(backgroundMusic.getMedia()));
-            backgroundMusic.setVolume(0.2);
+            backgroundMusic.setVolume(0.4);
             backgroundMusic.play();
         }
     }
     public static void playButtonSound(){
-        String soundPath ="/com/example/memoryprototyp1/sounds/buttonSound.mp3";
-        AudioClip buttonClick = new AudioClip(soundPath);
-        buttonClick.setVolume(0.5);
-        buttonClick.play();
+        String soundPath = "/com/example/memoryprototyp1/sounds/buttonSound.mp3";
+        Media sound = new Media(Music.class.getResource(soundPath).toExternalForm());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.setVolume(0.5);
+        mediaPlayer.play();
     }
 }
