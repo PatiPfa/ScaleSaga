@@ -101,7 +101,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         PauseTransition delay = new PauseTransition(Duration.millis(1500));
         delay.play();
         delay.setOnFinished(delayEvent ->{
-            CardsAreFlipped = false;
+            cardsAreFlipped = false;
         });
 
         updatePlayerOnTurnLabel();

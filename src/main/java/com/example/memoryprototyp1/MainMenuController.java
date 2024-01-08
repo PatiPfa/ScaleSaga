@@ -51,7 +51,7 @@ public class MainMenuController {
         btnVisible();
     }
 
-    public void Multiplayer(){
+    public void multiplayer(){
         btnVisible();
     }
 

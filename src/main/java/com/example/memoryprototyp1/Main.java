@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.stage.Stage;
 
