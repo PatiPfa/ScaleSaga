@@ -15,9 +15,10 @@ public class Player {
         this.color = color;
     }
 
-    public Player(String name) {
+    public Player(String name, Color color) {
         this.name = name;
         this.points = 0;
+        this.color = color;
     }
 
     public String getName() {
@@ -33,7 +34,7 @@ public class Player {
     }
 
     public void addOnePoint(){
-        points ++;
+        this.points ++;
     }
 }
 

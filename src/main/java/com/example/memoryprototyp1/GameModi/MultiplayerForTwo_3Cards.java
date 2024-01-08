@@ -31,8 +31,8 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
         cardsAreFlipped = false;
 
 
-        Player player1 = new Player("Player1");
-        Player player2 = new Player("Player2");
+        Player player1 = new Player("Player1", Color.RED);
+        Player player2 = new Player("Player2", Color.BLUE);
 
         player1.setColor(Color.RED);
         player2.setColor(Color.BLUE);
