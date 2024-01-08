@@ -91,10 +91,6 @@ public class BaseGame {
         cardsInGame = new ArrayList<>();
         CardsAreFlipped = false;
 
-
-        Player player1 = new Player("Player1");
-        player1.setColor(Color.RED);
-
         for (int i = 0; i < flowPaneSize / 2; i++) {
             Card topCardFromDeck = deck.giveTopCard();
 
