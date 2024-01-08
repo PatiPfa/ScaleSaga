@@ -33,7 +33,7 @@ public class MainMenuController {
     private Parent root;
     private boolean singleplayer = false;
     private Image curser = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/sword.png")));
-    private double scaleCurser = 100;
+
     private static int gamemode = 0;
     //1: Singleplayer 2 Cards, 2: Singleplayer 3 Cards
     //3: Multiplayer 2 Cards, 4: Multiplayer 3 Cards
@@ -73,8 +73,9 @@ public class MainMenuController {
             gamemode= 1;
             Stage stage = switchToGame(event, "Singleplayer_2Cards.fxml");
             stage.setTitle("Singleplayer 2 Cards");
-            stage.show();
             Music.playButtonSound();
+            stage.show();
+
         }else{
             gamemode = 3;
             Stage stage = switchToGame(event, "MultiplayerForTwo_2Cards.fxml");
