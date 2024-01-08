@@ -1,6 +1,8 @@
 To start the game:
 =
 Go to main and run it!!
+
+Turn on the sound because we added cool music!
 **************************
 About the game:
 =
