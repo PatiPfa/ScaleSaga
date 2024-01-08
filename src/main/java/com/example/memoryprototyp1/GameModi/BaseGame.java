@@ -58,6 +58,12 @@ public class BaseGame {
         }
     }
 
+
+//    Methode damit Timer weiß wann Game zueende is
+    public boolean gameFinished(){
+        return cardsInGame.stream().allMatch(MemoryCard::getRevealed);
+    }
+
     public void initializeImageView() {
 
         for (int i = 0; i < imagesFlowPane.getChildren().size(); i++) {
@@ -82,6 +88,8 @@ public class BaseGame {
             });
         }
     }
+
+
 
     public void play(){
         firstCard = null;

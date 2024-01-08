@@ -5,11 +5,14 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
+
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.FlowPane;
 
+import javafx.scene.control.Button;
+import javafx.scene.layout.FlowPane;
+import javafx.event.ActionEvent;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -22,6 +25,8 @@ public class MemoryController implements Initializable {
 
     @FXML
     private FlowPane imagesFlowPane;
+    @FXML
+    private Button button;
     private BaseGame game;
     @FXML
     private Text sec;
@@ -62,7 +67,7 @@ public class MemoryController implements Initializable {
     }
 
 
-
+//    Timer
     private void timer() {
         if (timeline != null) {
             timeline.stop();
@@ -72,23 +77,29 @@ public class MemoryController implements Initializable {
         sec.setText(String.valueOf(seconds));
         min.setText(String.valueOf(minutes));
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
+            if (game.gameFinished())
+                timeline.stop();
+            else
             seconds++;
-            if (seconds >= 60) {
-                seconds = 0;
-                minutes++;
-            }
+                if(seconds >= 60) {
+                    seconds = 0;
+                    minutes++;
+                }
             sec.setText(String.valueOf(seconds));
             min.setText(String.valueOf(minutes));
         }));
+
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
+
+
     }
-
-
 
     public void playAgain(){
         game.playAgaing();
         timer();
     }
+
+
 }
 
