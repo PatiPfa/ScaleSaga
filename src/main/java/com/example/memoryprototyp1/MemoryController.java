@@ -40,7 +40,8 @@ public class MemoryController implements Initializable {
     private Label player1PointsLabel= new Label("0");;
     @FXML
     private Label player2PointsLabel= new Label("0");;
-    private Text playerpoints = new Text("0");
+    @FXML
+    private Label playerOnTurnLabel = new Label("Player 1");
     private Timeline timeline;
     int seconds = 0;
     int minutes= 0;
@@ -49,11 +50,6 @@ public class MemoryController implements Initializable {
     private Parent root;
     private Image curser = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/sword.png")));
 
-    public MemoryController() {
-        this.player1PointsLabel.setText("0");
-        this.player2PointsLabel.setText("0");
-        this.playerpoints.setText("0");
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -68,8 +64,7 @@ public class MemoryController implements Initializable {
                 this.game = new Singleplayer_3Cards(imagesFlowPane.getChildren().size(), imagesFlowPane);
                 break;
             case 3:
-                MemoryController memoryController = new MemoryController();
-                this.game = new MultiplayerForTwo_2Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, memoryController);
+                this.game = new MultiplayerForTwo_2Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, player1PointsLabel, player2PointsLabel, playerOnTurnLabel);
                 break;
 
             case 4:
@@ -123,12 +118,6 @@ public class MemoryController implements Initializable {
         scene.setCursor(new ImageCursor(curser));
         stage.setScene(scene);
         stage.show();
-    }
-
-    public void updateLabels(int p1points, int p2points){
-        player1PointsLabel.setText(Integer.toString(p1points));
-        player2PointsLabel.setText(Integer.toString(p2points));
-        playerpoints.setText(Integer.toString(p1points));
     }
 
 }

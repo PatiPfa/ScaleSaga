@@ -1,15 +1,11 @@
 package com.example.memoryprototyp1.GameModi;
 
 import com.example.memoryprototyp1.*;
-import com.example.memoryprototyp1.GameModi.BaseGame;
 import javafx.animation.PauseTransition;
-import javafx.application.Platform;
-import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -31,19 +27,22 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
     Player playerOnTurn = player1;
     private MemoryController memoryController;
 
-    /*
-     *  Labelupdate funktioniert noch nicht
-     * */
-    public MultiplayerForTwo_2Cards(int flowPaneSize, FlowPane imagesFlowPane, MemoryController memoryController) {
-        super(flowPaneSize, imagesFlowPane);
-        this.memoryController = memoryController;
+    private Label player1PointsLabel;
+    private Label player2PointsLabel;
+    private Label playerOnTurnLabel;
 
+    public MultiplayerForTwo_2Cards(int size, FlowPane imagesFlowPane, Label player1PointsLabel, Label player2PointsLabel, Label playerOnTurnLabel) {
+        super(size, imagesFlowPane);
+        this.player1PointsLabel = player1PointsLabel;
+        this.player2PointsLabel = player2PointsLabel;
+        this.playerOnTurnLabel = playerOnTurnLabel;
     }
 
 
     @Override
     public void play() {
-        updateLabels();
+        updatePointsLabels();
+        updatePlayerOnTurnLabel();
 
         firstCard = null;
         secondCard = null;
@@ -57,7 +56,6 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
 
             cardsInGame.add(new MemoryCard(topCardFromDeck.getName()));
             cardsInGame.add(new MemoryCard(topCardFromDeck.getName()));
-
         }
         Collections.shuffle(cardsInGame);
         System.out.println(cardsInGame);
@@ -85,7 +83,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         firstCard = null;
         secondCard = null;
 
-        //updateLabels();
+        updatePointsLabels();
 
         if(allCardsFlipped()){
             winner();
@@ -96,13 +94,13 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         System.out.println("Player 1: " + player1.getPoints());
         System.out.println("Player 2: " + player2.getPoints());
 
-
         PauseTransition delay = new PauseTransition(Duration.millis(1500));
         delay.play();
         delay.setOnFinished(delayEvent ->{
             CardsAreFlipped = false;
-            this.updateLabels();});
+        });
 
+        updatePlayerOnTurnLabel();
     }
 
     private boolean allCardsFlipped() {
@@ -110,10 +108,13 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         return cardsInGame.stream().allMatch(MemoryCard::isCorrectPair);
     }
 
-    private void updateLabels(){
-        //memoryController.updateLabels(player1.getPoints(), player2.getPoints());
-        Platform.runLater(() -> memoryController.updateLabels(player1.getPoints(), player2.getPoints()));
+    private void updatePointsLabels(){
+        player1PointsLabel.setText(Integer.toString(player1.getPoints()));
+        player2PointsLabel.setText(Integer.toString(player2.getPoints()));
+    }
 
+    private void updatePlayerOnTurnLabel(){
+        playerOnTurnLabel.setText(playerOnTurn.getName());
     }
     private void winner(){
         String winner = null;
@@ -141,5 +142,4 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
             playerOnTurn = player1;
         }
     }
-
 }
