@@ -45,7 +45,8 @@ public class MainMenuController {
     singleplayer = newState;
     }
 
-    public void Singleplayer(){
+
+    public void singleplayer(){
         singleplayer = true;
         btnVisible();
     }
