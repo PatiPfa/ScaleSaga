@@ -1,0 +1,16 @@
+Index: Test1.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public class Test1 {\r\n    static void printHelloWorld(){\r\n        System.out.println(\"Hallo Welt\");\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Test1.java b/Test1.java
+--- a/Test1.java	(revision 4e697ff392c1b3411799398880444795c102f876)
++++ b/Test1.java	(date 1702476968116)
+@@ -1,3 +1,5 @@
++
++
+ public class Test1 {
+     static void printHelloWorld(){
+         System.out.println("Hallo Welt");
