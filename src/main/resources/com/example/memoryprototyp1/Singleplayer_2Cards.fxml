@@ -188,9 +188,9 @@
             </FlowPane>
          </children>
       </VBox>
-      <Button layoutX="894.0" layoutY="575.0" mnemonicParsing="false" onAction="#playAgain" text="PLAY AGAIN" textOverrun="CLIP">
+      <Button layoutX="850.0" layoutY="504.0" mnemonicParsing="false" onAction="#playAgain" prefHeight="60.0" prefWidth="251.0" text="PLAY AGAIN" textOverrun="CLIP">
          <font>
-            <Font name="Dubai Regular" size="36.0" />
+            <Font name="Imprint MT Shadow" size="25.0" />
          </font>
       </Button>
       <FlowPane layoutX="124.0" layoutY="564.0" />
@@ -227,10 +227,15 @@
             </Text>
          </children>
       </GridPane>
-      <ImageView fx:id="displayImageView" fitHeight="405.0" fitWidth="346.0" layoutX="804.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="displayImageView" fitHeight="405.0" fitWidth="346.0" layoutX="802.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/back.png" />
          </image>
       </ImageView>
+      <Button fx:id="btn_rtn" layoutX="850.0" layoutY="583.0" mnemonicParsing="false" onAction="#returnToMainMenu" prefHeight="52.0" prefWidth="251.0" text="Return To Menu">
+         <font>
+            <Font name="Imprint MT Shadow" size="25.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
