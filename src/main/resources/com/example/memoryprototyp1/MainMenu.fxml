@@ -59,7 +59,7 @@
                   </Button>
                </children>
             </FlowPane>
-            <Button fx:id="btn_singleplayer" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="180.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Singleplayer" prefHeight="70.0" prefWidth="180.0" text="Singleplayer">
+            <Button fx:id="btn_singleplayer" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="180.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#singleplayer" prefHeight="70.0" prefWidth="180.0" text="Singleplayer">
                <font>
                   <Font name="System Bold" size="23.0" />
                </font>
@@ -72,7 +72,7 @@
                   <Font size="22.0" />
                </font>
             </Button>
-            <Button fx:id="btn_multiplayer" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="180.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#Multiplayer" prefHeight="70.0" prefWidth="180.0" text="Multiplayer" textAlignment="CENTER">
+            <Button fx:id="btn_multiplayer" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="180.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#multiplayer" prefHeight="70.0" prefWidth="180.0" text="Multiplayer" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="23.0" />
                </font>
