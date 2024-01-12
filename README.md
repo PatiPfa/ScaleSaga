@@ -23,3 +23,20 @@ Scoreboard
 Custom name for Player
 
 Fancy main menu background
+
+**************************************************
+Credit:
+=
+* Game Background:
+
+    Artist:
+    Eder Muniz
+    
+    https://edermunizlicense.carrd.co/
+***
+
+* Inner Card Images:
+
+    www.craiyon.com
+***
+
