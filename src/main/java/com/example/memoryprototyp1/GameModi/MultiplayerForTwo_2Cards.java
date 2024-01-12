@@ -27,9 +27,9 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
     private Scene scene;
     private Parent root;
     int gameCounter;
-    Player player1 = new Player("Player1", Color.RED);
-    Player player2 = new Player("Player2", Color.BLUE);
-    Player playerOnTurn = player1;
+    Player player1;
+    Player player2;
+    Player playerOnTurn;
     private MemoryController memoryController;
 
     private Label player1PointsLabel;
@@ -45,6 +45,13 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
 
     @Override
     public void play() {
+
+        player1 = new Player(MainMenuController.getPlayer1name(), Color.RED);
+        player2 = new Player(MainMenuController.getPlayer2name(), Color.BLUE);
+//      ToDO: soll ein zufälliger Spieler beginnen???
+        playerOnTurn = player1;
+
+
         updatePointsLabels();
         updatePlayerOnTurnLabel();
 

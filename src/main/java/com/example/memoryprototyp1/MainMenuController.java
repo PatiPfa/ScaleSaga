@@ -10,7 +10,10 @@ import javafx.scene.ImageCursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 
@@ -29,6 +32,25 @@ public class MainMenuController {
     private Button btn_3cards;
     @FXML
     private Button btn_return;
+    @FXML
+    private Button btn_submitNames;
+
+    @FXML
+    private TextField tf_player1;
+    @FXML
+    private TextField tf_player2;
+
+    @FXML
+    private Label label_errormessage = new Label(" ");
+    @FXML
+    private AnchorPane mainMenuAP;
+    @FXML
+    private AnchorPane nameInputAP;
+
+
+
+    private static String player1name;
+    private static String player2name;
 
     private Stage stage;
     private Scene scene;
@@ -47,6 +69,13 @@ public class MainMenuController {
     singleplayer = newState;
     }
 
+    public static String getPlayer1name() {
+        return player1name;
+    }
+
+    public static String getPlayer2name() {
+        return player2name;
+    }
 
     public void singleplayer(){
         singleplayer = true;
@@ -84,9 +113,7 @@ public class MainMenuController {
             playButtonSound();
         }else{
             gamemode = 3;
-            Stage stage = switchToGame(event, "MultiplayerForTwo_2Cards.fxml");
-            stage.setTitle("Multiplayer 2 Cards");
-            stage.show();
+            switchMainToNames();
             playButtonSound();
         }
     }
@@ -100,9 +127,7 @@ public class MainMenuController {
             playButtonSound();
         }else{
             gamemode = 4;
-            Stage stage = switchToGame(event, "MultiplayerForTwo_3Cards.fxml");
-            stage.setTitle("Multiplayer 3 Cards");
-            stage.show();
+            switchMainToNames();
             playButtonSound();
         }
     }
@@ -112,4 +137,49 @@ public class MainMenuController {
         btnVisible();
     }
 
+    public void switchMainToNames(){
+        mainMenuAP.setVisible(!mainMenuAP.isVisible());
+        nameInputAP.setVisible(!nameInputAP.isVisible());
+    }
+
+    public void submitNames(ActionEvent event) throws IOException{
+        //TODO: ev auch Farbe einlesen, falls wir das mit der Tastatur umsetzen
+        //TODO: standartmäßig Player 1 und Player 2 drinnen lassen oder weglassen?
+        gamemode = 3;
+        boolean correctInput = false;
+        player1name = tf_player1.getText();
+        player2name = tf_player2.getText();
+        //TODO:  schauen ob die Namenslängen passen
+        if(player1name.length() < 4 || player2name.length() < 4){
+            label_errormessage.setText("All names must contain at least 4 letters!");
+        }else if(player1name.length() > 15 || player2name.length() > 15) {
+            label_errormessage.setText("The name may consist of a maximum of 15 characters!");
+        }else{
+            correctInput = true;
+        }
+
+        //Testzwecke
+        System.out.println(player1name + " " + player2name);
+
+        //TODO: ev überlegen das mit dem szenen laden und den buttons noch anders zu machen..
+        //vorallem weil das jz hier nicht so schön ausschaut
+        if(correctInput){
+            if(gamemode == 3){
+                Stage stage = switchToGame(event, "MultiplayerForTwo_2Cards.fxml");
+                stage.setTitle("Multiplayer 2 Cards");
+                stage.show();
+                playButtonSound();
+            }else{
+                Stage stage = switchToGame(event, "MultiplayerForTwo_3Cards.fxml");
+                stage.setTitle("Multiplayer 3 Cards");
+                stage.show();
+                playButtonSound();
+            }
+        }
+    }
+
+    public void returnFromNames(){
+        switchMainToNames();
+        playButtonSound();
+    }
 }
