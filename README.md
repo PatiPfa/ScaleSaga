@@ -11,7 +11,7 @@ About the game:
 =
 It's memory. You now memory
 
-Thera are different game modes.
+There are different game modes.
 
 Singleplayer and multiplayer, with each 2 or 3 cards to guess (not all Modis are finished!!)
 
