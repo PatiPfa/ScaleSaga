@@ -246,7 +246,7 @@
             <Font name="Imprint MT Shadow" size="36.0" />
          </font>
       </Button>
-      <Label alignment="CENTER_RIGHT" layoutX="66.0" layoutY="556.0" text="Player 1:" textFill="#ebebeb">
+      <Label fx:id="player1name" alignment="CENTER" contentDisplay="CENTER" layoutX="82.0" layoutY="546.0" text="Player 1:" textFill="#ebebeb">
          <font>
             <Font name="Imprint MT Shadow" size="29.0" />
          </font>
@@ -276,17 +276,27 @@
             <Font name="Imprint MT Shadow" size="29.0" />
          </font>
       </Label>
-      <Label layoutX="64.0" layoutY="590.0" text="Player 2:" textFill="#ebebeb">
+      <Label fx:id="player2name" layoutX="243.0" layoutY="546.0" text="Player 2:" textAlignment="RIGHT" textFill="#ebebeb">
          <font>
             <Font name="Imprint MT Shadow" size="29.0" />
          </font>
       </Label>
-      <Label fx:id="player1PointsLabel" alignment="CENTER_RIGHT" layoutX="188.0" layoutY="556.0" text="Player 1 Points" textFill="#ebebeb">
+      <Label fx:id="player1PointsLabel" alignment="CENTER_RIGHT" layoutX="156.0" layoutY="582.0" text="P1" textFill="#ebebeb">
          <font>
             <Font name="Imprint MT Shadow" size="29.0" />
          </font>
       </Label>
-      <Label fx:id="player2PointsLabel" alignment="CENTER_RIGHT" layoutX="188.0" layoutY="590.0" text="Player 2 Points" textFill="#ebebeb">
+      <Label fx:id="player2PointsLabel" alignment="CENTER_RIGHT" layoutX="317.0" layoutY="582.0" text="P2" textFill="#ebebeb">
+         <font>
+            <Font name="Imprint MT Shadow" size="29.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" contentDisplay="BOTTOM" layoutX="66.0" layoutY="582.0" text="Points:" textFill="#ebebeb">
+         <font>
+            <Font name="Imprint MT Shadow" size="29.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" contentDisplay="BOTTOM" layoutX="230.0" layoutY="582.0" text="Points:" textFill="#ebebeb">
          <font>
             <Font name="Imprint MT Shadow" size="29.0" />
          </font>

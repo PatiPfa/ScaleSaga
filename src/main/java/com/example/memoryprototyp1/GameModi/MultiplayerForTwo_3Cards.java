@@ -33,11 +33,13 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
     private Label playerOnTurnLabel;
     private Label player1name;
     private Label player2name;
-    public MultiplayerForTwo_3Cards(int flowPaneSize, FlowPane imagesFlowPane, Label player1PointsLabel, Label player2PointsLabel, Label playerOnTurnLabel) {
+    public MultiplayerForTwo_3Cards(int flowPaneSize, FlowPane imagesFlowPane, Label player1PointsLabel, Label player2PointsLabel, Label playerOnTurnLabel, Label player1name, Label player2name) {
         super(flowPaneSize, imagesFlowPane);
         this.player1PointsLabel = player1PointsLabel;
         this.player2PointsLabel = player2PointsLabel;
         this.playerOnTurnLabel = playerOnTurnLabel;
+        this.player1name = player1name;
+        this.player2name = player2name;
     }
     @Override
     public void play(){
@@ -45,6 +47,9 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
         player2 = new Player(MainMenuController.getPlayer2name(), Color.BLUE);
 //      ToDO: soll ein zufälliger Spieler beginnen???
         playerOnTurn = player1;
+
+        player1name.setText(player1.getName());
+        player2name.setText(player2.getName());
 
         updatePointsLabels();
         updatePlayerOnTurnLabel();

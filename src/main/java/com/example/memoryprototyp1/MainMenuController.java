@@ -153,8 +153,8 @@ public class MainMenuController {
         //TODO:  schauen ob die Namenslängen passen
         if(player1name.length() < 4 || player2name.length() < 4){
             label_errormessage.setText("All names must contain at least 4 letters!");
-        }else if(player1name.length() > 15 || player2name.length() > 15) {
-            label_errormessage.setText("The name may consist of a maximum of 15 characters!");
+        }else if(player1name.length() > 10 || player2name.length() > 10) {
+            label_errormessage.setText("The name may consist of a maximum of 10 characters!");
         }else{
             correctInput = true;
         }
