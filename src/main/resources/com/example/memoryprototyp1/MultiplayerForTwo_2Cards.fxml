@@ -185,12 +185,22 @@
             </FlowPane>
          </children>
       </VBox>
+      <ImageView fx:id="iv_lastcardp2" fitHeight="270.0" fitWidth="239.0" layoutX="929.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/back.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="iv_lastcardp1" fitHeight="270.0" fitWidth="239.0" layoutX="24.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/back.png" />
+         </image>
+      </ImageView>
       <Button layoutX="894.0" layoutY="575.0" mnemonicParsing="false" onAction="#playAgain" text="PLAY AGAIN" textOverrun="CLIP">
          <font>
             <Font name="Imprint MT Shadow" size="36.0" />
          </font>
       </Button>
-      <Button layoutX="14.0" layoutY="575.0" mnemonicParsing="false" onAction="#returnToMainMenu" text="Main Menu" textOverrun="CLIP">
+      <Button layoutX="13.0" layoutY="575.0" mnemonicParsing="false" onAction="#returnToMainMenu" prefWidth="229.0" text="Main Menu" textOverrun="CLIP">
          <font>
             <Font name="Imprint MT Shadow" size="36.0" />
          </font>

@@ -56,6 +56,11 @@ public class MemoryController implements Initializable {
     private Label player1name = new Label("");
     @FXML
     private Label player2name = new Label("");
+    @FXML
+    private ImageView iv_lastcardp1;
+    @FXML
+    private ImageView iv_lastcardp2;
+
 
 
     private Timeline timeline;
@@ -80,7 +85,7 @@ public class MemoryController implements Initializable {
                 this.game = new Singleplayer_3Cards(imagesFlowPane.getChildren().size(), imagesFlowPane);
                 break;
             case 3:
-                this.game = new MultiplayerForTwo_2Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, player1PointsLabel, player2PointsLabel, playerOnTurnLabel, player1name, player2name);
+                this.game = new MultiplayerForTwo_2Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, player1PointsLabel, player2PointsLabel, playerOnTurnLabel, player1name, player2name, iv_lastcardp1, iv_lastcardp2);
                 break;
             case 4:
                 this.game = new MultiplayerForTwo_3Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, player1PointsLabel, player2PointsLabel, playerOnTurnLabel, player1name, player2name);

@@ -6,12 +6,17 @@ import com.example.memoryprototyp1.MemoryCard;
 import com.example.memoryprototyp1.Player;
 import com.example.memoryprototyp1.*;
 import javafx.animation.PauseTransition;
+import javafx.animation.RotateTransition;
+import javafx.animation.TranslateTransition;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
+import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -34,18 +39,50 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
     private Label playerOnTurnLabel;
     private Label player1name;
     private Label player2name;
+    private ImageView iv_lastcardp1;
+    private ImageView iv_lastcardp2;
+    private int lastClickedCard;
 
-    public MultiplayerForTwo_2Cards(int size, FlowPane imagesFlowPane, Label player1PointsLabel, Label player2PointsLabel, Label playerOnTurnLabel, Label player1name, Label player2name) {
+
+    public MultiplayerForTwo_2Cards(int size, FlowPane imagesFlowPane, Label player1PointsLabel, Label player2PointsLabel, Label playerOnTurnLabel, Label player1name, Label player2name, ImageView iv_lastcardp1, ImageView iv_lastcardp2) {
         super(size, imagesFlowPane);
         this.player1PointsLabel = player1PointsLabel;
         this.player2PointsLabel = player2PointsLabel;
         this.playerOnTurnLabel = playerOnTurnLabel;
         this.player1name = player1name;
         this.player2name = player2name;
+        this.iv_lastcardp1 = iv_lastcardp1;
+        this.iv_lastcardp2 = iv_lastcardp2;
     }
 
+    @Override
+    public void initializeImageView() {
 
-    //TODO: Spielernamen labels updaten!
+
+        for (int i = 0; i < imagesFlowPane.getChildren().size(); i++) {
+            ImageView imageView = (ImageView) imagesFlowPane.getChildren().get(i);
+            imageView.setImage(getBackOfCards());
+            imageView.setUserData(i);
+
+            imageView.setOnMouseEntered(mouseEnteredEvent ->{
+                if (!this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()){
+                    this.setImageScale((int) imageView.getUserData(), 1.05);
+                }
+            });
+
+            imageView.setOnMouseExited(mouseEnteredEvent ->{
+                this.setImageScale((int) imageView.getUserData(), 1);
+            });
+
+            imageView.setOnMouseClicked(mouseEvent -> {
+                if ((!this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()) && !this.getCardsAreFlipped()){
+                    this.flipCard((int) imageView.getUserData());
+                    lastClickedCard = (int) imageView.getUserData();
+                }
+            });
+        }
+    }
+
 
     @Override
     public void play() {
@@ -79,6 +116,8 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         Collections.shuffle(cardsInGame);
         System.out.println(cardsInGame);
         rotateAllCardsToBackSide();
+        rotateDisplayImageView(iv_lastcardp1, getBackOfCards());
+        rotateDisplayImageView(iv_lastcardp2, getBackOfCards());
     }
     @Override
     public void checkForMatch(){
@@ -90,8 +129,14 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
             secondCard.setCorrectPair(true);
             if(playerOnTurn.equals(player1)){
                 player1.addOnePoint();
+                rotateDisplayImageView(iv_lastcardp1, cardsInGame.get(lastClickedCard).getFrontOfCards());
+
+
             }else{
                 player2.addOnePoint();
+                rotateDisplayImageView(iv_lastcardp2, cardsInGame.get(lastClickedCard).getFrontOfCards());
+
+
             }
 
             //Ev durch ne Variable ersetzen und unten abfragen?
@@ -157,4 +202,42 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
             playerOnTurn = player1;
         }
     }
+
+    public void rotateDisplayImageView(ImageView imageView, Image imageToBeShown) {
+
+
+        TranslateTransition translate = new TranslateTransition();
+        RotateTransition rotateFirstHalf = new RotateTransition();
+
+
+        translate.setNode(imageView);
+        translate.setByY(-10);
+        translate.setDuration(Duration.millis(200));
+
+        translate.play();
+
+        translate.setOnFinished(eventTranslateBack -> {
+            TranslateTransition translateBack = new TranslateTransition();
+            translateBack.setNode(imageView);
+            translateBack.setDuration(Duration.millis(100));
+            translateBack.setByY(10);
+            translateBack.play();
+        });
+
+        rotateFirstHalf.setNode(imageView);
+        rotateFirstHalf.setDuration(Duration.millis(200));
+        rotateFirstHalf.setByAngle(90);
+        rotateFirstHalf.setAxis(Rotate.Y_AXIS);
+        rotateFirstHalf.play();
+        rotateFirstHalf.setOnFinished(eventRotateSecondHalf -> {
+            RotateTransition rotateSecondHalf = new RotateTransition();
+            rotateSecondHalf.setNode(imageView);
+            imageView.setImage(imageToBeShown);
+            rotateSecondHalf.setDelay(Duration.seconds(0));
+            rotateSecondHalf.setDuration(Duration.millis(200));
+            rotateSecondHalf.setByAngle(-90);
+            rotateSecondHalf.play();
+        });
+    }
+
 }
