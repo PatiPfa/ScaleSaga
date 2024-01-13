@@ -230,4 +230,11 @@ public class BaseGame {
         delay.setOnFinished(setIsInMotionFalse -> {isInMotion = false;});
     }
 
+    public boolean allCardsFlipped() {
+        return cardsInGame.stream().allMatch(MemoryCard::isCorrectPair);
+    }
+
+
+
+
 }

@@ -78,11 +78,13 @@ public class MainMenuController {
     }
 
     public void singleplayer(){
+        playButtonSound();
         singleplayer = true;
         btnVisible();
     }
 
     public void multiplayer(){
+        playButtonSound();
         btnVisible();
     }
 
@@ -107,28 +109,28 @@ public class MainMenuController {
     public void twoCards(ActionEvent event) throws IOException{
         if(singleplayer){
             gamemode= 1;
+            playButtonSound();
             Stage stage = switchToGame(event, "Singleplayer_2Cards.fxml");
             stage.setTitle("Singleplayer 2 Cards");
             stage.show();
-            playButtonSound();
         }else{
             gamemode = 3;
-            switchMainToNames();
             playButtonSound();
+            switchMainToNames();
         }
     }
 
     public void threeCards(ActionEvent event) throws IOException{
         if(singleplayer){
             gamemode = 2;
+            playButtonSound();
             Stage stage = switchToGame(event, "Singleplayer_3Cards.fxml");
             stage.setTitle("Singleplayer 3 Cards");
             stage.show();
-            playButtonSound();
         }else{
             gamemode = 4;
-            switchMainToNames();
             playButtonSound();
+            switchMainToNames();
         }
     }
 
@@ -145,7 +147,6 @@ public class MainMenuController {
     public void submitNames(ActionEvent event) throws IOException{
         //TODO: ev auch Farbe einlesen, falls wir das mit der Tastatur umsetzen
         //TODO: standartmäßig Player 1 und Player 2 drinnen lassen oder weglassen?
-        gamemode = 3;
         boolean correctInput = false;
         player1name = tf_player1.getText();
         player2name = tf_player2.getText();
@@ -165,20 +166,23 @@ public class MainMenuController {
         //vorallem weil das jz hier nicht so schön ausschaut
         if(correctInput){
             if(gamemode == 3){
+                playButtonSound();
                 Stage stage = switchToGame(event, "MultiplayerForTwo_2Cards.fxml");
                 stage.setTitle("Multiplayer 2 Cards");
                 stage.show();
-                playButtonSound();
             }else{
+                playButtonSound();
                 Stage stage = switchToGame(event, "MultiplayerForTwo_3Cards.fxml");
                 stage.setTitle("Multiplayer 3 Cards");
                 stage.show();
-                playButtonSound();
             }
         }
     }
 
     public void returnFromNames(){
+        tf_player1.setText("Player 1");
+        tf_player2.setText("Player 2");
+
         switchMainToNames();
         playButtonSound();
     }

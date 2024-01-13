@@ -26,12 +26,9 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
     private Stage stage;
     private Scene scene;
     private Parent root;
-    int gameCounter;
     Player player1;
     Player player2;
     Player playerOnTurn;
-    private MemoryController memoryController;
-
     private Label player1PointsLabel;
     private Label player2PointsLabel;
     private Label playerOnTurnLabel;
@@ -42,6 +39,9 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         this.player2PointsLabel = player2PointsLabel;
         this.playerOnTurnLabel = playerOnTurnLabel;
     }
+
+
+    //TODO: Spielernamen labels updaten!
 
     @Override
     public void play() {
@@ -114,11 +114,6 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         });
 
         updatePlayerOnTurnLabel();
-    }
-
-    private boolean allCardsFlipped() {
-
-        return cardsInGame.stream().allMatch(MemoryCard::isCorrectPair);
     }
 
     private void updatePointsLabels(){
