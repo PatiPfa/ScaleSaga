@@ -142,6 +142,7 @@ public class MainMenuController {
     public void switchMainToNames(){
         mainMenuAP.setVisible(!mainMenuAP.isVisible());
         nameInputAP.setVisible(!nameInputAP.isVisible());
+        label_errormessage.setText(" ");
     }
 
     public void submitNames(ActionEvent event) throws IOException{
@@ -151,8 +152,8 @@ public class MainMenuController {
         player1name = tf_player1.getText();
         player2name = tf_player2.getText();
         //TODO:  schauen ob die Namenslängen passen
-        if(player1name.length() < 4 || player2name.length() < 4){
-            label_errormessage.setText("All names must contain at least 4 letters!");
+        if(player1name.length() < 3 || player2name.length() < 3){
+            label_errormessage.setText("All names must contain at least 3 character!");
         }else if(player1name.length() > 10 || player2name.length() > 10) {
             label_errormessage.setText("The name may consist of a maximum of 10 characters!");
         }else{
@@ -182,6 +183,7 @@ public class MainMenuController {
     public void returnFromNames(){
         tf_player1.setText("Player 1");
         tf_player2.setText("Player 2");
+        label_errormessage.setText(" ");
 
         switchMainToNames();
         playButtonSound();

@@ -210,12 +210,12 @@
             <Font name="Imprint MT Shadow" size="29.0" />
          </font>
       </Label>
-      <Label fx:id="player1PointsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1072.0" layoutY="110.0" text="P1" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true">
+      <Label fx:id="player2PointsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="1072.0" layoutY="110.0" text="P2" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true">
          <font>
             <Font name="Imprint MT Shadow" size="29.0" />
          </font>
       </Label>
-      <Label fx:id="player2PointsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="161.0" layoutY="110.0" text="P2" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true">
+      <Label fx:id="player1PointsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="161.0" layoutY="110.0" text="P1" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true">
          <font>
             <Font name="Imprint MT Shadow" size="29.0" />
          </font>
@@ -230,7 +230,7 @@
             <Font name="Imprint MT Shadow" size="29.0" />
          </font>
       </Label>
-      <Label fx:id="playerOnTurnLabel" layoutX="576.0" layoutY="553.0" prefHeight="128.0" prefWidth="156.0" text="Player 1" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true">
+      <Label fx:id="playerOnTurnLabel" layoutX="576.0" layoutY="591.0" prefHeight="52.0" prefWidth="266.0" text="Player 1" textFill="WHITE" textOverrun="CENTER_WORD_ELLIPSIS" wrapText="true">
          <font>
             <Font name="Imprint MT Shadow" size="43.0" />
          </font>

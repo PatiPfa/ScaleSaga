@@ -89,10 +89,12 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
 
         player1 = new Player(MainMenuController.getPlayer1name(), Color.RED);
         player2 = new Player(MainMenuController.getPlayer2name(), Color.BLUE);
+
 //      ToDO: soll ein zufälliger Spieler beginnen???
         playerOnTurn = player1;
 
         player1name.setText(player1.getName());
+
         player2name.setText(player2.getName());
 
 
@@ -180,9 +182,9 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         String winner = null;
 
         if(player1.getPoints() > player2.getPoints()){
-            winner = "Player 1";
+            winner = player1.getName();
         }else if(player1.getPoints() < player2.getPoints()){
-            winner = "Player 2";
+            winner = player2.getName();
         }else{
             winner = "draw";
         }
@@ -198,8 +200,12 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
     public void updatePlayerOnTurn(){
         if(playerOnTurn.equals(player1)){
             playerOnTurn = player2;
+            player1name.setTextFill(Color.WHITE);
+            player2name.setTextFill(Color.DARKGREEN);
         }else {
             playerOnTurn = player1;
+            player1name.setTextFill(Color.DARKGREEN);
+            player2name.setTextFill(Color.WHITE);
         }
     }
 
