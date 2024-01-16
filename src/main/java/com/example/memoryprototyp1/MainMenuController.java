@@ -190,4 +190,8 @@ public class MainMenuController {
         switchMainToNames();
         playButtonSound();
     }
+
+    public void closeGame(){
+        System.exit(0);
+    }
 }
