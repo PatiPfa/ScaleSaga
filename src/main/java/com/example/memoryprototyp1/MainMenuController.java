@@ -154,10 +154,13 @@ public class MainMenuController {
         //TODO:  schauen ob die Namenslängen passen
         if(player1name.length() < 3 || player2name.length() < 3){
             label_errormessage.setText("All names must contain at least 3 character!");
+            return;
         }else if(player1name.length() > 10 || player2name.length() > 10) {
             label_errormessage.setText("The name may consist of a maximum of 10 characters!");
-        }else{
-            correctInput = true;
+            return;
+        } else if(player1name.equals(player2name)){
+            label_errormessage.setText("The names should not be the same!");
+            return;
         }
 
         //Testzwecke
@@ -165,19 +168,18 @@ public class MainMenuController {
 
         //TODO: ev überlegen das mit dem szenen laden und den buttons noch anders zu machen..
         //vorallem weil das jz hier nicht so schön ausschaut
-        if(correctInput){
-            if(gamemode == 3){
-                playButtonSound();
-                Stage stage = switchToGame(event, "MultiplayerForTwo_2Cards.fxml");
-                stage.setTitle("Multiplayer 2 Cards");
-                stage.show();
-            }else{
-                playButtonSound();
-                Stage stage = switchToGame(event, "MultiplayerForTwo_3Cards.fxml");
-                stage.setTitle("Multiplayer 3 Cards");
-                stage.show();
-            }
+        if(gamemode == 3){
+            playButtonSound();
+            Stage stage = switchToGame(event, "MultiplayerForTwo_2Cards.fxml");
+            stage.setTitle("Multiplayer 2 Cards");
+            stage.show();
+        }else{
+            playButtonSound();
+            Stage stage = switchToGame(event, "MultiplayerForTwo_3Cards.fxml");
+            stage.setTitle("Multiplayer 3 Cards");
+            stage.show();
         }
+
     }
 
     public void returnFromNames(){

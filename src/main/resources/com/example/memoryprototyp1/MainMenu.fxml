@@ -102,6 +102,11 @@
                   <Font name="Century Schoolbook" size="38.0" />
                </font>
             </Label>
+            <Label fx:id="label_errormessage" alignment="CENTER" contentDisplay="CENTER" layoutX="326.0" layoutY="205.0" prefHeight="36.0" prefWidth="613.0" text="Error" textAlignment="JUSTIFY" textFill="RED">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
             <Label layoutX="431.0" layoutY="370.0" text="Player 2:" textAlignment="RIGHT">
                <font>
                   <Font name="Century Schoolbook" size="38.0" />
@@ -109,11 +114,6 @@
             </Label>
             <TextField fx:id="tf_player1" layoutX="608.0" layoutY="289.0" prefHeight="36.0" prefWidth="234.0" text="Player 1" />
             <TextField fx:id="tf_player2" layoutX="608.0" layoutY="376.0" prefHeight="36.0" prefWidth="234.0" text="Player 2" />
-            <Label fx:id="label_errormessage" alignment="CENTER" contentDisplay="CENTER" layoutX="326.0" layoutY="205.0" prefHeight="36.0" prefWidth="613.0" text="Error" textAlignment="JUSTIFY" textFill="RED">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
             <Button fx:id="btn_submitNames" layoutX="552.0" layoutY="461.0" mnemonicParsing="false" onAction="#submitNames" text="submit">
                <font>
                   <Font name="System Bold" size="23.0" />
