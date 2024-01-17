@@ -13,6 +13,7 @@ import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import static com.example.memoryprototyp1.Card.getBackOfCards;
 import static com.example.memoryprototyp1.Music.playButtonSound;
@@ -231,10 +232,11 @@ public class BaseGame {
     }
 
     public boolean allCardsFlipped() {
-        return cardsInGame.stream().allMatch(MemoryCard::isCorrectPair);
+        return cardsInGame.stream().allMatch(MemoryCard::getRevealed);
     }
 
-
-
-
+    //the following Method has been copied from ChatGPT (https://chat.openai.com/ , 17.01.2024)
+    public void skipToTwoPairsLeft() {
+        System.out.println("Skip to two pairs left");
+    }
 }

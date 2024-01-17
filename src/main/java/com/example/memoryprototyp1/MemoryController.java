@@ -20,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.event.ActionEvent;
 
@@ -147,5 +148,11 @@ public class MemoryController implements Initializable {
         stage.show();
     }
 
+    public void Test(KeyEvent event) {
+        //the following line has been copied from ChatGPT (https://chat.openai.com/ , 17.01.2024)
+        if (event.getCode().toString().equals("C")) {
+            game.skipToTwoPairsLeft();
+        }
+    }
 }
 

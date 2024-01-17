@@ -192,6 +192,10 @@ public class MainMenuController {
     }
 
     public void closeGame(){
+        //TODO: popup(oder neues pane?) mit abfrage ob man wk schließen will
         System.exit(0);
     }
+
+
+
 }
