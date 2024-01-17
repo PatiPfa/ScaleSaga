@@ -97,7 +97,6 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         player1name.setTextFill(Color.DARKGREEN);
         player2name.setText(player2.getName());
 
-
         updatePointsLabels();
         updatePlayerOnTurnLabel();
 
