@@ -3,15 +3,14 @@ package com.example.memoryprototyp1;
 import java.io.IOException;
 import java.util.Objects;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.ImageCursor;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -192,10 +191,18 @@ public class MainMenuController {
     }
 
     public void closeGame(){
-        //TODO: popup(oder neues pane?) mit abfrage ob man wk schließen will
-        System.exit(0);
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Quit game");
+        alert.setHeaderText("Do you really want to quit?");
+
+        ButtonType yes = new ButtonType("Yes");
+        ButtonType no = new ButtonType("No");
+        alert.getButtonTypes().setAll(yes, no);
+
+        java.util.Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.isPresent() && result.get() == yes) {
+            Platform.exit();
+        }
     }
-
-
-
 }
