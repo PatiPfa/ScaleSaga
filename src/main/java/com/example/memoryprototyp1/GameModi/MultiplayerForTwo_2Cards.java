@@ -139,13 +139,9 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
             if(playerOnTurn.equals(player1)){
                 player1.addOnePoint();
                 rotateDisplayImageView(iv_lastcardp1, cardsInGame.get(lastClickedCard).getFrontOfCards());
-
-
             }else{
                 player2.addOnePoint();
                 rotateDisplayImageView(iv_lastcardp2, cardsInGame.get(lastClickedCard).getFrontOfCards());
-
-
             }
 
             //Ev durch ne Variable ersetzen und unten abfragen?
@@ -186,7 +182,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         playerOnTurnLabel.setText(playerOnTurn.getName());
     }
     private void winner(){
-        String winner = null;
+        String winner;
 
         if(player1.getPoints() > player2.getPoints()){
             winner = player1.getName();
