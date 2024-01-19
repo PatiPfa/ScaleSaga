@@ -2,7 +2,6 @@ package com.example.memoryprototyp1;
 
 import java.io.IOException;
 import java.util.Objects;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +19,7 @@ import javafx.scene.Parent;
 import static com.example.memoryprototyp1.Music.playButtonSound;
 
 
-public class MainMenuController {
+public class MainMenuController{
 
     @FXML
     private Button btn_singleplayer;
@@ -32,9 +31,6 @@ public class MainMenuController {
     private Button btn_3cards;
     @FXML
     private Button btn_return;
-    @FXML
-    private Button btn_submitNames;
-
     @FXML
     private TextField tf_player1;
     @FXML
@@ -56,7 +52,7 @@ public class MainMenuController {
     private Scene scene;
     private Parent root;
     private static boolean singleplayer = false;
-    private Image curser = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/sword.png")));
+    private final Image CURSOR = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/sword.png")));
 
     private static int gamemode = 0;
     //1: Singleplayer 2 Cards, 2: Singleplayer 3 Cards
@@ -100,7 +96,7 @@ public class MainMenuController {
         root = FXMLLoader.load(getClass().getResource(mode));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        scene.setCursor(new ImageCursor(curser));
+        scene.setCursor(new ImageCursor(CURSOR));
         stage.setScene(scene);
         stage.show();
         return stage;

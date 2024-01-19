@@ -7,13 +7,11 @@ import javafx.animation.TranslateTransition;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.paint.Color;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 import static com.example.memoryprototyp1.Card.getBackOfCards;
 import static com.example.memoryprototyp1.Music.playButtonSound;

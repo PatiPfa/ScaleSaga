@@ -1,7 +1,6 @@
 package com.example.memoryprototyp1;
 
 import javafx.scene.image.Image;
-
 import java.util.Objects;
 
 public class Card {
@@ -9,7 +8,7 @@ public class Card {
     private String name;
     private boolean isRevealed;
 
-    private static final Image backOfCards = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/back.png")));
+    private static final Image BACK_OF_CARDS = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/back.png")));
     private Image frontOfCards;
 
     public Card(String name, Image frontOfCards) {
@@ -32,7 +31,7 @@ public class Card {
     }
 
     public static Image getBackOfCards(){
-        return backOfCards;
+        return BACK_OF_CARDS;
     }
 
     public Image getFrontOfCards(){

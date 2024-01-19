@@ -84,7 +84,7 @@
                <Insets />
             </opaqueInsets>
             <cursor>
-               <Cursor fx:constant="S_RESIZE" />
+               <Cursor fx:constant="DEFAULT" />
             </cursor>
          </VBox>
             <Button fx:id="btn_multiplayer1" alignment="CENTER" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="180.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#closeGame" prefHeight="70.0" prefWidth="180.0" text="close game" textAlignment="CENTER">
