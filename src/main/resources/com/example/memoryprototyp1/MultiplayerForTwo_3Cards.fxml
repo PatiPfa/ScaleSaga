@@ -271,11 +271,6 @@
             <Font name="Imprint MT Shadow" size="29.0" />
          </font>
       </Label>
-      <Label layoutX="547.0" layoutY="546.0" text="Player on Turn:" textFill="#ebebeb">
-         <font>
-            <Font name="Imprint MT Shadow" size="29.0" />
-         </font>
-      </Label>
       <Label fx:id="player2name" layoutX="243.0" layoutY="546.0" text="Player 2:" textAlignment="RIGHT" textFill="#ebebeb">
          <font>
             <Font name="Imprint MT Shadow" size="29.0" />
