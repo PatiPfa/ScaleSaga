@@ -22,6 +22,7 @@ import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 import static com.example.memoryprototyp1.Card.getBackOfCards;
 import static com.example.memoryprototyp1.Music.playButtonSound;
@@ -86,16 +87,23 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
 
     @Override
     public void play() {
-
+        //TODO: Farben löschen?
         player1 = new Player(MainMenuController.getPlayer1name(), Color.RED);
         player2 = new Player(MainMenuController.getPlayer2name(), Color.BLUE);
 
-//      ToDO: soll ein zufälliger Spieler beginnen???
-        playerOnTurn = player1;
+        Random random = new Random();
+        int randomStart = random.nextInt(2) + 1;
+        System.out.println(randomStart);
+        playerOnTurn = (randomStart == 1) ? player1 : player2;
 
         player1name.setText(player1.getName());
-        player1name.setTextFill(Color.DARKGREEN);
         player2name.setText(player2.getName());
+
+        if(playerOnTurn.equals(player1)){
+            player1name.setTextFill(Color.DARKGREEN);
+        }else{
+            player2name.setTextFill(Color.DARKGREEN);
+        }
 
         updatePointsLabels();
         updatePlayerOnTurnLabel();
