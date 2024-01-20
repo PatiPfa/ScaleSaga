@@ -16,11 +16,13 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 
-import static com.example.memoryprototyp1.Music.playButtonSound;
+import static com.example.memoryprototyp1.Music.MusicPlayer.playButtonSound;
+
 
 
 public class MainMenuController {
@@ -40,6 +42,8 @@ public class MainMenuController {
     private AnchorPane settingsAP;
     @FXML
     private AnchorPane nameInputAP;
+    @FXML
+    private Slider sliderVolume;
 
 
 
@@ -242,4 +246,14 @@ public class MainMenuController {
             ioException.printStackTrace();
         }
     }
+    @FXML
+    private void toggleMute(ActionEvent event) {
+        Music.MusicPlayer.toggleMute();
+    }
+    @FXML
+    private void handleVolumeChange(MouseEvent event) {
+        double volume = sliderVolume.getValue();
+        Music.MusicPlayer.setBackgroundMusicVolume(volume);
+    }
+
 }

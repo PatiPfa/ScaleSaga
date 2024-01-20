@@ -16,7 +16,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import static com.example.memoryprototyp1.Card.getBackOfCards;
-import static com.example.memoryprototyp1.Music.playButtonSound;
+import static com.example.memoryprototyp1.Music.MusicPlayer.playButtonSound;
+
 
 public class Singleplayer_2Cards extends BaseGame{
     private int lastClickedCard;

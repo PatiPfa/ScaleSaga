@@ -17,7 +17,7 @@ import java.util.Collections;
 import java.util.Random;
 
 import static com.example.memoryprototyp1.Card.getBackOfCards;
-import static com.example.memoryprototyp1.Music.playButtonSound;
+import static com.example.memoryprototyp1.Music.MusicPlayer.playButtonSound;
 
 public class MultiplayerForTwo_3Cards extends BaseGame {
 
