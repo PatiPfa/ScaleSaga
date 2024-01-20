@@ -7,14 +7,11 @@ public class Card {
 
     private String name;
     private boolean isRevealed;
-    private boolean correctPair;
 
-    public boolean isCorrectPair() {
-        return correctPair;
-    }
 
-    private static final Image BACK_OF_CARDS = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/back.png")));
-    private Image frontOfCards;
+    private static final Image BACK_OF_CARDS =
+            new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/back.png")));
+    private final Image frontOfCards;
 
     public Card(String name, Image frontOfCards) {
         this.name = name;
@@ -35,16 +32,12 @@ public class Card {
         isRevealed = revealed;
     }
 
-    public static Image getBackOfCards(){
+    public static Image getBackOfCardsImage(){
         return BACK_OF_CARDS;
     }
 
     public Image getFrontOfCards(){
         return frontOfCards;
-    }
-
-    public void setCorrectPair(boolean correctPair) {
-        this.correctPair = correctPair;
     }
 
 
