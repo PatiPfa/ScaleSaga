@@ -21,6 +21,7 @@ import static com.example.memoryprototyp1.Music.MusicPlayer.playButtonSound;
 public class Singleplayer_2Cards extends BaseGame{
     private int lastClickedCard;
     private ImageView displayImageView;
+
     public Singleplayer_2Cards(int flowPaneSize, FlowPane imagesFlowPane, ImageView displayImageView) {
         super(flowPaneSize, imagesFlowPane);
         this.displayImageView = displayImageView;
