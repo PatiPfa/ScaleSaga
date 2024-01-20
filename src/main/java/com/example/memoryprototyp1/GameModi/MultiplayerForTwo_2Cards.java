@@ -44,6 +44,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
     private ImageView iv_lastcardp2;
     private int lastClickedCard;
 
+    private static boolean delayStart = false;
 
     public MultiplayerForTwo_2Cards(int size, FlowPane imagesFlowPane, Label player1PointsLabel, Label player2PointsLabel, Label playerOnTurnLabel, Label player1name, Label player2name, ImageView iv_lastcardp1, ImageView iv_lastcardp2) {
         super(size, imagesFlowPane);
@@ -76,7 +77,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
             });
 
             imageView.setOnMouseClicked(mouseEvent -> {
-                if ((!this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()) && !this.getCardsAreFlipped()){
+                if ((delayStart && !this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()) && !this.getCardsAreFlipped()){
                     this.flipCard((int) imageView.getUserData());
                     lastClickedCard = (int) imageView.getUserData();
                 }
@@ -87,7 +88,12 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
 
     @Override
     public void play() {
-        //TODO: Farben löschen?
+        PauseTransition initialDelay = new PauseTransition(Duration.seconds(3));
+        initialDelay.setOnFinished(event -> {
+            delayStart = true;
+        });
+        initialDelay.play();
+
         player1 = new Player(MainMenuController.getPlayer1name());
         player2 = new Player(MainMenuController.getPlayer2name());
 

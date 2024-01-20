@@ -1,6 +1,10 @@
 package com.example.memoryprototyp1;
 
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
 
 import javafx.application.Platform;
@@ -111,9 +115,14 @@ public class MainMenuController {
         if(singleplayer){
             gamemode= 1;
             playButtonSound();
-            Stage stage = switchToGame(event, "Singleplayer_2Cards.fxml");
-            stage.setTitle("Singleplayer 2 Cards");
-            stage.show();
+            try{
+                Stage stage = switchToGame(event, "Singleplayer_2Cards.fxml");
+                stage.setTitle("Singleplayer 2 Cards");
+                stage.show();
+            }catch (Exception e){
+                writeInLog(e, "Singleplayer 2 Cards");
+            }
+
         }else{
             gamemode = 3;
             playButtonSound();
@@ -125,9 +134,14 @@ public class MainMenuController {
         if(singleplayer){
             gamemode = 2;
             playButtonSound();
-            Stage stage = switchToGame(event, "Singleplayer_3Cards.fxml");
-            stage.setTitle("Singleplayer 3 Cards");
-            stage.show();
+            try{
+                Stage stage = switchToGame(event, "Singleplayer_3Cards.fxml");
+                stage.setTitle("Singleplayer 3 Cards");
+                stage.show();
+            }catch (Exception e){
+                writeInLog(e, "Singleplayer 3 Cards");
+            }
+
         }else{
             gamemode = 4;
             playButtonSound();
@@ -161,7 +175,7 @@ public class MainMenuController {
         }
     }
 
-    public void submitNames(ActionEvent event) throws IOException{
+    public void submitNames(ActionEvent event){
         player1name = tf_player1.getText();
         player2name = tf_player2.getText();
         //TODO:  schauen ob die Namenslängen passen
@@ -182,15 +196,25 @@ public class MainMenuController {
         //TODO: ev überlegen das mit dem szenen laden und den buttons noch anders zu machen..
         //vorallem weil das jz hier nicht so schön ausschaut
         if(gamemode == 3){
-            playButtonSound();
-            Stage stage = switchToGame(event, "MultiplayerForTwo_2Cards.fxml");
-            stage.setTitle("Multiplayer 2 Cards");
-            stage.show();
+
+            try{
+                Stage stage = switchToGame(event, "MultiplayerForTwo_2Cards.fxml");
+                stage.setTitle("Multiplayer 2 Cards");
+                stage.show();
+            }catch (Exception e){
+                writeInLog(e, "Multiplayer 2 Cards");
+            }
+
         }else{
             playButtonSound();
-            Stage stage = switchToGame(event, "MultiplayerForTwo_3Cards.fxml");
-            stage.setTitle("Multiplayer 3 Cards");
-            stage.show();
+            try{
+                Stage stage = switchToGame(event, "MultiplayerForTwo_3Cards.fxml");
+                stage.setTitle("Multiplayer 3 Cards");
+                stage.show();
+            }catch (Exception e){
+                writeInLog(e, "Multiplayer 3 Cards");
+            }
+
         }
 
     }
@@ -205,4 +229,17 @@ public class MainMenuController {
     }
 
 
+    //The following method has been copied from ChatGPT: https://chat.openai.com/share/62ddc123-fe7c-4f0d-9e13-9c5c91bab0a5 (20.01.2024
+    private void writeInLog(Exception e, String Fehlerseite) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("test.log", true))) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+            String timestamp = dateFormat.format(new Date());
+
+            writer.println("["+ timestamp + "] Fehler beim Wechseln zur " + Fehlerseite + "-Seite:");
+            e.printStackTrace(writer);
+            writer.println();
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+    }
 }

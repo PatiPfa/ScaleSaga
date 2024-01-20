@@ -233,8 +233,4 @@ public class BaseGame {
         return cardsInGame.stream().allMatch(MemoryCard::getRevealed);
     }
 
-    //the following Method has been copied from ChatGPT (https://chat.openai.com/ , 17.01.2024)
-    public void skipToTwoPairsLeft() {
-        System.out.println("Skip to two pairs left");
-    }
 }

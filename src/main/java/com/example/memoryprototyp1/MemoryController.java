@@ -21,8 +21,12 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.FlowPane;
 
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import javafx.scene.text.Text;
@@ -132,22 +136,31 @@ public class MemoryController implements Initializable {
 
     public void returnToMainMenu(ActionEvent event) throws IOException {
         MainMenuController.setSingleplayer(false);
-        root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("ScaleSaga!");
-        stage.setResizable(false);
-        stage.setFullScreen(false);
-        scene = new Scene(root);
-        scene.setCursor(new ImageCursor(curser));
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    public void Test(KeyEvent event) {
-        //the following line has been copied from ChatGPT (https://chat.openai.com/ , 17.01.2024)
-        if (event.getCode().toString().equals("C")) {
-            game.skipToTwoPairsLeft();
+        try{
+            root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setTitle("ScaleSaga!");
+            scene = new Scene(root);
+            scene.setCursor(new ImageCursor(curser));
+            stage.setScene(scene);
+            stage.show();
+        }catch (Exception e){
+            writeInLog(e, "Main Menu");
         }
     }
+
+    private void writeInLog(Exception e, String Fehlerseite) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("test.log", true))) {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+            String timestamp = dateFormat.format(new Date());
+
+            writer.println("["+ timestamp + "] Fehler beim Wechseln zur " + Fehlerseite + "-Seite:");
+            e.printStackTrace(writer);
+            writer.println();
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+    }
+
 }
 
