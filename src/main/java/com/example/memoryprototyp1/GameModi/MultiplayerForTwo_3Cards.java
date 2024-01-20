@@ -2,10 +2,13 @@ package com.example.memoryprototyp1.GameModi;
 
 import com.example.memoryprototyp1.*;
 import javafx.animation.PauseTransition;
+import javafx.scene.ImageCursor;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
@@ -15,6 +18,7 @@ import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Objects;
 import java.util.Random;
 
 import static com.example.memoryprototyp1.Card.getBackOfCardsImage;
@@ -37,9 +41,9 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
     private Label player1name;
     private Label player2name;
 
-
-
-
+    private String currentCursor = "sword";
+    private final Image CURSOR_SWORD = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/sword.png")));
+    private final Image CURSOR_AXE = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/axe.png")));
 
     private boolean delayStart = false;
     public MultiplayerForTwo_3Cards(int flowPaneSize, FlowPane imagesFlowPane, Label player1PointsLabel, Label player2PointsLabel, Label playerOnTurnLabel, Label player1name, Label player2name) {
@@ -184,6 +188,7 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
         delay.setOnFinished(delayEvent ->{
             cardsAreFlipped = false;});
         updatePlayerOnTurnLabel();
+        switchCursor();
 
     }
 
@@ -234,6 +239,23 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
         alert.setHeaderText(null);
         alert.setContentText("Winner: " + winner);
         alert.showAndWait();
+    }
+
+    public void switchCursor(){
+        try{
+            Stage stage = (Stage) playerOnTurnLabel.getScene().getWindow();
+            Scene scene = stage.getScene();
+            if(currentCursor.equals("sword")){
+                scene.setCursor(new ImageCursor(CURSOR_AXE));
+                currentCursor = "axe";
+            }else{
+                scene.setCursor(new ImageCursor(CURSOR_SWORD));
+                currentCursor = "sword";
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     public void updatePlayerOnTurn(){

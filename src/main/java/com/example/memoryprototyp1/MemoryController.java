@@ -144,7 +144,7 @@ public class MemoryController implements Initializable {
 
     }
 
-    public void returnToMainMenu(ActionEvent event) throws IOException {
+    public void returnToMainMenu(ActionEvent event){
         MainMenuController.setSingleplayer(false);
         try{
             root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
