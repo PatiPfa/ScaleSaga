@@ -19,6 +19,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 
 import java.io.FileWriter;
@@ -60,6 +61,16 @@ public class MemoryController implements Initializable {
     private ImageView iv_lastcardp1;
     @FXML
     private ImageView iv_lastcardp2;
+    @FXML
+    private Button btn_mainMenu_2;
+    @FXML
+    private Button btn_playAgain2;
+    @FXML
+    private AnchorPane popUp;
+    @FXML
+    private ImageView imagePopUp;
+
+
 
 
 
@@ -84,6 +95,8 @@ public class MemoryController implements Initializable {
                 break;
             case "Multiplayer2Cards":
                 this.game = new MultiplayerForTwo_2Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, player1PointsLabel, player2PointsLabel, playerOnTurnLabel, player1name, player2name, iv_lastcardp1, iv_lastcardp2);
+            case 3:
+                this.game = new MultiplayerForTwo_2Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, player1PointsLabel, player2PointsLabel, playerOnTurnLabel, player1name, player2name, iv_lastcardp1, iv_lastcardp2, popUp);
                 break;
             case "Multiplayer3Cards":
                 this.game = new MultiplayerForTwo_3Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, player1PointsLabel, player2PointsLabel, playerOnTurnLabel, player1name, player2name);
@@ -130,6 +143,7 @@ public class MemoryController implements Initializable {
     public void playAgain(){
         game.playAgain();
         timer();
+
     }
 
     public void returnToMainMenu(ActionEvent event) throws IOException {
@@ -158,6 +172,13 @@ public class MemoryController implements Initializable {
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
+    }
+    public void playAgainPopUp(){
+        popUp.setVisible(false);
+        game.playAgain();
+        timer();
+
+
     }
 
 }

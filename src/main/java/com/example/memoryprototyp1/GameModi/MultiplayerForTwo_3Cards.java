@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -35,6 +36,10 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
     private Label playerOnTurnLabel;
     private Label player1name;
     private Label player2name;
+
+
+
+
 
     private boolean delayStart = false;
     public MultiplayerForTwo_3Cards(int flowPaneSize, FlowPane imagesFlowPane, Label player1PointsLabel, Label player2PointsLabel, Label playerOnTurnLabel, Label player1name, Label player2name) {
@@ -222,6 +227,7 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
             winner = "draw";
         }
         System.out.println(winner);
+
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Winner!");
