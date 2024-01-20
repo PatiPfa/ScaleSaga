@@ -56,6 +56,7 @@
                   <Image url="@images/einstellungen.png" />
                </image>
             </ImageView>
+            <Button fx:id="buttonGetSettings" layoutX="79.0" layoutY="50.0" mnemonicParsing="false" onAction="#switchToSetting" text="Settings" />
       </children>
    </AnchorPane>
       <AnchorPane fx:id="nameInputAP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="558.0" prefWidth="1200.0" stylesheets="@styles_mainMenu.css" visible="false">
