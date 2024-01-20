@@ -13,6 +13,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
 import javafx.scene.transform.Rotate;
@@ -42,10 +43,11 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
     private ImageView iv_lastcardp1;
     private ImageView iv_lastcardp2;
     private int lastClickedCard;
+    private AnchorPane popUp;
 
     private static boolean delayStart = false;
 
-    public MultiplayerForTwo_2Cards(int size, FlowPane imagesFlowPane, Label player1PointsLabel, Label player2PointsLabel, Label playerOnTurnLabel, Label player1name, Label player2name, ImageView iv_lastcardp1, ImageView iv_lastcardp2) {
+    public MultiplayerForTwo_2Cards(int size, FlowPane imagesFlowPane, Label player1PointsLabel, Label player2PointsLabel, Label playerOnTurnLabel, Label player1name, Label player2name, ImageView iv_lastcardp1, ImageView iv_lastcardp2, AnchorPane popUp) {
         super(size, imagesFlowPane);
         this.player1PointsLabel = player1PointsLabel;
         this.player2PointsLabel = player2PointsLabel;
@@ -54,6 +56,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         this.player2name = player2name;
         this.iv_lastcardp1 = iv_lastcardp1;
         this.iv_lastcardp2 = iv_lastcardp2;
+        this.popUp = popUp;
     }
 
     @Override
@@ -201,11 +204,14 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         }
         System.out.println(winner);
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Winner!");
-        alert.setHeaderText(null);
-        alert.setContentText("Winner: " + winner);
-        alert.showAndWait();
+        popUp.setVisible(!popUp.isVisible());
+
+
+//        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+//        alert.setTitle("Winner!");
+//        alert.setHeaderText(null);
+//        alert.setContentText("Winner: " + winner);
+//        alert.showAndWait();
     }
 
     public void updatePlayerOnTurn(){

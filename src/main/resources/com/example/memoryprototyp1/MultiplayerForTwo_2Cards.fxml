@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,13 +10,13 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
+<?import javafx.scene.text.Text?>
 
 <VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.memoryprototyp1.MemoryController">
    <children>
       <StackPane prefHeight="430.0" prefWidth="805.0">
          <children>
-            <AnchorPane prefHeight="558.0" prefWidth="1200.0" stylesheets="@styles.css" visible="false">
+            <AnchorPane prefHeight="558.0" prefWidth="1200.0" stylesheets="@styles.css">
                <children>
                   <ImageView fitHeight="724.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -254,19 +253,28 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="469.0" prefWidth="472.0">
+            <AnchorPane fx:id="popUp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="600.0" visible="false">
                <children>
-                  <TextField layoutX="250.0" layoutY="361.0" prefHeight="43.0" prefWidth="203.0" />
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="95.0" layoutY="30.0" prefHeight="43.0" prefWidth="274.0" text="HIGH SCORE" textAlignment="CENTER">
+                  <ImageView fitHeight="400.0" fitWidth="600.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../Downloads/popUp.jpg" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="170.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You have won!" textAlignment="CENTER">
                      <font>
-                        <Font size="27.0" />
+                        <Font name="Imprint MT Shadow" size="41.0" />
                      </font>
-                  </Label>
-                  <Label layoutX="29.0" layoutY="363.0" text="Enter your name:">
+                  </Text>
+                  <Button fx:id="btn_playAgain2" layoutX="404.0" layoutY="255.0" mnemonicParsing="false" onAction="#playAgain" text="Play Again">
                      <font>
-                        <Font size="27.0" />
+                        <Font size="24.0" />
                      </font>
-                  </Label>
+                  </Button>
+                  <Button fx:id="btn_mainMenu_2" layoutX="93.0" layoutY="258.0" mnemonicParsing="false" onAction="#returnToMainMenu" text="Main Menu">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
          </children>
