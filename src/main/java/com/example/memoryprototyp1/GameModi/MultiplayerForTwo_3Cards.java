@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -21,19 +22,21 @@ import static com.example.memoryprototyp1.Music.playButtonSound;
 public class MultiplayerForTwo_3Cards extends BaseGame {
 
     private MemoryCard thirdCard;
+
     private Stage stage;
     private Scene scene;
     private Parent root;
     Player player1;
     Player player2;
     Player playerOnTurn;
-    private MemoryController memoryController;
 
     private Label player1PointsLabel;
     private Label player2PointsLabel;
     private Label playerOnTurnLabel;
     private Label player1name;
     private Label player2name;
+
+    private boolean delayStart = false;
     public MultiplayerForTwo_3Cards(int flowPaneSize, FlowPane imagesFlowPane, Label player1PointsLabel, Label player2PointsLabel, Label playerOnTurnLabel, Label player1name, Label player2name) {
         super(flowPaneSize, imagesFlowPane);
         this.player1PointsLabel = player1PointsLabel;
@@ -42,8 +45,40 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
         this.player1name = player1name;
         this.player2name = player2name;
     }
+
+    @Override
+    public void initializeImageView() {
+
+        for (int i = 0; i < imagesFlowPane.getChildren().size(); i++) {
+            ImageView imageView = (ImageView) imagesFlowPane.getChildren().get(i);
+            imageView.setImage(getBackOfCards());
+            imageView.setUserData(i);
+
+            imageView.setOnMouseEntered(mouseEnteredEvent ->{
+                if (!this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()){
+                    this.setImageScale((int) imageView.getUserData(), 1.05);
+                }
+            });
+
+            imageView.setOnMouseExited(mouseEnteredEvent ->{
+                this.setImageScale((int) imageView.getUserData(), 1);
+            });
+
+            imageView.setOnMouseClicked(mouseEvent -> {
+                if ((delayStart && !this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()) && !cardsAreFlipped){
+                    this.flipCard((int) imageView.getUserData());
+                }
+            });
+        }
+    }
     @Override
     public void play(){
+        PauseTransition initialDelay = new PauseTransition(Duration.seconds(3));
+        initialDelay.setOnFinished(event -> {
+            delayStart = true;
+        });
+        initialDelay.play();
+
         player1 = new Player(MainMenuController.getPlayer1name());
         player2 = new Player(MainMenuController.getPlayer2name());
 
