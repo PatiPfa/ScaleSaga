@@ -30,8 +30,8 @@ public class Main extends Application {
         stage.setTitle("ScaleSaga!");
         stage.setScene(scene);
         stage.show();
-        Media musicMedia = new Media(getClass().getResource("/com/example/memoryprototyp1/sounds/musicBackground.mp3").toExternalForm());
-        Music.MusicPlayer.playBackgroundMusic(musicMedia);
+        //Media musicMedia = new Media(getClass().getResource("/com/example/memoryprototyp1/sounds/musicBackground.mp3").toExternalForm());
+        //Music.MusicPlayer.playBackgroundMusic(musicMedia);
     }
 
     public static void main(String[] args) {

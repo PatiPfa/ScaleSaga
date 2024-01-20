@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -19,6 +20,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 
 import java.io.FileWriter;
@@ -60,6 +62,26 @@ public class MemoryController implements Initializable {
     private ImageView iv_lastcardp1;
     @FXML
     private ImageView iv_lastcardp2;
+    @FXML
+    private AnchorPane highscoreAnchorPane;
+    @FXML
+    private TextField highscoreName;
+
+    @FXML
+    private Label placeFive;
+
+    @FXML
+    private Label placeFour;
+
+    @FXML
+    private Label placeOne;
+
+    @FXML
+    private Label placeThree;
+
+    @FXML
+    private Label placeTwo;
+
 
 
 
@@ -71,6 +93,13 @@ public class MemoryController implements Initializable {
     private Parent root;
     private Image curser = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/sword.png")));
 
+    public static int getSeconds() {
+        return seconds;
+    }
+
+    public static int getMinutes() {
+        return minutes;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -79,7 +108,7 @@ public class MemoryController implements Initializable {
         //3: Multiplayer 2 Cards, 4: Multiplayer 3 Cards
         switch (getGamemode()){
             case 1:
-                this.game = new Singleplayer_2Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, displayImageView);
+                this.game = new Singleplayer_2Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, displayImageView, highscoreName, placeFive, placeFour, placeOne, placeThree, placeTwo, highscoreAnchorPane);
                 break;
             case 2:
                 this.game = new Singleplayer_3Cards(imagesFlowPane.getChildren().size(), imagesFlowPane);

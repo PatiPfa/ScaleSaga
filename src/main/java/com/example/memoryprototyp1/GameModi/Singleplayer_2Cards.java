@@ -5,10 +5,12 @@ import javafx.animation.PauseTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.paint.Color;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
@@ -21,10 +23,29 @@ import static com.example.memoryprototyp1.Music.MusicPlayer.playButtonSound;
 
 public class Singleplayer_2Cards extends BaseGame{
     private int lastClickedCard;
+
+    private AnchorPane highscoreAnchorPane;
+    private TextField highscoreName;
+    private Label placeFive;
+
+    private Label placeFour;
+
+    private Label placeOne;
+
+    private Label placeThree;
+
+    private Label placeTwo;
     private ImageView displayImageView;
-    public Singleplayer_2Cards(int flowPaneSize, FlowPane imagesFlowPane, ImageView displayImageView) {
+    public Singleplayer_2Cards(int flowPaneSize, FlowPane imagesFlowPane, ImageView displayImageView, TextField highscoreName, Label placeFive, Label placeFour, Label placeOne, Label placeThree, Label placeTwo, AnchorPane highscoreAnchorPane) {
         super(flowPaneSize, imagesFlowPane);
         this.displayImageView = displayImageView;
+        this.highscoreName =  highscoreName;
+        this.placeFive = placeFive;
+        this.placeFour = placeFour;
+        this.placeOne = placeOne;
+        this.placeThree = placeThree;
+        this.placeTwo = placeTwo;
+        this.highscoreAnchorPane = highscoreAnchorPane;
     }
     @Override
     public void initializeImageView() {
