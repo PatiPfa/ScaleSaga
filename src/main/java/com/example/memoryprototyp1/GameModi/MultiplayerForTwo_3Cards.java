@@ -46,8 +46,6 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
     public void play(){
         player1 = new Player(MainMenuController.getPlayer1name());
         player2 = new Player(MainMenuController.getPlayer2name());
-//      ToDO: soll ein zufälliger Spieler beginnen???
-        playerOnTurn = player1;
 
         Random random = new Random();
         int randomStart = random.nextInt(2) + 1;
