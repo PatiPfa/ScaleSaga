@@ -13,7 +13,7 @@ import javafx.util.Duration;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import static com.example.memoryprototyp1.Card.getBackOfCards;
+import static com.example.memoryprototyp1.Card.getBackOfCardsImage;
 import static com.example.memoryprototyp1.Music.MusicPlayer.playButtonSound;
 
 
@@ -28,7 +28,7 @@ public abstract class BaseGame {
     protected boolean cardsAreFlipped;
     protected boolean isInMotion;
 
-    protected static int timeCardsAreReveledInMillSec = 1500;
+    protected static int timeCardsAreReveledInMillSec = 1500;   //<-- Millisekunden wie lange Karten aufgedeckt sind
 
 
 
@@ -56,17 +56,21 @@ public abstract class BaseGame {
         }
     }
 
-
-//    Methode damit Timer weiß wann Game zueende is
+    /**
+     * Methode damit Timer weiß, wann Game zu Ende is
+     */
     public boolean gameFinished(){
         return cardsInGame.stream().allMatch(Card::getRevealed);
     }
 
+    /**
+     * Methode wird am Start des Spiels automatisch ausgeführt
+     */
     public void initializeImageView() {
 
         for (int i = 0; i < imagesFlowPane.getChildren().size(); i++) {
             ImageView imageView = (ImageView) imagesFlowPane.getChildren().get(i);
-            imageView.setImage(getBackOfCards());
+            imageView.setImage(getBackOfCardsImage());
             imageView.setUserData(i);
 
             imageView.setOnMouseEntered(mouseEnteredEvent ->{
@@ -88,7 +92,9 @@ public abstract class BaseGame {
     }
 
 
-
+    /**
+     * Diese Methode erstellt ein neues CardDeck, mischt es und fügt dem cardsInGame Array Kartenpaare hinzu
+     */
     public void play(){
         firstCard = null;
         secondCard = null;
@@ -110,7 +116,9 @@ public abstract class BaseGame {
     }
 
 
-
+    /**
+     * Dreht die angeklickte Karte um
+     */
     public void flipCard(int cardPosition){
 
         cardsInGame.get(cardPosition).setRevealed(true);
@@ -128,6 +136,10 @@ public abstract class BaseGame {
 
     }
 
+    /**
+     * checkt, ob es ein Match ist
+     * dreht die Karten zurück, wenn es kein Match ist
+     */
     public void checkForMatch(){
 
         if (firstCard.sameCardAs(secondCard)){
@@ -135,9 +147,7 @@ public abstract class BaseGame {
             playButtonSound();
             cardsAreFlipped = false;
 
-            //hier noch Player update einfügen
-            firstCard.setCorrectPair(true);
-            secondCard.setCorrectPair(true);
+
         } else {
             rotateBack();
         }
@@ -152,6 +162,9 @@ public abstract class BaseGame {
             cardsAreFlipped = false;});
     }
 
+    /**
+     * rotiert eine Karte und zeigt das übergebene Image
+     */
     public void rotate(int cardPosition, Image imageToBeShown, double firstDelay){
 
         ImageView imageView = (ImageView) imagesFlowPane.getChildren().get(cardPosition);
@@ -192,16 +205,21 @@ public abstract class BaseGame {
         });
 
     }
+
+    /**
+     * rotiert eine Karte zur Rückseite zurück
+     */
     public void rotateBack(){
 
         int indexFirstCard = cardsInGame.indexOf(firstCard);
         int indexSecondCard = cardsInGame.indexOf(secondCard);
-        PauseTransition delay = new PauseTransition(Duration.millis(1500)); //<- time how long the cards are revealed
+        PauseTransition delay = new PauseTransition(Duration.millis(1500)); //<-time how long the cards are revealed
         delay.play();
         delay.setOnFinished(delayEvent ->{
-            rotate(indexFirstCard, getBackOfCards(), 0);
-            rotate(indexSecondCard, getBackOfCards(), 0);
-            PauseTransition delay2 = new PauseTransition(Duration.millis(485));//<- after delay setRevealed is set false, this prevents card flip bugs
+            rotate(indexFirstCard, getBackOfCardsImage(), 0);
+            rotate(indexSecondCard, getBackOfCardsImage(), 0);
+            PauseTransition delay2 = new PauseTransition(Duration.millis(485));//<- after delay setRevealed is set
+                                                                                // false, this prevents card flip bugs
             delay2.play();
             delay2.setOnFinished(cardsAreFlippedBack ->{
                 cardsInGame.get(indexFirstCard).setRevealed(false);
@@ -210,17 +228,23 @@ public abstract class BaseGame {
         });
     }
 
+    /**
+     * Diese Methode skaliert die Kartengröße
+     */
     public void setImageScale(int cardPosition, double newScale){
         ImageView imageView = (ImageView) imagesFlowPane.getChildren().get(cardPosition);
         imageView.setScaleX(newScale);
         imageView.setScaleY(newScale);
     }
 
+    /**
+     * rotiert alle Karten zur Rückseite zurück
+     */
     public void rotateAllCardsToBackSide(){
 
         if (!isInMotion){
             for (int i = 0; i < imagesFlowPane.getChildren().size(); i++) {
-                rotate(i, getBackOfCards(),0);
+                rotate(i, getBackOfCardsImage(),0);
 
             }
         }
@@ -229,6 +253,7 @@ public abstract class BaseGame {
         delay.play();
         delay.setOnFinished(setIsInMotionFalse -> {isInMotion = false;});
     }
+
 
     public boolean allCardsFlipped() {
         return cardsInGame.stream().allMatch(Card::getRevealed);

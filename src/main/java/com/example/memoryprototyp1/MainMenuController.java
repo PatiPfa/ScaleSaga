@@ -16,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -39,12 +40,9 @@ public class MainMenuController {
     @FXML
     private AnchorPane SubMenuAP;
     @FXML
-    private AnchorPane settingsAP;
-    @FXML
     private AnchorPane nameInputAP;
     @FXML
     private Slider sliderVolume;
-
 
 
 
@@ -55,19 +53,16 @@ public class MainMenuController {
     private Scene scene;
     private Parent root;
     private static boolean singleplayer = false;
-    private Image curser = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/sword.png")));
+    private final Image CURSOR = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/sword.png")));
 
     /*
-    * TODO: Curser entfernen?
     * Effekt wenn man über button streicht
     * return: <a target="_blank" href="https://icons8.com/icon/7806/left-2">Left 2</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
     * einstellungen button: <a target="_blank" href="https://icons8.com/icon/2969/einstellungen">Einstellungen</a> Icon von <a target="_blank" href="https://icons8.com">Icons8</a>
     * */
 
-    private static int gamemode = 0;
-    //1: Singleplayer 2 Cards, 2: Singleplayer 3 Cards
-    //3: Multiplayer 2 Cards, 4: Multiplayer 3 Cards
-    public static int getGamemode() {
+    private static String gamemode;
+    public static String getGamemode() {
         return gamemode;
     }
 
@@ -105,23 +100,35 @@ public class MainMenuController {
         SubMenuAP.setVisible(false);
     }
 
-    public Stage switchToGame(ActionEvent event, String mode) throws IOException{
-        root = FXMLLoader.load(getClass().getResource(mode));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.setCursor(new ImageCursor(curser));
-        stage.setScene(scene);
-        stage.show();
-        return stage;
+    public Stage switchToGame(ActionEvent event, String mode){
+        try{
+            root = FXMLLoader.load(getClass().getResource(mode));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            scene.setCursor(new ImageCursor(CURSOR));
+            stage.setScene(scene);
+            stage.show();
+            return stage;
+        }catch (Exception e){
+            writeInLog(e, gamemode);
+        }
+        return null;
     }
-    public void switchToSetting(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Setting.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+    public void switchToSetting(ActionEvent event){
+        try{
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Setting.fxml")));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }catch (Exception e){
+            writeInLog(e, "Setting");
+        }
+
     }
-    public void switchToMenu(ActionEvent event) {
+
+
+    public void switchToMenu(ActionEvent event){
         try {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainMenu.fxml")));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -129,14 +136,14 @@ public class MainMenuController {
 
             stage.setScene(scene);
             stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            writeInLog(e, "MainMenu");
         }
     }
 
-    public void twoCards(ActionEvent event) throws IOException{
+    public void twoCards(ActionEvent event){
         if(singleplayer){
-            gamemode= 1;
+            gamemode = "Singleplayer2Cards";
             playButtonSound();
             try{
                 Stage stage = switchToGame(event, "Singleplayer_2Cards.fxml");
@@ -147,15 +154,15 @@ public class MainMenuController {
             }
 
         }else{
-            gamemode = 3;
+            gamemode = "Multiplayer2Cards";
             playButtonSound();
             switchMainToNames();
         }
     }
 
-    public void threeCards(ActionEvent event) throws IOException{
+    public void threeCards(ActionEvent event){
         if(singleplayer){
-            gamemode = 2;
+            gamemode = "Singleplayer3Cards";
             playButtonSound();
             try{
                 Stage stage = switchToGame(event, "Singleplayer_3Cards.fxml");
@@ -166,14 +173,10 @@ public class MainMenuController {
             }
 
         }else{
-            gamemode = 4;
+            gamemode = "Multiplayer3Cards";
             playButtonSound();
             switchMainToNames();
         }
-    }
-
-    public void settings(){
-        settingsAP.setVisible(!settingsAP.isVisible());
     }
 
     public void switchMainToNames(){
@@ -218,7 +221,7 @@ public class MainMenuController {
 
         //TODO: ev überlegen das mit dem szenen laden und den buttons noch anders zu machen..
         //vorallem weil das jz hier nicht so schön ausschaut
-        if(gamemode == 3){
+        if(gamemode.equals("Multiplayer2Cards")){
 
             try{
                 Stage stage = switchToGame(event, "MultiplayerForTwo_2Cards.fxml");
