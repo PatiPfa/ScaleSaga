@@ -75,26 +75,24 @@ public class MemoryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        //1: Singleplayer 2 Cards, 2: Singleplayer 3 Cards
-        //3: Multiplayer 2 Cards, 4: Multiplayer 3 Cards
         switch (getGamemode()){
-            case 1:
+            case "Singleplayer2Cards":
                 this.game = new Singleplayer_2Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, displayImageView);
                 break;
-            case 2:
+            case "Singleplayer3Cards":
                 this.game = new Singleplayer_3Cards(imagesFlowPane.getChildren().size(), imagesFlowPane);
                 break;
-            case 3:
+            case "Multiplayer2Cards":
                 this.game = new MultiplayerForTwo_2Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, player1PointsLabel, player2PointsLabel, playerOnTurnLabel, player1name, player2name, iv_lastcardp1, iv_lastcardp2);
                 break;
-            case 4:
+            case "Multiplayer3Cards":
                 this.game = new MultiplayerForTwo_3Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, player1PointsLabel, player2PointsLabel, playerOnTurnLabel, player1name, player2name);
                 break;
         }
 
       game.playTheGame();
 
-        if ( getGamemode() == 1 || getGamemode() == 2) {
+        if ( getGamemode().equals("Singleplayer2Cards") || getGamemode().equals("Singleplayer3Cards")) {
             timer();
         }else {
             player1PointsLabel.setText("0");

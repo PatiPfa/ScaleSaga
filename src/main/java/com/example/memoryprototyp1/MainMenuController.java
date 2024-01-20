@@ -61,10 +61,8 @@ public class MainMenuController {
     * einstellungen button: <a target="_blank" href="https://icons8.com/icon/2969/einstellungen">Einstellungen</a> Icon von <a target="_blank" href="https://icons8.com">Icons8</a>
     * */
 
-    private static int gamemode = 0;
-    //1: Singleplayer 2 Cards, 2: Singleplayer 3 Cards
-    //3: Multiplayer 2 Cards, 4: Multiplayer 3 Cards
-    public static int getGamemode() {
+    private static String gamemode;
+    public static String getGamemode() {
         return gamemode;
     }
 
@@ -136,7 +134,7 @@ public class MainMenuController {
 
     public void twoCards(ActionEvent event) throws IOException{
         if(singleplayer){
-            gamemode= 1;
+            gamemode = "Singleplayer2Cards";
             playButtonSound();
             try{
                 Stage stage = switchToGame(event, "Singleplayer_2Cards.fxml");
@@ -147,7 +145,7 @@ public class MainMenuController {
             }
 
         }else{
-            gamemode = 3;
+            gamemode = "Multiplayer2Cards";
             playButtonSound();
             switchMainToNames();
         }
@@ -155,7 +153,7 @@ public class MainMenuController {
 
     public void threeCards(ActionEvent event) throws IOException{
         if(singleplayer){
-            gamemode = 2;
+            gamemode = "Singleplayer3Cards";
             playButtonSound();
             try{
                 Stage stage = switchToGame(event, "Singleplayer_3Cards.fxml");
@@ -166,7 +164,7 @@ public class MainMenuController {
             }
 
         }else{
-            gamemode = 4;
+            gamemode = "Multiplayer3Cards";
             playButtonSound();
             switchMainToNames();
         }
@@ -214,7 +212,7 @@ public class MainMenuController {
 
         //TODO: ev überlegen das mit dem szenen laden und den buttons noch anders zu machen..
         //vorallem weil das jz hier nicht so schön ausschaut
-        if(gamemode == 3){
+        if(gamemode.equals("Multiplayer2Cards")){
 
             try{
                 Stage stage = switchToGame(event, "MultiplayerForTwo_2Cards.fxml");
