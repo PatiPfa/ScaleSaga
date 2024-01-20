@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
-import static com.example.memoryprototyp1.Card.getBackOfCards;
+import static com.example.memoryprototyp1.Card.getBackOfCardsImage;
 import static com.example.memoryprototyp1.Music.MusicPlayer.playButtonSound;
 
 public class MultiplayerForTwo_3Cards extends BaseGame {
@@ -51,7 +51,7 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
 
         for (int i = 0; i < imagesFlowPane.getChildren().size(); i++) {
             ImageView imageView = (ImageView) imagesFlowPane.getChildren().get(i);
-            imageView.setImage(getBackOfCards());
+            imageView.setImage(getBackOfCardsImage());
             imageView.setUserData(i);
 
             imageView.setOnMouseEntered(mouseEnteredEvent ->{
@@ -146,9 +146,6 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
             playButtonSound();
             cardsAreFlipped = false;
 
-            firstCard.setCorrectPair(true);
-            secondCard.setCorrectPair(true);
-            thirdCard.setCorrectPair(true);
 
             if(playerOnTurn.equals(player1)){
                 player1.addOnePoint();
@@ -193,9 +190,9 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
         PauseTransition delay = new PauseTransition(Duration.millis(1500)); //<- time how long the cards are revealed
         delay.play();
         delay.setOnFinished(delayEvent ->{
-            rotate(indexFirstCard, getBackOfCards(), 0);
-            rotate(indexSecondCard, getBackOfCards(), 0);
-            rotate(indexThirdCard, getBackOfCards(), 0);
+            rotate(indexFirstCard, getBackOfCardsImage(), 0);
+            rotate(indexSecondCard, getBackOfCardsImage(), 0);
+            rotate(indexThirdCard, getBackOfCardsImage(), 0);
             PauseTransition delay2 = new PauseTransition(Duration.millis(485));//<- after delay setRevealed is set false, this prevents card flip bugs
             delay2.play();
             delay2.setOnFinished(cardsAreFlippedBack ->{

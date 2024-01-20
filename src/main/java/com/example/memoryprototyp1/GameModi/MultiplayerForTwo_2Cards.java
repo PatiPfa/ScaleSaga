@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
-import static com.example.memoryprototyp1.Card.getBackOfCards;
+import static com.example.memoryprototyp1.Card.getBackOfCardsImage;
 import static com.example.memoryprototyp1.Music.MusicPlayer.playButtonSound;
 
 public class MultiplayerForTwo_2Cards extends BaseGame {
@@ -62,7 +62,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
 
         for (int i = 0; i < imagesFlowPane.getChildren().size(); i++) {
             ImageView imageView = (ImageView) imagesFlowPane.getChildren().get(i);
-            imageView.setImage(getBackOfCards());
+            imageView.setImage(getBackOfCardsImage());
             imageView.setUserData(i);
 
             imageView.setOnMouseEntered(mouseEnteredEvent ->{
@@ -131,8 +131,8 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         Collections.shuffle(cardsInGame);
         System.out.println(cardsInGame);
         rotateAllCardsToBackSide();
-        rotateDisplayImageView(iv_lastcardp1, getBackOfCards());
-        rotateDisplayImageView(iv_lastcardp2, getBackOfCards());
+        rotateDisplayImageView(iv_lastcardp1, getBackOfCardsImage());
+        rotateDisplayImageView(iv_lastcardp2, getBackOfCardsImage());
     }
     @Override
     public void checkForMatch(){
@@ -140,8 +140,8 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
             System.out.println("same");
             playButtonSound();
             cardsAreFlipped = false;
-            firstCard.setCorrectPair(true);
-            secondCard.setCorrectPair(true);
+            //firstCard.setCorrectPair(true);
+            //secondCard.setCorrectPair(true);
             if(playerOnTurn.equals(player1)){
                 player1.addOnePoint();
                 rotateDisplayImageView(iv_lastcardp1, cardsInGame.get(lastClickedCard).getFrontOfCards());

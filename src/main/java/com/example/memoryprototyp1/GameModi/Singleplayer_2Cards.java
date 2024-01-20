@@ -8,14 +8,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.paint.Color;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-import static com.example.memoryprototyp1.Card.getBackOfCards;
+import static com.example.memoryprototyp1.Card.getBackOfCardsImage;
 import static com.example.memoryprototyp1.Music.MusicPlayer.playButtonSound;
 
 
@@ -32,7 +31,7 @@ public class Singleplayer_2Cards extends BaseGame{
 
         for (int i = 0; i < imagesFlowPane.getChildren().size(); i++) {
             ImageView imageView = (ImageView) imagesFlowPane.getChildren().get(i);
-            imageView.setImage(getBackOfCards());
+            imageView.setImage(getBackOfCardsImage());
             imageView.setUserData(i);
 
             imageView.setOnMouseEntered(mouseEnteredEvent ->{
@@ -72,7 +71,7 @@ public class Singleplayer_2Cards extends BaseGame{
         Collections.shuffle(cardsInGame);
         System.out.println(cardsInGame);
         rotateAllCardsToBackSide();
-        rotateDisplayImageView(displayImageView, getBackOfCards());
+        rotateDisplayImageView(displayImageView, getBackOfCardsImage());
     }
 
     @Override
@@ -85,8 +84,7 @@ public class Singleplayer_2Cards extends BaseGame{
             cardsAreFlipped = false;
 
             //hier noch Player update einfügen
-            firstCard.setCorrectPair(true);
-            secondCard.setCorrectPair(true);
+
         } else {
             rotateBack();
         }
