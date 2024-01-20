@@ -53,6 +53,7 @@ public class Singleplayer_2Cards extends BaseGame{
             });
         }
     }
+
     @Override
     public void play(){
         firstCard = null;
@@ -106,6 +107,9 @@ public class Singleplayer_2Cards extends BaseGame{
             cardsAreFlipped = false;});
     }
 
+    /**
+     *rotiert die Große Display Karte neben dem Spielfeld
+     */
     public void rotateDisplayImageView(ImageView imageView, Image imageToBeShown) {
 
 
