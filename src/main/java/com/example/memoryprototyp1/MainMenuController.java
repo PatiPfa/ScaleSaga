@@ -100,26 +100,35 @@ public class MainMenuController {
         SubMenuAP.setVisible(false);
     }
 
-    public Stage switchToGame(ActionEvent event, String mode) throws IOException{
-        root = FXMLLoader.load(getClass().getResource(mode));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        scene.setCursor(new ImageCursor(CURSOR));
-        stage.setScene(scene);
-        stage.show();
-        return stage;
+    public Stage switchToGame(ActionEvent event, String mode){
+        try{
+            root = FXMLLoader.load(getClass().getResource(mode));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            scene.setCursor(new ImageCursor(CURSOR));
+            stage.setScene(scene);
+            stage.show();
+            return stage;
+        }catch (Exception e){
+            writeInLog(e, gamemode);
+        }
+        return null;
     }
-    public void switchToSetting(ActionEvent event) throws IOException {
+    public void switchToSetting(ActionEvent event){
+        try{
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Setting.fxml")));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }catch (Exception e){
+            writeInLog(e, "Setting");
+        }
 
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Setting.fxml")));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
     }
 
 
-    public void switchToMenu(ActionEvent event) {
+    public void switchToMenu(ActionEvent event){
         try {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainMenu.fxml")));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -127,12 +136,12 @@ public class MainMenuController {
 
             stage.setScene(scene);
             stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            writeInLog(e, "MainMenu");
         }
     }
 
-    public void twoCards(ActionEvent event) throws IOException{
+    public void twoCards(ActionEvent event){
         if(singleplayer){
             gamemode = "Singleplayer2Cards";
             playButtonSound();
@@ -151,7 +160,7 @@ public class MainMenuController {
         }
     }
 
-    public void threeCards(ActionEvent event) throws IOException{
+    public void threeCards(ActionEvent event){
         if(singleplayer){
             gamemode = "Singleplayer3Cards";
             playButtonSound();
