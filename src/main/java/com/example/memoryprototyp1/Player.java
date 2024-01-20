@@ -5,20 +5,11 @@ import javafx.scene.paint.Color;
 public class Player {
     private final String name;
     private int points;
-    private Color color;
 
-    public Color getColor() {
-        return color;
-    }
-
-    public void setColor(Color color) {
-        this.color = color;
-    }
-
-    public Player(String name, Color color) {
+    public Player(String name) {
         this.name = name;
         this.points = 0;
-        this.color = color;
+
     }
 
     public String getName() {
@@ -27,10 +18,6 @@ public class Player {
 
     public int getPoints() {
         return points;
-    }
-
-    public void setPoints(int points) {
-        this.points = points;
     }
 
     public void addOnePoint(){
