@@ -7,6 +7,11 @@ public class Card {
 
     private String name;
     private boolean isRevealed;
+    private boolean correctPair;
+
+    public boolean isCorrectPair() {
+        return correctPair;
+    }
 
     private static final Image BACK_OF_CARDS = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/back.png")));
     private Image frontOfCards;
@@ -37,4 +42,14 @@ public class Card {
     public Image getFrontOfCards(){
         return frontOfCards;
     }
+
+    public void setCorrectPair(boolean correctPair) {
+        this.correctPair = correctPair;
+    }
+
+
+    public boolean sameCardAs(Card secondCard){
+        return (this.getName().equals(secondCard.getName()));
+    }
+
 }

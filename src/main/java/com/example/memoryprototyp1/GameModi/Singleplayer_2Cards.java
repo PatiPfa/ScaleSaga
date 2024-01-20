@@ -65,8 +65,8 @@ public class Singleplayer_2Cards extends BaseGame{
         for (int i = 0; i < flowPaneSize / 2; i++) {
             Card topCardFromDeck = deck.giveTopCard();
 
-            cardsInGame.add(new MemoryCard(topCardFromDeck.getName(), topCardFromDeck.getFrontOfCards()));
-            cardsInGame.add(new MemoryCard(topCardFromDeck.getName(), topCardFromDeck.getFrontOfCards()));
+            cardsInGame.add(new Card(topCardFromDeck.getName(), topCardFromDeck.getFrontOfCards()));
+            cardsInGame.add(new Card(topCardFromDeck.getName(), topCardFromDeck.getFrontOfCards()));
 
         }
         Collections.shuffle(cardsInGame);

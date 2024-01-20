@@ -17,14 +17,14 @@ import static com.example.memoryprototyp1.Card.getBackOfCards;
 import static com.example.memoryprototyp1.Music.MusicPlayer.playButtonSound;
 
 
-public class BaseGame {
+public abstract class BaseGame {
 
 
 
     protected FlowPane imagesFlowPane;
     protected int flowPaneSize;
-    protected ArrayList<MemoryCard> cardsInGame;
-    protected MemoryCard firstCard, secondCard;
+    protected ArrayList<Card> cardsInGame;
+    protected Card firstCard, secondCard;
     protected boolean cardsAreFlipped;
     protected boolean isInMotion;
 
@@ -41,7 +41,7 @@ public class BaseGame {
         return cardsAreFlipped;
     }
 
-    public ArrayList<MemoryCard> getCardsInGame() {
+    public ArrayList<Card> getCardsInGame() {
         return cardsInGame;
     }
 
@@ -59,7 +59,7 @@ public class BaseGame {
 
 //    Methode damit Timer weiß wann Game zueende is
     public boolean gameFinished(){
-        return cardsInGame.stream().allMatch(MemoryCard::getRevealed);
+        return cardsInGame.stream().allMatch(Card::getRevealed);
     }
 
     public void initializeImageView() {
@@ -100,8 +100,8 @@ public class BaseGame {
         for (int i = 0; i < flowPaneSize / 2; i++) {
             Card topCardFromDeck = deck.giveTopCard();
 
-            cardsInGame.add(new MemoryCard(topCardFromDeck.getName(), topCardFromDeck.getFrontOfCards()));
-            cardsInGame.add(new MemoryCard(topCardFromDeck.getName(), topCardFromDeck.getFrontOfCards()));
+            cardsInGame.add(new Card(topCardFromDeck.getName(), topCardFromDeck.getFrontOfCards()));
+            cardsInGame.add(new Card(topCardFromDeck.getName(), topCardFromDeck.getFrontOfCards()));
 
         }
         Collections.shuffle(cardsInGame);
@@ -231,7 +231,7 @@ public class BaseGame {
     }
 
     public boolean allCardsFlipped() {
-        return cardsInGame.stream().allMatch(MemoryCard::getRevealed);
+        return cardsInGame.stream().allMatch(Card::getRevealed);
     }
 
 }

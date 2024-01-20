@@ -21,7 +21,7 @@ import static com.example.memoryprototyp1.Music.MusicPlayer.playButtonSound;
 
 public class MultiplayerForTwo_3Cards extends BaseGame {
 
-    private MemoryCard thirdCard;
+    private Card thirdCard;
 
     private Stage stage;
     private Scene scene;
@@ -111,9 +111,9 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
         for (int i = 0; i < flowPaneSize / 3; i++) {
             Card topCardFromDeck = deck.giveTopCard();
 
-            cardsInGame.add(new MemoryCard(topCardFromDeck.getName(), topCardFromDeck.getFrontOfCards()));
-            cardsInGame.add(new MemoryCard(topCardFromDeck.getName(), topCardFromDeck.getFrontOfCards()));
-            cardsInGame.add(new MemoryCard(topCardFromDeck.getName(), topCardFromDeck.getFrontOfCards()));
+            cardsInGame.add(new Card(topCardFromDeck.getName(), topCardFromDeck.getFrontOfCards()));
+            cardsInGame.add(new Card(topCardFromDeck.getName(), topCardFromDeck.getFrontOfCards()));
+            cardsInGame.add(new Card(topCardFromDeck.getName(), topCardFromDeck.getFrontOfCards()));
 
         }
         Collections.shuffle(cardsInGame);
