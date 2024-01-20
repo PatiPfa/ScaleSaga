@@ -148,8 +148,6 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
             }else{
                 player2.addOnePoint();
                 rotateDisplayImageView(iv_lastcardp2, cardsInGame.get(lastClickedCard).getFrontOfCards());
-
-
             }
 
             //Ev durch ne Variable ersetzen und unten abfragen?

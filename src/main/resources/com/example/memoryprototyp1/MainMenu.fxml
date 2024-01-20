@@ -50,13 +50,17 @@
                   <Insets />
                </opaqueInsets>
             </VBox>
-            <Label fx:id="label_madeby" layoutX="7.0" layoutY="536.0" text="Made by: Patrick Pfaffl, Lorenz Rottenwender, Lara Hallermaier, Julian Schörg" textFill="#a8a4a4" />
-            <ImageView fitHeight="70.0" fitWidth="71.0" layoutX="1101.0" layoutY="27.0" onMouseClicked="#settings" pickOnBounds="true" preserveRatio="true">
+            <Label fx:id="label_madeby" layoutX="7.0" layoutY="536.0" text="Made by: Patrick Pfaffl, Lorenz Rettenwender, Lara Hallermaier, Julian Schörg" textFill="#a8a4a4" />
+            <ImageView accessibleRole="BUTTON" fitHeight="70.0" fitWidth="71.0" layoutX="1100.0" layoutY="105.0" onMousePressed="#switchToSetting" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/einstellungen.png" />
                </image>
             </ImageView>
-            <Button fx:id="buttonGetSettings" layoutX="79.0" layoutY="50.0" mnemonicParsing="false" onAction="#switchToSetting" text="Settings" />
+            <Button layoutX="1082.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToSetting" prefHeight="50.0" prefWidth="105.0" text="Settings">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
       </children>
    </AnchorPane>
       <AnchorPane fx:id="nameInputAP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="558.0" prefWidth="1200.0" stylesheets="@styles_mainMenu.css" visible="false">
@@ -98,16 +102,16 @@
                   <Font size="38.0" />
                </font>
             </Label>
-            <ImageView fitHeight="70.0" fitWidth="71.0" layoutX="1116.0" layoutY="14.0" onMouseClicked="#settings" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/einstellungen.png" />
-               </image>
-            </ImageView>
             <ImageView fitHeight="60.0" fitWidth="61.0" layoutX="14.0" layoutY="481.0" onMouseClicked="#returnFromNames" onMousePressed="#backButton" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/return.png" />
                </image>
             </ImageView>
+            <Button layoutX="1081.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToSetting" prefHeight="50.0" prefWidth="105.0" text="Settings">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="SubMenuAP" prefHeight="558.0" prefWidth="1200.0" stylesheets="@styles_mainMenu.css" visible="false">
@@ -144,17 +148,11 @@
                   <Image url="@images/return.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="70.0" fitWidth="71.0" layoutX="1112.0" layoutY="28.0" onMouseClicked="#settings" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/einstellungen.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="settingsAP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="452.0" prefWidth="593.0" style="-fx-background-color: #A2B5CD;" stylesheets="@styles_mainMenu.css" visible="false">
-         <children>
-            <Button mnemonicParsing="false" text="Button" textAlignment="CENTER" />
-            <Button layoutX="288.0" layoutY="14.0" mnemonicParsing="false" onAction="#settings" prefHeight="36.0" prefWidth="210.0" text="Beispielbutton: zum Hauptmenü" />
+            <Button layoutX="1096.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToSetting" prefHeight="50.0" prefWidth="105.0" text="Settings">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </StackPane>

@@ -16,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -39,12 +40,9 @@ public class MainMenuController {
     @FXML
     private AnchorPane SubMenuAP;
     @FXML
-    private AnchorPane settingsAP;
-    @FXML
     private AnchorPane nameInputAP;
     @FXML
     private Slider sliderVolume;
-
 
 
 
@@ -55,10 +53,9 @@ public class MainMenuController {
     private Scene scene;
     private Parent root;
     private static boolean singleplayer = false;
-    private Image curser = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/sword.png")));
+    private final Image CURSOR = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/sword.png")));
 
     /*
-    * TODO: Curser entfernen?
     * Effekt wenn man über button streicht
     * return: <a target="_blank" href="https://icons8.com/icon/7806/left-2">Left 2</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
     * einstellungen button: <a target="_blank" href="https://icons8.com/icon/2969/einstellungen">Einstellungen</a> Icon von <a target="_blank" href="https://icons8.com">Icons8</a>
@@ -109,18 +106,21 @@ public class MainMenuController {
         root = FXMLLoader.load(getClass().getResource(mode));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        scene.setCursor(new ImageCursor(curser));
+        scene.setCursor(new ImageCursor(CURSOR));
         stage.setScene(scene);
         stage.show();
         return stage;
     }
     public void switchToSetting(ActionEvent event) throws IOException {
+
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Setting.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
+
+
     public void switchToMenu(ActionEvent event) {
         try {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainMenu.fxml")));
@@ -170,10 +170,6 @@ public class MainMenuController {
             playButtonSound();
             switchMainToNames();
         }
-    }
-
-    public void settings(){
-        settingsAP.setVisible(!settingsAP.isVisible());
     }
 
     public void switchMainToNames(){
