@@ -255,9 +255,9 @@
             </AnchorPane>
             <AnchorPane fx:id="popUp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="600.0" visible="false">
                <children>
-                  <ImageView fitHeight="400.0" fitWidth="600.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imagePopUp" fitHeight="400.0" fitWidth="600.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../../../../Downloads/popUp.jpg" />
+                        <Image url="@images/popUp.jpg" />
                      </image>
                   </ImageView>
                   <Text layoutX="170.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You have won!" textAlignment="CENTER">
@@ -265,7 +265,7 @@
                         <Font name="Imprint MT Shadow" size="41.0" />
                      </font>
                   </Text>
-                  <Button fx:id="btn_playAgain2" layoutX="404.0" layoutY="255.0" mnemonicParsing="false" onAction="#playAgain" text="Play Again">
+                  <Button fx:id="btn_playAgain2" layoutX="404.0" layoutY="255.0" mnemonicParsing="false" onAction="#playAgainPopUp" text="Play Again">
                      <font>
                         <Font size="24.0" />
                      </font>

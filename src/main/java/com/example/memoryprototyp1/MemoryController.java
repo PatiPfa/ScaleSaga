@@ -67,6 +67,9 @@ public class MemoryController implements Initializable {
     private Button btn_playAgain2;
     @FXML
     private AnchorPane popUp;
+    @FXML
+    private ImageView imagePopUp;
+
 
 
 
@@ -140,6 +143,7 @@ public class MemoryController implements Initializable {
     public void playAgain(){
         game.playAgain();
         timer();
+
     }
 
     public void returnToMainMenu(ActionEvent event) throws IOException {
@@ -168,6 +172,13 @@ public class MemoryController implements Initializable {
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
+    }
+    public void playAgainPopUp(){
+        popUp.setVisible(false);
+        game.playAgain();
+        timer();
+
+
     }
 
 }

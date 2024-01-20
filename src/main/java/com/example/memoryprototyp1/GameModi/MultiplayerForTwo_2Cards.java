@@ -45,6 +45,9 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
     private int lastClickedCard;
     private AnchorPane popUp;
 
+
+
+
     private static boolean delayStart = false;
 
     public MultiplayerForTwo_2Cards(int size, FlowPane imagesFlowPane, Label player1PointsLabel, Label player2PointsLabel, Label playerOnTurnLabel, Label player1name, Label player2name, ImageView iv_lastcardp1, ImageView iv_lastcardp2, AnchorPane popUp) {
@@ -207,11 +210,6 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         popUp.setVisible(!popUp.isVisible());
 
 
-//        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//        alert.setTitle("Winner!");
-//        alert.setHeaderText(null);
-//        alert.setContentText("Winner: " + winner);
-//        alert.showAndWait();
     }
 
     public void updatePlayerOnTurn(){
@@ -262,5 +260,6 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
             rotateSecondHalf.play();
         });
     }
+
 
 }
