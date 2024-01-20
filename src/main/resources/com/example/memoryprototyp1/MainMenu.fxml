@@ -5,104 +5,76 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.media.MediaView?>
 <?import javafx.scene.text.Font?>
 
 <VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.memoryprototyp1.MainMenuController">
-   <StackPane>
-   <AnchorPane fx:id="mainMenuAP" prefHeight="558.0" prefWidth="1200.0" stylesheets="@styles_mainMenu.css">
+   <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="558.0" prefWidth="1200.0">
+      <MediaView fx:id="mediaView" />
+   <AnchorPane fx:id="mainMenuAP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="558.0" prefWidth="1200.0" stylesheets="@styles_mainMenu.css">
       <children>
-         <GridPane layoutX="-14.0" prefHeight="558.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="0.0">
-           <columnConstraints>
-             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-           </columnConstraints>
-           <rowConstraints>
-             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-           </rowConstraints>
-            <children>
-               <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="100.0" maxWidth="1200.0" minHeight="100.0" minWidth="200.0" prefHeight="100.0" prefWidth="1200.0" text="ScaleSaga">
+            <ImageView fitHeight="710.0" fitWidth="1215.0" layoutX="-7.0" layoutY="-139.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/Background2.png" />
+               </image>
+            </ImageView>
+            <VBox alignment="CENTER" layoutX="335.0" layoutY="9.0" prefHeight="558.0" prefWidth="532.0" spacing="40.0" AnchorPane.bottomAnchor="-9.0" AnchorPane.leftAnchor="335.0" AnchorPane.rightAnchor="333.0" AnchorPane.topAnchor="9.0">
+               <children>
+               <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="140.0" maxWidth="1200.0" minHeight="4.0" minWidth="200.0" prefHeight="140.0" prefWidth="304.0" text="ScaleSaga" textFill="WHITE">
                   <font>
-                     <Font name="Imprint MT Shadow" size="85.0" />
+                     <Font name="Imprint MT Shadow" size="110.0" />
                   </font>
                </Label>
-            </children>
-         </GridPane>
-         <VBox alignment="CENTER" prefHeight="558.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-            <children>
-               <FlowPane alignment="CENTER" columnHalignment="CENTER" hgap="200.0" prefHeight="200.0" prefWidth="200.0">
-                  <children>
-                     <Button fx:id="btn_2cards" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#twoCards" prefHeight="70.0" prefWidth="180.0" text="2 Karten" visible="false">
-                        <font>
-                           <Font name="System Bold" size="23.0" />
-                        </font>
-                        <FlowPane.margin>
-                           <Insets top="200.0" />
-                        </FlowPane.margin>
-                     </Button>
-                     <Button fx:id="btn_3cards" alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#threeCards" prefHeight="70.0" prefWidth="180.0" text="3 Karten" visible="false">
-                        <font>
-                           <Font name="System Bold" size="23.0" />
-                        </font>
-                        <FlowPane.margin>
-                           <Insets top="200.0" />
-                        </FlowPane.margin>
-                     </Button>
-                  </children>
-               </FlowPane>
-               <Button fx:id="btn_singleplayer" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="180.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#singleplayer" prefHeight="70.0" prefWidth="180.0" text="Singleplayer">
+               <Button fx:id="btn_singleplayer" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#singleplayer" prefHeight="70.0" prefWidth="200.0" text="Singleplayer">
                   <font>
-                     <Font name="System Bold" size="23.0" />
+                     <Font name="System Bold" size="25.0" />
                   </font>
-                  <VBox.margin>
-                     <Insets />
-                  </VBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
                </Button>
-               <Button fx:id="btn_return" alignment="CENTER" contentDisplay="CENTER" maxHeight="56.0" maxWidth="96.0" minHeight="56.0" minWidth="96.0" mnemonicParsing="false" onAction="#returnbtn" prefHeight="56.0" prefWidth="96.0" text="return" visible="false">
+               <Button fx:id="btn_multiplayer" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#multiplayer" prefHeight="70.0" prefWidth="200.0" text="Multiplayer" textAlignment="CENTER">
                   <font>
-                     <Font size="22.0" />
+                     <Font name="System Bold" size="25.0" />
                   </font>
                </Button>
-               <Button fx:id="btn_multiplayer" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="180.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#multiplayer" prefHeight="70.0" prefWidth="180.0" text="Multiplayer" textAlignment="CENTER">
-                  <font>
-                     <Font name="System Bold" size="23.0" />
-                  </font>
-                  <VBox.margin>
-                     <Insets bottom="100.0" />
-                  </VBox.margin>
-               </Button>
-            </children>
-            <opaqueInsets>
-               <Insets />
-            </opaqueInsets>
-            <cursor>
-               <Cursor fx:constant="S_RESIZE" />
-            </cursor>
-         </VBox>
-            <Button fx:id="btn_multiplayer1" alignment="CENTER" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="180.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#closeGame" prefHeight="70.0" prefWidth="180.0" text="close game" textAlignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="23.0" />
-               </font>
-            </Button>
+                  <Button fx:id="quit_btn" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#closeGame" prefHeight="60.0" prefWidth="200.0" text="End Game" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </VBox>
+            <Label fx:id="label_madeby" layoutX="7.0" layoutY="536.0" text="Made by: Patrick Pfaffl, Lorenz Rottenwender, Lara Hallermaier, Julian Schörg" textFill="#a8a4a4" />
+            <ImageView fitHeight="70.0" fitWidth="71.0" layoutX="1101.0" layoutY="27.0" onMouseClicked="#settings" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/einstellungen.png" />
+               </image>
+            </ImageView>
       </children>
    </AnchorPane>
-      <MediaView fx:id="mediaView" />
-      <AnchorPane fx:id="nameInputAP" layoutX="10.0" layoutY="10.0" prefHeight="558.0" prefWidth="1200.0" stylesheets="@styles_mainMenu.css" visible="false">
+      <AnchorPane fx:id="nameInputAP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="558.0" prefWidth="1200.0" stylesheets="@styles_mainMenu.css" visible="false">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="8.0" layoutY="32.0" maxHeight="100.0" maxWidth="1200.0" minHeight="100.0" minWidth="200.0" prefHeight="100.0" prefWidth="1200.0" text="ScaleSaga">
+            <ImageView fitHeight="705.0" fitWidth="1215.0" layoutX="-3.0" layoutY="-147.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/Background2.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="8.0" layoutY="30.0" maxHeight="102.0" maxWidth="1200.0" minHeight="100.0" minWidth="200.0" prefHeight="100.0" prefWidth="1200.0" text="ScaleSaga" textFill="WHITE">
                <font>
                   <Font name="Imprint MT Shadow" size="85.0" />
                </font>
             </Label>
-            <Label layoutX="431.0" layoutY="283.0" text="Player 1:" textAlignment="RIGHT">
+            <Label layoutX="431.0" layoutY="283.0" text="Player 1:" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font name="Century Schoolbook" size="38.0" />
                </font>
@@ -112,7 +84,7 @@
                   <Font size="25.0" />
                </font>
             </Label>
-            <Label layoutX="431.0" layoutY="370.0" text="Player 2:" textAlignment="RIGHT">
+            <Label layoutX="431.0" layoutY="370.0" text="Player 2:" textAlignment="RIGHT" textFill="WHITE">
                <font>
                   <Font name="Century Schoolbook" size="38.0" />
                </font>
@@ -124,16 +96,67 @@
                   <Font name="System Bold" size="23.0" />
                </font>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="36.0" layoutY="486.0" maxHeight="56.0" maxWidth="96.0" minHeight="56.0" minWidth="96.0" mnemonicParsing="false" onAction="#returnFromNames" prefHeight="56.0" prefWidth="96.0" text="return">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Button>
-            <Label layoutX="315.0" layoutY="145.0" prefHeight="78.0" prefWidth="629.0" text="Please enter the name of each player!">
+            <Label layoutX="315.0" layoutY="145.0" prefHeight="78.0" prefWidth="629.0" text="Please enter the name of each player!" textFill="WHITE">
                <font>
                   <Font size="38.0" />
                </font>
             </Label>
+            <ImageView fitHeight="70.0" fitWidth="71.0" layoutX="1116.0" layoutY="14.0" onMouseClicked="#settings" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/einstellungen.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="60.0" fitWidth="61.0" layoutX="14.0" layoutY="481.0" onMouseClicked="#returnFromNames" onMousePressed="#backButton" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/return.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="SubMenuAP" prefHeight="558.0" prefWidth="1200.0" stylesheets="@styles_mainMenu.css" visible="false">
+         <children>
+            <ImageView fitHeight="710.0" fitWidth="1215.0" layoutY="-139.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/Background2.png" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="294.0" layoutY="57.0" maxHeight="140.0" maxWidth="1200.0" minHeight="4.0" minWidth="200.0" prefHeight="140.0" prefWidth="629.0" text="ScaleSaga" textFill="WHITE">
+               <font>
+                  <Font name="Imprint MT Shadow" size="110.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" layoutX="311.0" layoutY="283.0" prefHeight="121.0" prefWidth="594.0" spacing="100.0">
+               <children>
+                  <Button fx:id="btn_2cards" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#twoCards" prefHeight="70.0" prefWidth="200.0" text="2 Cards" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btn_3cards" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#threeCards" prefHeight="70.0" prefWidth="200.0" text="3 Cards" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="25.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <ImageView fitHeight="60.0" fitWidth="61.0" layoutX="24.0" layoutY="492.0" onMousePressed="#backButton" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/return.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="70.0" fitWidth="71.0" layoutX="1112.0" layoutY="28.0" onMouseClicked="#settings" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/einstellungen.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="settingsAP" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="522.0" style="-fx-background-color: #A2B5CD;" stylesheets="@styles_mainMenu.css" visible="false">
+         <children>
+            <Button layoutX="288.0" layoutY="14.0" mnemonicParsing="false" onAction="#settings" prefHeight="36.0" prefWidth="210.0" text="Beispielbutton: zum Hauptmenü" />
          </children>
       </AnchorPane>
    </StackPane>

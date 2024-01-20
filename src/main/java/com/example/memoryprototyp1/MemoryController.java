@@ -17,12 +17,9 @@ import javafx.scene.ImageCursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.FlowPane;
-import javafx.event.ActionEvent;
 
 import java.io.IOException;
 import java.net.URL;
@@ -38,8 +35,6 @@ public class MemoryController implements Initializable {
 
     @FXML
     private FlowPane imagesFlowPane;
-    @FXML
-    private Button button;
     private BaseGame game;
     @FXML
     private Text sec;
@@ -48,15 +43,15 @@ public class MemoryController implements Initializable {
     @FXML
     private ImageView displayImageView;
     @FXML
-    private Label player1PointsLabel= new Label("");;
+    private Label player1PointsLabel;
     @FXML
-    private Label player2PointsLabel= new Label("");;
+    private Label player2PointsLabel;
     @FXML
-    private Label playerOnTurnLabel = new Label("");
+    private Label playerOnTurnLabel;
     @FXML
-    private Label player1name = new Label("");
+    private Label player1name;
     @FXML
-    private Label player2name = new Label("");
+    private Label player2name;
     @FXML
     private ImageView iv_lastcardp1;
     @FXML
@@ -131,7 +126,7 @@ public class MemoryController implements Initializable {
     }
 
     public void playAgain(){
-        game.playAgaing();
+        game.playAgain();
         timer();
     }
 
