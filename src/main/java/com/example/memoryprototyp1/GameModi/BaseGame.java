@@ -49,7 +49,7 @@ public class BaseGame {
         initializeImageView();
     }
 
-    public void playAgaing(){
+    public void playAgain(){
         if (!isInMotion){
             play();
         }

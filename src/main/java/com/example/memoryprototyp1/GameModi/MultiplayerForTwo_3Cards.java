@@ -44,8 +44,8 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
     }
     @Override
     public void play(){
-        player1 = new Player(MainMenuController.getPlayer1name(), Color.RED);
-        player2 = new Player(MainMenuController.getPlayer2name(), Color.BLUE);
+        player1 = new Player(MainMenuController.getPlayer1name());
+        player2 = new Player(MainMenuController.getPlayer2name());
 //      ToDO: soll ein zufälliger Spieler beginnen???
         playerOnTurn = player1;
 

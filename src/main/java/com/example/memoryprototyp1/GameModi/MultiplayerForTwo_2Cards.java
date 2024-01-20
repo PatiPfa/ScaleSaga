@@ -88,8 +88,8 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
     @Override
     public void play() {
         //TODO: Farben löschen?
-        player1 = new Player(MainMenuController.getPlayer1name(), Color.RED);
-        player2 = new Player(MainMenuController.getPlayer2name(), Color.BLUE);
+        player1 = new Player(MainMenuController.getPlayer1name());
+        player2 = new Player(MainMenuController.getPlayer2name());
 
         Random random = new Random();
         int randomStart = random.nextInt(2) + 1;
@@ -97,6 +97,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         playerOnTurn = (randomStart == 1) ? player1 : player2;
 
         player1name.setText(player1.getName());
+
         player2name.setText(player2.getName());
 
         if(playerOnTurn.equals(player1)){
@@ -142,6 +143,8 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
             }else{
                 player2.addOnePoint();
                 rotateDisplayImageView(iv_lastcardp2, cardsInGame.get(lastClickedCard).getFrontOfCards());
+
+
             }
 
             //Ev durch ne Variable ersetzen und unten abfragen?

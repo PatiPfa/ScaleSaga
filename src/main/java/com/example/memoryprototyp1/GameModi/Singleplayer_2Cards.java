@@ -61,10 +61,6 @@ public class Singleplayer_2Cards extends BaseGame{
         cardsInGame = new ArrayList<>();
         cardsAreFlipped = false;
 
-
-        Player player1 = new Player("Player1", Color.RED);
-        player1.setColor(Color.RED);
-
         for (int i = 0; i < flowPaneSize / 2; i++) {
             Card topCardFromDeck = deck.giveTopCard();
 

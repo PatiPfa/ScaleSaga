@@ -1,9 +1,7 @@
 package com.example.memoryprototyp1;
 
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Cursor;
 import javafx.scene.ImageCursor;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -18,12 +16,12 @@ import java.util.Random;
 import static com.example.memoryprototyp1.CardDeck.getNUMBER_OF_IMAGES;
 
 public class Main extends Application {
-    private final Image cursor = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/sword.png")));
+    private final Image CURSOR = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/sword.png")));
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("MainMenu.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        scene.setCursor(new ImageCursor(cursor));
+        scene.setCursor(new ImageCursor(CURSOR));
         stage.setResizable(false);
         stage.setFullScreen(false);
         Random random = new Random();
