@@ -127,8 +127,6 @@ public class MemoryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        //1: Singleplayer 2 Cards, 2: Singleplayer 3 Cards
-        //3: Multiplayer 2 Cards, 4: Multiplayer 3 Cards
         switch (getGamemode()) {
             case "Singleplayer2Cards":
                 this.game = new Singleplayer_2Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, displayImageView, highscoreName, placeFive, placeFour, placeOne, placeThree, placeTwo, highscoreAnchorPane, yourScoreLabel);
