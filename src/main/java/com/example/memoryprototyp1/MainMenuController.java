@@ -61,6 +61,31 @@ public class MainMenuController {
     private Label two4;
     @FXML
     private Label two5;
+    @FXML
+    private Button buttonSoundOnOff;
+
+    @FXML
+    private void toggleMute(ActionEvent event) {
+        Music.MusicPlayer.toggleMute();
+        if (Music.MusicPlayer.isMuted) {
+            buttonSoundOnOff.setText("OFF");
+        } else {
+            buttonSoundOnOff.setText("ON");
+        }
+
+    }
+
+    @FXML
+    private void handleVolumeChange(MouseEvent event) {
+        double volume = sliderVolume.getValue();
+        Music.MusicPlayer.setBackgroundMusicVolume(volume/100);
+        System.out.println("Volume: " + volume);
+        if(volume > 0.0){
+            buttonSoundOnOff.setText("ON");
+        }else{
+            buttonSoundOnOff.setText("OFF");
+        }
+    }
 
     private Stage stage;
     private Scene scene;
@@ -355,15 +380,6 @@ public class MainMenuController {
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
-    }
-    @FXML
-    private void toggleMute(ActionEvent event) {
-        Music.MusicPlayer.toggleMute();
-    }
-    @FXML
-    private void handleVolumeChange(MouseEvent event) {
-        double volume = sliderVolume.getValue();
-        Music.MusicPlayer.setBackgroundMusicVolume(volume);
     }
 
     private void setScoreLabel(Label l, int pos, String path) {
