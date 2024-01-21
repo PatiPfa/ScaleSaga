@@ -48,7 +48,14 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
     private final Image CURSOR_AXE = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/axe.png")));
 
     private boolean delayStart = false;
-    public MultiplayerForTwo_3Cards(int flowPaneSize, FlowPane imagesFlowPane, Label player1PointsLabel, Label player2PointsLabel, Label playerOnTurnLabel, Label player1name, Label player2name, AnchorPane popUp2, Text name2) {
+
+    private String CursorPlayer1;
+    private String CursorPlayer2;
+    private boolean firstRound = true;
+    private ImageView iv_player1symbol;
+    private ImageView iv_player2symbol;
+
+    public MultiplayerForTwo_3Cards(int flowPaneSize, FlowPane imagesFlowPane, Label player1PointsLabel, Label player2PointsLabel, Label playerOnTurnLabel, Label player1name, Label player2name, AnchorPane popUp2, Text name2, ImageView iv_player1symbol, ImageView iv_player2symbol) {
         super(flowPaneSize, imagesFlowPane);
         this.player1PointsLabel = player1PointsLabel;
         this.player2PointsLabel = player2PointsLabel;
@@ -57,6 +64,8 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
         this.player2name = player2name;
         this.popUp2 = popUp2;
         this.name2 = name2;
+        this.iv_player1symbol = iv_player1symbol;
+        this.iv_player2symbol = iv_player2symbol;
     }
 
     @Override
@@ -86,6 +95,7 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
     }
     @Override
     public void play(){
+        delayStart = false;
         PauseTransition initialDelay = new PauseTransition(Duration.seconds(3));
         initialDelay.setOnFinished(event -> {
             delayStart = true;
@@ -99,6 +109,20 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
         int randomStart = random.nextInt(2) + 1;
         System.out.println(randomStart);
         playerOnTurn = (randomStart == 1) ? player1 : player2;
+
+        if(firstRound && randomStart == 1){
+            CursorPlayer1 = "sword";
+            CursorPlayer2 = "axe";
+            firstRound = false;
+        }else if (firstRound){
+            CursorPlayer1 = "axe";
+            CursorPlayer2 = "sword";
+            iv_player1symbol.setImage(CURSOR_AXE);
+            iv_player2symbol.setImage(CURSOR_SWORD);
+            firstRound = false;
+        }else if((randomStart == 1 && !currentCursor.equals(CursorPlayer1)) || (randomStart == 1 && !currentCursor.equals(CursorPlayer2))){
+            switchCursor();
+        }
 
         player1name.setText(player1.getName());
         player2name.setText(player2.getName());
@@ -243,21 +267,19 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
 
     }
 
-    public void switchCursor(){
-        try{
-            Stage stage = (Stage) playerOnTurnLabel.getScene().getWindow();
-            Scene scene = stage.getScene();
-            if(currentCursor.equals("sword")){
+    public void switchCursor() {
+        try {
+            Scene scene = playerOnTurnLabel.getScene();
+            if (currentCursor.equals("sword")) {
                 scene.setCursor(new ImageCursor(CURSOR_AXE));
                 currentCursor = "axe";
-            }else{
+            } else {
                 scene.setCursor(new ImageCursor(CURSOR_SWORD));
                 currentCursor = "sword";
             }
-        }catch (Exception e){
-            e.printStackTrace();
+        } catch (Exception e) {
+            MainMenuController.writeInLog(e, "switchCursor");
         }
-
     }
 
     public void updatePlayerOnTurn(){
