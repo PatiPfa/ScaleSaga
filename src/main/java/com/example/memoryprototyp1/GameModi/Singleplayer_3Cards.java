@@ -55,7 +55,7 @@ public class Singleplayer_3Cards extends BaseGame {
     @Override
     public void play(){
         super.delayStart = false;
-        PauseTransition initialDelay = new PauseTransition(Duration.seconds(0));
+        PauseTransition initialDelay = new PauseTransition(Duration.seconds(1));
         initialDelay.setOnFinished(event -> {
             super.delayStart = true;
         });

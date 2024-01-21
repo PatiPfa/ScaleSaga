@@ -3,6 +3,7 @@ package com.example.memoryprototyp1;
 import com.example.memoryprototyp1.GameModi.*;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
+import javafx.animation.PauseTransition;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -190,7 +191,8 @@ public class MemoryController implements Initializable {
         }));
 
         timeline.setCycleCount(Animation.INDEFINITE);
-        timeline.play();
+            timeline.play();
+
     }
 
     public void playAgain() {

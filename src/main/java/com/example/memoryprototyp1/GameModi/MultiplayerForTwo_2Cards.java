@@ -111,7 +111,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
     @Override
     public void play() {
         delayStart = false;
-        PauseTransition initialDelay = new PauseTransition(Duration.seconds(3));                                     //delay von 3 Sek am Anfang des Spiels
+        PauseTransition initialDelay = new PauseTransition(Duration.seconds(1));                                     //delay von 3 Sek am Anfang des Spiels
         initialDelay.setOnFinished(event -> {
             delayStart = true;
         });
