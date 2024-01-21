@@ -22,12 +22,12 @@ public class Score implements Serializable{
         this.player = player;
     }
 
-    public int getScore() {
-        return score;
+    public int getScoreMin() {
+        return scoreMin;
     }
 
-    public void setScore(int score) {
-        this.score = score;
+    public int getScoreSec() {
+        return scoreSec;
     }
 
     public String getPlayerName(){

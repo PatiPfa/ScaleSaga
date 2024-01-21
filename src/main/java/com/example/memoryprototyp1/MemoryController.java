@@ -36,6 +36,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import static com.example.memoryprototyp1.MainMenuController.getGamemode;
+import static com.example.memoryprototyp1.Score.*;
 
 public class MemoryController implements Initializable {
 
@@ -207,6 +208,40 @@ public class MemoryController implements Initializable {
         game.playAgain();
         timer();
 
+
+    }
+
+    public void submitName(){
+        Score score = new Score(getMinutes(), getSeconds(), highscoreName.getText());
+        for (int i = 0; i < 5; i++) {
+            getScoreBoard()[i] = deserializeScore()[i];
+            if (getScoreBoard()[i] != null){
+                if (getScoreBoard()[i].getScoreMin()< getMinutes() && getScoreBoard()[i].getScoreSec() < getSeconds()){
+                    getScoreBoard()[i] = score;
+                }
+            } else {
+                getScoreBoard()[i] = score;
+                break;
+            }
+        }
+
+        serializeScore(getScoreBoard());
+
+
+        setLabel(placeOne, 0);
+        setLabel(placeTwo, 1);
+        setLabel(placeThree, 2);
+        setLabel(placeFour, 3);
+        setLabel(placeFive,4);
+    }
+
+    private void setLabel(Label l, int pos){
+        Score[] scores = new Score[5];
+
+        scores[pos] = deserializeScore()[pos];
+        if (scores[pos] != null){
+            l.setText(scores[pos].getScoreMin() + " : " + scores[pos].getScoreSec() + " " + scores[pos].getPlayerName());
+        }
 
     }
 

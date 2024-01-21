@@ -19,6 +19,7 @@ import java.util.Collections;
 
 import static com.example.memoryprototyp1.Card.getBackOfCardsImage;
 import static com.example.memoryprototyp1.Music.MusicPlayer.playButtonSound;
+import static com.example.memoryprototyp1.Score.deserializeScore;
 
 
 public class Singleplayer_2Cards extends BaseGame {
@@ -113,15 +114,17 @@ public class Singleplayer_2Cards extends BaseGame {
             //hier noch Player update einfügen
 
         } else {
-            rotateBack();
+            //rotateBack(); <- auskommentieren !!!!!!!!!!!!!!!!!!!!!!!!!!
         }
 
         if (gameFinished()) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Winner!");
-            alert.setHeaderText(null);
-            alert.setContentText("You have won :D");
-            alert.showAndWait();
+            highscoreAnchorPane.setVisible(true);
+
+            setLabel(placeOne, 0);
+            setLabel(placeTwo, 1);
+            setLabel(placeThree, 2);
+            setLabel(placeFour, 3);
+            setLabel(placeFive,4);
         }
 
         firstCard = null;
