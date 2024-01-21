@@ -15,7 +15,8 @@ public class Music {
 
         public static void playBackgroundMusic(Media media) {
             if (backgroundMusic != null) {
-                backgroundMusic.setMute(true);
+                backgroundMusic.stop();
+
             }
             backgroundMusic = new MediaPlayer(media);
             backgroundMusic.setOnEndOfMedia(() -> playBackgroundMusic(backgroundMusic.getMedia()));
@@ -36,6 +37,7 @@ public class Music {
                 setBackgroundMusicVolume(0.0);
             } else {
                 setBackgroundMusicVolume(0.4);
+                
             }
         }
 
@@ -43,8 +45,13 @@ public class Music {
             String soundPath = "/com/example/memoryprototyp1/sounds/buttonSound.mp3";
             Media sound = new Media(Objects.requireNonNull(Music.class.getResource(soundPath)).toExternalForm());
             MediaPlayer mediaPlayer = new MediaPlayer(sound);
-            mediaPlayer.setVolume(0.5);
-            mediaPlayer.play();
+            if(!isMuted) {
+                mediaPlayer.setVolume(0.5);
+                mediaPlayer.play();
+
+            }
+
+
         }
     }
 }
