@@ -10,7 +10,7 @@ public class Music {
 
     public static class MusicPlayer {
 
-        private static double volumeBackground = 0.05;
+        private static double volumeBackground = 0.02;
         private static double mute = 0.0;
 
         private static MediaPlayer backgroundMusic;

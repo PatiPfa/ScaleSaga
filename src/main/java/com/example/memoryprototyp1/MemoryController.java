@@ -204,7 +204,9 @@ public class MemoryController implements Initializable {
     }
 
     public void returnToMainMenu(ActionEvent event) {
-        timeline.stop();
+        if(getGamemode().equals("Singleplayer2Cards") || getGamemode().equals("Singleplayer3Cards")){
+            timeline.stop();
+        }
         MainMenuController.setSingleplayer(false);
         try {
             root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
