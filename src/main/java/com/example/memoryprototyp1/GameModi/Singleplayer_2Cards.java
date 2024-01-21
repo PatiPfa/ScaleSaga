@@ -102,7 +102,7 @@ public class Singleplayer_2Cards extends BaseGame {
     @Override
     public void checkForMatch() {
 
-        cardsAreFlipped = false; //<- löschen !!!!!!!!!!!!!!!!!!!!!!
+        cardsAreFlipped = false; //<- löschen !!!!!!!!!!!!!!!!!!!!
 
         if (firstCard.sameCardAs(secondCard)) {
             System.out.println("same");

@@ -179,6 +179,7 @@ public class MainMenuController {
         }
     }
 
+
     public void switchMainToNames(){
         SubMenuAP.setVisible(!SubMenuAP.isVisible());
         nameInputAP.setVisible(!nameInputAP.isVisible());
