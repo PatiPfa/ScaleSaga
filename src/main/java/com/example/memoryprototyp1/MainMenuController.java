@@ -117,7 +117,7 @@ public class MainMenuController {
     }
 
     /**
-     * Singleplayer-Button setzt singleplayer auf true und wechselt zur Kartenauswahl.
+     * Singleplayer-Button setzt singleplayer auf true und wechselt zur Kartenauswahl
      **/
     public void singleplayer(){
         playButtonSound();
