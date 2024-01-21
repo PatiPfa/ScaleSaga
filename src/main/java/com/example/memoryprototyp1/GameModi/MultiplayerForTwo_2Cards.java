@@ -209,7 +209,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
 
         if(player1.getPoints() > player2.getPoints()){
             winner = player1.getName();
-            name.setText(winner);
+            name.setText(winner);                                       //ruft Name des Gewinners auf PopUp auf
         }else if(player1.getPoints() < player2.getPoints()){
             winner = player2.getName();
             name.setText(winner);
@@ -220,7 +220,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         System.out.println(winner);
 
 
-        popUp.setVisible(!popUp.isVisible());
+        popUp.setVisible(!popUp.isVisible());               //stellt PopUp Visible sobald Game beendet ist
     }
 
     public void switchCursor(){

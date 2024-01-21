@@ -148,19 +148,19 @@ public class MemoryController implements Initializable {
 
 //    Timer
     private void timer() {
-        if (timeline != null) {
+        if (timeline != null) {                                 //setzt Timer zurück sobald dieser schon existiert bzw. beim Play Again
             timeline.stop();
         }
         seconds = 0;
         minutes = 0;
-        sec.setText(String.valueOf(seconds));
+        sec.setText(String.valueOf(seconds));                   //setzt die Textfelder min, sec auf seconds und minutes
         min.setText(String.valueOf(minutes));
-        timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
-            if (game.gameFinished())
+        timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {        //ertsellt neue Timeline; Jeder Keyframe wird nach einer Sekunde ausgelöst; d.h. nach jeder Sekunde erhöht sich der Timer um 1
+            if (game.gameFinished())                                                // wenn gameFinsihed methode aufgerufen, dann stoppt der Timer
                 timeline.stop();
             else
             seconds++;
-                if(seconds >= 60) {
+                if(seconds >= 60) {                                                 //sonst wenn seconds über 60, wieder auf 0 gesetzt und minutes bekommt eins erhöht
                     seconds = 0;
                     minutes++;
                 }
@@ -168,7 +168,7 @@ public class MemoryController implements Initializable {
             min.setText(String.valueOf(minutes));
         }));
 
-        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.setCycleCount(Animation.INDEFINITE);                               //damit es unendlich oft wiederholt wird
         timeline.play();
     }
 
@@ -205,12 +205,12 @@ public class MemoryController implements Initializable {
             ioException.printStackTrace();
         }
     }
-    public void playAgainPopUp(){
+    public void playAgainPopUp(){                       //damit das PopUp bei Multiplayer 2 Cards beim Knopdruck PlayAgain wieder verschwindet und das Game neu gestartet wird
         popUp.setVisible(false);
         game.playAgain();
 
     }
-    public void playAgainPopUp2(){
+    public void playAgainPopUp2(){                      //dasselbe bei Multiplayer 3 Cards
         popUp2.setVisible(false);
         game.playAgain();
 
