@@ -121,7 +121,6 @@ public class MemoryController implements Initializable {
         return seconds;
     }
 
-
     public static int getMinutes() {
         return minutes;
     }
