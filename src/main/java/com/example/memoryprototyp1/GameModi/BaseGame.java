@@ -27,7 +27,7 @@ public abstract class BaseGame {
     protected Card firstCard, secondCard;
     protected boolean cardsAreFlipped;
     protected boolean isInMotion;
-
+    protected boolean delayStart = false;
     protected static int timeCardsAreReveledInMillSec = 1500;   //<-- Millisekunden wie lange Karten aufgedeckt sind
 
 
@@ -84,7 +84,7 @@ public abstract class BaseGame {
             });
 
             imageView.setOnMouseClicked(mouseEvent -> {
-                if ((!this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()) && !cardsAreFlipped){
+                if ((delayStart && !this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()) && !cardsAreFlipped){
                     this.flipCard((int) imageView.getUserData());
                 }
             });

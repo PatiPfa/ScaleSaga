@@ -57,10 +57,6 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
     private boolean firstRound = true;
     private ImageView iv_player1symbol;
     private ImageView iv_player2symbol;
-
-
-
-
     private static boolean delayStart = false;
 
     public MultiplayerForTwo_2Cards(int size, FlowPane imagesFlowPane, Label player1PointsLabel, Label player2PointsLabel, Label playerOnTurnLabel, Label player1name, Label player2name, ImageView iv_lastcardp1, ImageView iv_lastcardp2, AnchorPane popUp, Text name, ImageView iv_player1symbol, ImageView iv_player2symbol) {

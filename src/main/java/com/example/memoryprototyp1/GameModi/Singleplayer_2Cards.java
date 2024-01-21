@@ -38,6 +38,7 @@ public class Singleplayer_2Cards extends BaseGame {
     private Label placeTwo;
     private ImageView displayImageView;
     private Label yourScoreLabel;
+    private static boolean delayStart = false;
 
     public Singleplayer_2Cards(int flowPaneSize, FlowPane imagesFlowPane, ImageView displayImageView, TextField highscoreName, Label placeFive, Label placeFour, Label placeOne, Label placeThree, Label placeTwo, AnchorPane highscoreAnchorPane, Label yourScoreLabel) {
         super(flowPaneSize, imagesFlowPane);
@@ -72,7 +73,7 @@ public class Singleplayer_2Cards extends BaseGame {
             });
 
             imageView.setOnMouseClicked(mouseEvent -> {
-                if ((!this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()) && !this.getCardsAreFlipped()) {
+                if ((delayStart &&!this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()) && !this.getCardsAreFlipped()) {
                     this.flipCard((int) imageView.getUserData());
                     lastClickedCard = (int) imageView.getUserData();
 
@@ -83,6 +84,13 @@ public class Singleplayer_2Cards extends BaseGame {
 
     @Override
     public void play() {
+        delayStart = false;
+        PauseTransition initialDelay = new PauseTransition(Duration.seconds(3));
+        initialDelay.setOnFinished(event -> {
+            delayStart = true;
+        });
+        initialDelay.play();
+
         firstCard = null;
         secondCard = null;
         CardDeck deck = new CardDeck();
