@@ -17,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -50,9 +51,14 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
     private final Image CURSOR_SWORD = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/sword.png")));
     private final Image CURSOR_AXE = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/axe.png")));
     //https://www.pngwing.com/de/free-png-tatpt/download?height=114
+    private Text name;
+
+
+
+
     private static boolean delayStart = false;
 
-    public MultiplayerForTwo_2Cards(int size, FlowPane imagesFlowPane, Label player1PointsLabel, Label player2PointsLabel, Label playerOnTurnLabel, Label player1name, Label player2name, ImageView iv_lastcardp1, ImageView iv_lastcardp2, AnchorPane popUp) {
+    public MultiplayerForTwo_2Cards(int size, FlowPane imagesFlowPane, Label player1PointsLabel, Label player2PointsLabel, Label playerOnTurnLabel, Label player1name, Label player2name, ImageView iv_lastcardp1, ImageView iv_lastcardp2, AnchorPane popUp, Text name) {
         super(size, imagesFlowPane);
         this.player1PointsLabel = player1PointsLabel;
         this.player2PointsLabel = player2PointsLabel;
@@ -62,6 +68,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         this.iv_lastcardp1 = iv_lastcardp1;
         this.iv_lastcardp2 = iv_lastcardp2;
         this.popUp = popUp;
+        this.name = name;
     }
 
     @Override
@@ -200,12 +207,16 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
 
         if(player1.getPoints() > player2.getPoints()){
             winner = player1.getName();
+            name.setText(winner);
         }else if(player1.getPoints() < player2.getPoints()){
             winner = player2.getName();
+            name.setText(winner);
         }else{
-            winner = "draw";
+            winner = "DRAW";
+            name.setText(winner);
         }
         System.out.println(winner);
+
 
         popUp.setVisible(!popUp.isVisible());
     }

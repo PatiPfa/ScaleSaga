@@ -3,16 +3,15 @@ package com.example.memoryprototyp1.GameModi;
 import com.example.memoryprototyp1.*;
 import javafx.animation.PauseTransition;
 import javafx.scene.ImageCursor;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -41,18 +40,23 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
     private Label player1name;
     private Label player2name;
 
+    private AnchorPane popUp2;
+    private Text name2;
+
     private String currentCursor = "sword";
     private final Image CURSOR_SWORD = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/sword.png")));
     private final Image CURSOR_AXE = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/axe.png")));
 
     private boolean delayStart = false;
-    public MultiplayerForTwo_3Cards(int flowPaneSize, FlowPane imagesFlowPane, Label player1PointsLabel, Label player2PointsLabel, Label playerOnTurnLabel, Label player1name, Label player2name) {
+    public MultiplayerForTwo_3Cards(int flowPaneSize, FlowPane imagesFlowPane, Label player1PointsLabel, Label player2PointsLabel, Label playerOnTurnLabel, Label player1name, Label player2name, AnchorPane popUp2, Text name2) {
         super(flowPaneSize, imagesFlowPane);
         this.player1PointsLabel = player1PointsLabel;
         this.player2PointsLabel = player2PointsLabel;
         this.playerOnTurnLabel = playerOnTurnLabel;
         this.player1name = player1name;
         this.player2name = player2name;
+        this.popUp2 = popUp2;
+        this.name2 = name2;
     }
 
     @Override
@@ -225,20 +229,16 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
         String winner;
 
         if (player1.getPoints() > player2.getPoints()) {
-            winner = "Player 1";
+            winner = player1.getName();
         } else if (player1.getPoints() < player2.getPoints()) {
-            winner = "Player 2";
+            winner = player2.getName();
         } else {
-            winner = "draw";
+            winner = "DRAW";
         }
         System.out.println(winner);
 
-
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Winner!");
-        alert.setHeaderText(null);
-        alert.setContentText("Winner: " + winner);
-        alert.showAndWait();
+        popUp2.setVisible(!popUp2.isVisible());
+        name2.setText(winner);
     }
 
     public void switchCursor(){
