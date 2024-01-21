@@ -22,6 +22,7 @@ import javafx.scene.Parent;
 
 import static com.example.memoryprototyp1.Music.MusicPlayer.playButtonSound;
 
+
 public class MainMenuController {
     @FXML
     private AnchorPane mainMenuAP;
@@ -68,7 +69,6 @@ public class MainMenuController {
 
     private static boolean singleplayer = false;
     private static String gamemode;
-
     private static String player1name;
     private static String player2name;
     private static String txtFileTwoCards = "src/main/resources/com/example/memoryprototyp1/score/scoreTwoCards.txt";
@@ -80,13 +80,14 @@ public class MainMenuController {
         singleplayer = newState;
     }
 
-
     public static String getGamemode() {
         return gamemode;
     }
+
     public static String getPlayer1name() {
         return player1name;
     }
+
     public static String getPlayer2name() {
         return player2name;
     }
@@ -94,7 +95,7 @@ public class MainMenuController {
     /**
      * Singleplayer-Button setzt singleplayer auf true und wechselt zur Kartenauswahl
      **/
-    public void singleplayer(){
+    public void singleplayer() {
         playButtonSound();
         singleplayer = true;
         switchToSubmenu();
@@ -103,7 +104,7 @@ public class MainMenuController {
     /**
      * Multiplayer-Button zur Kartenauswahl. Singleplayer bleibt unverändert auf false
      **/
-    public void multiplayer(){
+    public void multiplayer() {
         playButtonSound();
         switchToSubmenu();
         scoreBoardtwoCards.setVisible(false);
@@ -113,7 +114,7 @@ public class MainMenuController {
     /**
      * wechselt vom Hauptmenü/Modiauswahl (mainMenuAP) zum Submenu/Kartenauswahl (SubMenuAP)
      **/
-    public void switchToSubmenu(){
+    public void switchToSubmenu() {
         mainMenuAP.setVisible(false);
         SubMenuAP.setVisible(true);
         scoreDisplay();
@@ -122,7 +123,7 @@ public class MainMenuController {
     /**
      * wechselt vom Submenu/Kartenauswahl (SubMenuAP) zum Hauptmenü/Modiauswahl (mainMenuAP)
      **/
-    public void backButton(){
+    public void backButton() {
         mainMenuAP.setVisible(true);
         SubMenuAP.setVisible(false);
     }
@@ -131,8 +132,8 @@ public class MainMenuController {
      * wechselt vom Hauptmenü (genauer Submenu) zum jeweiligen Spielmodi welcher über einen String übergeben wird
      * wird von anderen methoden aufgerufen
      **/
-    public Stage switchToGame(ActionEvent event, String mode){
-        try{                                    //probieren, ob er wechseln kann
+    public Stage switchToGame(ActionEvent event, String mode) {
+        try {                                    //probieren, ob er wechseln kann
             root = FXMLLoader.load(getClass().getResource(mode));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
@@ -140,7 +141,7 @@ public class MainMenuController {
             stage.setScene(scene);
             stage.show();
             return stage;
-        }catch (Exception e){                   //Falls der Spielmodi nicht geöffnet werden kann, wird der Fehler in die Logdatei gespeichert
+        } catch (Exception e) {
             writeInLog(e, gamemode);
         }
         return null;
@@ -149,14 +150,15 @@ public class MainMenuController {
     /**
      * Button um zu den Einstellungen zu wechseln
      **/
-    public void switchToSetting(ActionEvent event){
-        try{                                    //probieren, ob er wechseln kann
+    public void switchToSetting(ActionEvent event) {
+        try {                                    //probieren, ob er wechseln kann
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Setting.fxml")));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-        }catch (Exception e){                   //Falls die Einstellungen nicht geöffnet werden kann, wird der Fehler in die Logdatei gespeichert
+        } catch (
+                Exception e) {                   //Falls die Einstellungen nicht geöffnet werden kann, wird der Fehler in die Logdatei gespeichert
             writeInLog(e, "Setting");
         }
 
@@ -165,39 +167,40 @@ public class MainMenuController {
     /**
      * wechselt (von den Einstellungen) zurück zum Hauptmenü
      **/
-    public void switchToMenu(ActionEvent event){
+    public void switchToMenu(ActionEvent event) {
         try {                                   //probieren, ob er wechseln kann
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainMenu.fxml")));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-        } catch (Exception e) {                 //Falls die Einstellungen nicht geöffnet werden kann, wird der Fehler in die Logdatei gespeichert
+        } catch (
+                Exception e) {                 //Falls die Einstellungen nicht geöffnet werden kann, wird der Fehler in die Logdatei gespeichert
             writeInLog(e, "MainMenu");
         }
     }
 
     /**
-     *Button für 2 Karten Modi
+     * Button für 2 Karten Modi
      **/
-    public void twoCards(ActionEvent event){
-         //*Wenn singleplayer = true (wird im Hauptmenü beim klicken auf den Singleplayer Button gesetzt) ist, wird der Spielmodi
-         //auf Singleplayer2Cards gesetzt und die switchToGame Methode aufgerufen um zu wechseln
+    public void twoCards(ActionEvent event) {
+        //*Wenn singleplayer = true (wird im Hauptmenü beim klicken auf den Singleplayer Button gesetzt) ist, wird der Spielmodi
+        //auf Singleplayer2Cards gesetzt und die switchToGame Methode aufgerufen um zu wechseln
 
-        if(singleplayer){
+        if (singleplayer) {
             gamemode = "Singleplayer2Cards";
             playButtonSound();
-            try{
+            try {
                 Stage stage = switchToGame(event, "Singleplayer_2Cards.fxml");
                 stage.setTitle("Singleplayer 2 Cards");
                 stage.show();
-            }catch (Exception e){
+            } catch (Exception e) {
                 writeInLog(e, "Singleplayer 2 Cards");
             }
 
             //Wenn singleplayer false ist (standardmäßig) wird der gamemode auf Multiplayer2Cards gesetzt und die switchMainToNames Methode aufgrufen
             //womit die Namenseingabe aufgerufen wird
-        }else{
+        } else {
             gamemode = "Multiplayer2Cards";
             playButtonSound();
             switchMainToNames();
@@ -207,23 +210,23 @@ public class MainMenuController {
     /**
      * Button für 3 Karten Modi
      **/
-    public void threeCards(ActionEvent event){
+    public void threeCards(ActionEvent event) {
         //*Wenn singleplayer = true (wird im Hauptmenü beim klicken auf den Singleplayer Button gesetzt) ist, wird der Spielmodi
         //auf Singleplayer3Cards gesetzt und die switchToGame Methode aufgerufen um zu wechseln
-        if(singleplayer){
+        if (singleplayer) {
             gamemode = "Singleplayer3Cards";
             playButtonSound();
-            try{
+            try {
                 Stage stage = switchToGame(event, "Singleplayer_3Cards.fxml");
                 stage.setTitle("Singleplayer 3 Cards");
                 stage.show();
-            }catch (Exception e){
+            } catch (Exception e) {
                 writeInLog(e, "Singleplayer 3 Cards");
             }
 
             //Wenn singleplayer false ist (standardmäßig) wird der gamemode auf Multiplayer3cards gesetzt und die switchMainToNames Methode aufgrufen
             //womit die Namenseingabe aufgerufen wird
-        }else{
+        } else {
             gamemode = "Multiplayer3Cards";
             playButtonSound();
             switchMainToNames();
@@ -233,17 +236,18 @@ public class MainMenuController {
     /**
      * wechselt vom Submenü/Kartenauswahl zur Namenseingabe und umgekehrt
      **/
-    public void switchMainToNames(){
+    public void switchMainToNames() {
         //Das AP wird auf den umgekehrten Visible Status gesetzt.
         //zB. !SubMenuAP.isVisible() gibt false zurück, dann wird das SubmenuAp aufgrund der Negation mit setVisible auf true gesetzt
         SubMenuAP.setVisible(!SubMenuAP.isVisible());
         nameInputAP.setVisible(!nameInputAP.isVisible());
+        label_errormessage.setText(" ");
     }
 
     /**
      * Game schließen Button
      **/
-    public void closeGame(){
+    public void closeGame() {
         //neues Alert des Type Warning erstellen und entsprechend beschreiben
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Quit game");
@@ -267,65 +271,66 @@ public class MainMenuController {
     /**
      * Button um die Namenseingabe zu bestätigen
      **/
-    public void submitNames(ActionEvent event){
+    public void submitNames(ActionEvent event) {
 
         //speichert die Eingabe der Textfelder in eine Variable
         player1name = tf_player1.getText();
         player2name = tf_player2.getText();
 
         //Überprüft die Namenslänge sowie ob die Namen gleich sind. Falls es nicht passt, wird ein Fehler ausgegeben und zurückgekehrt
-        if(player1name.length() < 3 || player2name.length() < 3){
+        if (player1name.length() < 3 || player2name.length() < 3) {
             label_errormessage.setText("All names must contain at least 3 characters!");
             return;
-        }else if(player1name.length() > 10 || player2name.length() > 10) {
+        } else if (player1name.length() > 10 || player2name.length() > 10) {
             label_errormessage.setText("The name may consist of a maximum of 10 characters!");
             return;
-        } else if(player1name.equals(player2name)){
+        } else if (player1name.equals(player2name)) {
             label_errormessage.setText("The names should not be the same!");
             return;
         }
 
         //Je nach gewähltem Spielmodi wird dieser aufgerufen
-        if(gamemode.equals("Multiplayer2Cards")){
+        if (gamemode.equals("Multiplayer2Cards")) {
             playButtonSound();
-            try{
+            try {
                 Stage stage = switchToGame(event, "MultiplayerForTwo_2Cards.fxml");
                 stage.setTitle("Multiplayer 2 Cards");
                 stage.show();
-            }catch (Exception e){
+            } catch (Exception e) {
                 writeInLog(e, "Multiplayer 2 Cards");
             }
-        }else{
+        } else {
             playButtonSound();
-            try{
+            try {
                 Stage stage = switchToGame(event, "MultiplayerForTwo_3Cards.fxml");
                 stage.setTitle("Multiplayer 3 Cards");
                 stage.show();
-            }catch (Exception e){
+            } catch (Exception e) {
                 writeInLog(e, "Multiplayer 3 Cards");
             }
         }
     }
 
     //Speichert die Highscore namen in die Labels
-    public void scoreDisplay(){
-        setScoreLabel(one1, 0);
-        setScoreLabel(one2, 1);
-        setScoreLabel(one3, 2);
-        setScoreLabel(one4, 3);
-        setScoreLabel(one5,4);
+    public void scoreDisplay() {
 
-        setScoreLabel1(two1, 0);
-        setScoreLabel1(two2, 1);
-        setScoreLabel1(two3, 2);
-        setScoreLabel1(two4, 3);
-        setScoreLabel1(two5,4);
+        setScoreLabel(one1, 0, txtFileTwoCards);
+        setScoreLabel(one2, 1, txtFileTwoCards);
+        setScoreLabel(one3, 2, txtFileTwoCards);
+        setScoreLabel(one4, 3, txtFileTwoCards);
+        setScoreLabel(one5, 4, txtFileTwoCards);
+
+        setScoreLabel(two1, 0, txtFileThreeCards);
+        setScoreLabel(two2, 1, txtFileThreeCards);
+        setScoreLabel(two3, 2, txtFileThreeCards);
+        setScoreLabel(two4, 3, txtFileThreeCards);
+        setScoreLabel(two5, 4, txtFileThreeCards);
     }
 
     /**
      * Button um von der Namenseingabe zurück zu wechseln
      **/
-    public void returnFromNames(){
+    public void returnFromNames() {
         //setzt Textfelder und labels zurück und wechselt mit der switchMainToName Methode zum Hauptmenü zurück
         playButtonSound();
         tf_player1.setText("Player 1");
@@ -348,71 +353,54 @@ public class MainMenuController {
             String timestamp = dateFormat.format(new Date());
 
             //der aktuelle Zeitstempel sowie die Info um welche Fehlerseite es sich handelt werden zusammen mit der Fehlermeldung und einer Leerzeile in die log datei geschrieben
-            writer.println("["+ timestamp + "] Fehler beim Wechseln zur " + Fehlerseite + "-Seite:");
+            writer.println("[" + timestamp + "] Fehler beim Wechseln zur " + Fehlerseite + "-Seite:");
             e.printStackTrace(writer);
             writer.println();
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
     }
+
     @FXML
     private void toggleMute(ActionEvent event) {
         Music.MusicPlayer.toggleMute();
     }
+
     @FXML
     private void handleVolumeChange(MouseEvent event) {
         double volume = sliderVolume.getValue();
         Music.MusicPlayer.setBackgroundMusicVolume(volume);
     }
+
     private void setScoreLabel(Label l, int pos) {
         Score[] scores = readHighscore();
 
-        scores[pos] = readHighscore()[pos];
-        if (scores[pos] != null && scores[pos].getScoreSec() < 10) {
-            l.setText(scores[pos].getScoreMin() + ":0" + scores[pos].getScoreSec() + " | " + scores[pos].getPlayerName());
-        } else if (scores[pos] != null) {
-            l.setText(scores[pos].getScoreMin() + ":" + scores[pos].getScoreSec() + " | " + scores[pos].getPlayerName());
+        private void setScoreLabel (Label l,int pos, String path){
+            Score[] scores = readHighscore(path);
+
+            scores[pos] = readHighscore(path)[pos];
+            if (scores[pos] != null && scores[pos].getScoreSec() < 10) {
+                l.setText(scores[pos].getScoreMin() + ":0" + scores[pos].getScoreSec() + " | " + scores[pos].getPlayerName());
+            } else if (scores[pos] != null) {
+                l.setText(scores[pos].getScoreMin() + ":" + scores[pos].getScoreSec() + " | " + scores[pos].getPlayerName());
+            }
+
         }
 
-    }
-    private void setScoreLabel1(Label l, int pos) {
-        Score[] scores = readHighscore();
+        public static Score[] readHighscore (String path){
+            Score[] out = new Score[5];
 
-        scores[pos] = readHighscore1()[pos];
-        if (scores[pos] != null && scores[pos].getScoreSec() < 10) {
-            l.setText(scores[pos].getScoreMin() + ":0" + scores[pos].getScoreSec() + " | " + scores[pos].getPlayerName());
-        } else if (scores[pos] != null) {
-            l.setText(scores[pos].getScoreMin() + ":" + scores[pos].getScoreSec() + " | " + scores[pos].getPlayerName());
+
+            try {
+                FileInputStream fileIn = new FileInputStream(path);
+                ObjectInputStream in = new ObjectInputStream(fileIn);
+                out = (Score[]) in.readObject();
+            } catch (Exception e) {
+                System.out.println("Array is empty why");
+            }
+
+            return out;
         }
-
     }
-    public static Score[] readHighscore(){
-        Score[] out = new Score[5];
-
-
-        try {
-            FileInputStream fileIn = new FileInputStream(txtFileTwoCards);
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            out = (Score[]) in.readObject();
-        } catch (Exception e){
-            System.out.println("Array is empty why");
-        }
-
-        return out;
-    }
-    public static Score[] readHighscore1(){
-        Score[] out = new Score[5];
-
-
-        try {
-            FileInputStream fileIn = new FileInputStream(txtFileThreeCards);
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            out = (Score[]) in.readObject();
-        } catch (Exception e){
-            System.out.println("Array is empty why");
-        }
-
-        return out;
-    }
-
 }
+
