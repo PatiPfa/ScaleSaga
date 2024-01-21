@@ -21,8 +21,18 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 
 import static com.example.memoryprototyp1.Music.MusicPlayer.playButtonSound;
+import static com.example.memoryprototyp1.Score.deserializeScore;
+
+
 
 public class MainMenuController {
+
+
+    @FXML
+    private TextField tf_player1;
+    @FXML
+    private TextField tf_player2;
+
     @FXML
     private Label label_errormessage;
     @FXML
@@ -43,24 +53,59 @@ public class MainMenuController {
     private Slider sliderVolume;
     @FXML
     private Label one1;
+
     @FXML
     private Label one2;
+
     @FXML
     private Label one3;
+
     @FXML
     private Label one4;
+
     @FXML
     private Label one5;
     @FXML
     private Label two1;
+
     @FXML
     private Label two2;
+
     @FXML
     private Label two3;
+
     @FXML
     private Label two4;
+
     @FXML
     private Label two5;
+    @FXML
+    private VBox scoreBoardthreeCards;
+
+    @FXML
+    private VBox scoreBoardtwoCards;
+    @FXML
+    private Button buttonSoundOnOff;
+    @FXML
+    private void toggleMute(ActionEvent event) {
+        Music.MusicPlayer.toggleMute();
+        if (Music.MusicPlayer.isMuted) {
+            buttonSoundOnOff.setText("OFF");
+        } else {
+            buttonSoundOnOff.setText("ON");
+        }
+
+    }
+
+    @FXML
+    private void handleVolumeChange(MouseEvent event) {
+        double volume = sliderVolume.getValue();
+        Music.MusicPlayer.setBackgroundMusicVolume(volume/100);
+        System.out.println("Volume: " + volume);
+    }
+
+    private static String player1name;
+    private static String player2name;
 
     private Stage stage;
     private Scene scene;
@@ -75,6 +120,17 @@ public class MainMenuController {
     private static String txtFileThreeCards = "src/main/resources/com/example/memoryprototyp1/score/scoreThreeCards.txt";
     private final Image CURSOR = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/sword.png")));
 
+    /*
+     * Effekt wenn man über button streicht
+     * return: <a target="_blank" href="https://icons8.com/icon/7806/left-2">Left 2</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+     * einstellungen button: <a target="_blank" href="https://icons8.com/icon/2969/einstellungen">Einstellungen</a> Icon von <a target="_blank" href="https://icons8.com">Icons8</a>
+     * */
+
+    private static String gamemode;
+
+    public static String getGamemode() {
+        return gamemode;
+    }
 
     public static void setSingleplayer(boolean newState) {
         singleplayer = newState;
@@ -87,6 +143,7 @@ public class MainMenuController {
     public static String getPlayer1name() {
         return player1name;
     }
+
     public static String getPlayer2name() {
         return player2name;
     }
@@ -166,13 +223,13 @@ public class MainMenuController {
      * wechselt (von den Einstellungen) zurück zum Hauptmenü
      **/
     public void switchToMenu(ActionEvent event){
-        try {                                   //probieren, ob er wechseln kann
+        try {                                    //probieren, ob er wechseln kann
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainMenu.fxml")));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-        } catch (Exception e) {                 //Falls die Einstellungen nicht geöffnet werden kann, wird der Fehler in die Logdatei gespeichert
+        } catch (Exception e) {                  //Falls die Einstellungen nicht geöffnet werden kann, wird der Fehler in die Logdatei gespeichert
             writeInLog(e, "MainMenu");
         }
     }
@@ -238,6 +295,7 @@ public class MainMenuController {
         //zB. !SubMenuAP.isVisible() gibt false zurück, dann wird das SubmenuAp aufgrund der Negation mit setVisible auf true gesetzt
         SubMenuAP.setVisible(!SubMenuAP.isVisible());
         nameInputAP.setVisible(!nameInputAP.isVisible());
+        label_errormessage.setText(" ");
     }
 
     /**
@@ -304,6 +362,7 @@ public class MainMenuController {
             }catch (Exception e){
                 writeInLog(e, "Multiplayer 3 Cards");
             }
+
         }
     }
 
@@ -375,6 +434,7 @@ public class MainMenuController {
         } else if (scores[pos] != null) {
             l.setText(scores[pos].getScoreMin() + ":" + scores[pos].getScoreSec() + " | " + scores[pos].getPlayerName());
         }
+
     }
 
     public static Score[] readHighscore(String path) {

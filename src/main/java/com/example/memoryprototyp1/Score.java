@@ -72,7 +72,7 @@ public class Score implements Serializable{
 
      }
  }
-//Deserialisiert das Score-Array aus der entsprechenden Textdatei des aktuellen Spielmodus.
+//Deserialisiert das Score-Array aus der entsprechenden Textdatei des aktuellen Spielmodus
  public static Score[] deserializeScore(){
      Score[] out = new Score[5];
      String txtFile = getCurrentGameMode();
