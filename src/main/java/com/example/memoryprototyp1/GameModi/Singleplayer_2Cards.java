@@ -21,7 +21,7 @@ import static com.example.memoryprototyp1.Card.getBackOfCardsImage;
 import static com.example.memoryprototyp1.Music.MusicPlayer.playButtonSound;
 
 
-public class Singleplayer_2Cards extends BaseGame{
+public class Singleplayer_2Cards extends BaseGame {
     private int lastClickedCard;
 
     private AnchorPane highscoreAnchorPane;
@@ -36,10 +36,11 @@ public class Singleplayer_2Cards extends BaseGame{
 
     private Label placeTwo;
     private ImageView displayImageView;
+
     public Singleplayer_2Cards(int flowPaneSize, FlowPane imagesFlowPane, ImageView displayImageView, TextField highscoreName, Label placeFive, Label placeFour, Label placeOne, Label placeThree, Label placeTwo, AnchorPane highscoreAnchorPane) {
         super(flowPaneSize, imagesFlowPane);
         this.displayImageView = displayImageView;
-        this.highscoreName =  highscoreName;
+        this.highscoreName = highscoreName;
         this.placeFive = placeFive;
         this.placeFour = placeFour;
         this.placeOne = placeOne;
@@ -47,6 +48,7 @@ public class Singleplayer_2Cards extends BaseGame{
         this.placeTwo = placeTwo;
         this.highscoreAnchorPane = highscoreAnchorPane;
     }
+
     @Override
     public void initializeImageView() {
 
@@ -56,26 +58,27 @@ public class Singleplayer_2Cards extends BaseGame{
             imageView.setImage(getBackOfCardsImage());
             imageView.setUserData(i);
 
-            imageView.setOnMouseEntered(mouseEnteredEvent ->{
-                if (!this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()){
+            imageView.setOnMouseEntered(mouseEnteredEvent -> {
+                if (!this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()) {
                     this.setImageScale((int) imageView.getUserData(), 1.05);
                 }
             });
 
-            imageView.setOnMouseExited(mouseEnteredEvent ->{
+            imageView.setOnMouseExited(mouseEnteredEvent -> {
                 this.setImageScale((int) imageView.getUserData(), 1);
             });
 
             imageView.setOnMouseClicked(mouseEvent -> {
-                if ((!this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()) && !this.getCardsAreFlipped()){
+                if ((!this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()) && !this.getCardsAreFlipped()) {
                     this.flipCard((int) imageView.getUserData());
                     lastClickedCard = (int) imageView.getUserData();
                 }
             });
         }
     }
+
     @Override
-    public void play(){
+    public void play() {
         firstCard = null;
         secondCard = null;
         CardDeck deck = new CardDeck();
@@ -97,11 +100,13 @@ public class Singleplayer_2Cards extends BaseGame{
     }
 
     @Override
-    public void checkForMatch(){
+    public void checkForMatch() {
 
-        if (firstCard.sameCardAs(secondCard)){
+        cardsAreFlipped = false; //<- löschen !!!!!!!!!!!!!!!!!!!!!!
+
+        if (firstCard.sameCardAs(secondCard)) {
             System.out.println("same");
-            rotateDisplayImageView(displayImageView ,cardsInGame.get(lastClickedCard).getFrontOfCards());
+            rotateDisplayImageView(displayImageView, cardsInGame.get(lastClickedCard).getFrontOfCards());
             playButtonSound();
             cardsAreFlipped = false;
 
@@ -123,12 +128,13 @@ public class Singleplayer_2Cards extends BaseGame{
         secondCard = null;
         PauseTransition delay = new PauseTransition(Duration.millis(1500));
         delay.play();
-        delay.setOnFinished(delayEvent ->{
-            cardsAreFlipped = false;});
+        delay.setOnFinished(delayEvent -> {
+            cardsAreFlipped = false;
+        });
     }
 
     /**
-     *rotiert die Große Display Karte neben dem Spielfeld
+     * rotiert die Große Display Karte neben dem Spielfeld
      */
     public void rotateDisplayImageView(ImageView imageView, Image imageToBeShown) {
 
@@ -167,5 +173,12 @@ public class Singleplayer_2Cards extends BaseGame{
         });
     }
 
+    private void setLabel(Label l, int pos) {
+        if (Score.getScoreBoard()[pos] != null) {
+            l.setText(Integer.toString(deserializeScore()[pos].getScoreMin()) + " : " +
+                    Integer.toString(deserializeScore()[pos].getScoreSec()) + deserializeScore()[pos].getPlayerName());
+        }
 
+
+    }
 }

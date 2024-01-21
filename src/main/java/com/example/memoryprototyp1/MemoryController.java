@@ -96,8 +96,8 @@ public class MemoryController implements Initializable {
 
 
     private Timeline timeline;
-    int seconds = 0;
-    int minutes= 0;
+    private static int seconds = 0;
+    private static int minutes= 0;
     private Stage stage;
     private Scene scene;
     private Parent root;
