@@ -1,8 +1,6 @@
 package com.example.memoryprototyp1;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
@@ -22,10 +20,12 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 
 import static com.example.memoryprototyp1.Music.MusicPlayer.playButtonSound;
+import static com.example.memoryprototyp1.Score.deserializeScore;
 
 
 
 public class MainMenuController {
+
 
     @FXML
     private TextField tf_player1;
@@ -42,6 +42,34 @@ public class MainMenuController {
     private AnchorPane nameInputAP;
     @FXML
     private Slider sliderVolume;
+    @FXML
+    private Label one1;
+
+    @FXML
+    private Label one2;
+
+    @FXML
+    private Label one3;
+
+    @FXML
+    private Label one4;
+
+    @FXML
+    private Label one5;
+    @FXML
+    private Label two1;
+
+    @FXML
+    private Label two2;
+
+    @FXML
+    private Label two3;
+
+    @FXML
+    private Label two4;
+
+    @FXML
+    private Label two5;
 
 
 
@@ -52,6 +80,11 @@ public class MainMenuController {
     private Scene scene;
     private Parent root;
     private static boolean singleplayer = false;
+    private static String scoreThreeCardsContent;
+    private static String  scoreTwoCardsContent;
+    private static String txtFileTwoCards = "src/main/resources/com/example/memoryprototyp1/score/scoreTwoCards.txt";
+    private static String txtFileThreeCards = "src/main/resources/com/example/memoryprototyp1/score/scoreThreeCards.txt";
+    private String txtFile;
     private final Image CURSOR = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/sword.png")));
 
     /*
@@ -92,6 +125,7 @@ public class MainMenuController {
     public void switchToSubmenu(){
         mainMenuAP.setVisible(false);
         SubMenuAP.setVisible(true);
+        scoreDisplay();
     }
 
     public void backButton(){
@@ -244,6 +278,25 @@ public class MainMenuController {
         }
 
     }
+    public void scoreDisplay(){
+
+
+
+
+        setScoreLabel(one1, 0);
+        setScoreLabel(one2, 1);
+        setScoreLabel(one3, 2);
+        setScoreLabel(one4, 3);
+        setScoreLabel(one5,4);
+
+
+        setScoreLabel1(two1, 0);
+        setScoreLabel1(two2, 1);
+        setScoreLabel1(two3, 2);
+        setScoreLabel1(two4, 3);
+        setScoreLabel1(two5,4);
+
+    }
 
     public void returnFromNames(){
         playButtonSound();
@@ -276,6 +329,56 @@ public class MainMenuController {
     private void handleVolumeChange(MouseEvent event) {
         double volume = sliderVolume.getValue();
         Music.MusicPlayer.setBackgroundMusicVolume(volume);
+    }
+    private void setScoreLabel(Label l, int pos) {
+        Score[] scores = readHighscore();
+
+        scores[pos] = readHighscore()[pos];
+        if (scores[pos] != null && scores[pos].getScoreSec() < 10) {
+            l.setText(scores[pos].getScoreMin() + ":0" + scores[pos].getScoreSec() + " | " + scores[pos].getPlayerName());
+        } else if (scores[pos] != null) {
+            l.setText(scores[pos].getScoreMin() + ":" + scores[pos].getScoreSec() + " | " + scores[pos].getPlayerName());
+        }
+
+    }
+    private void setScoreLabel1(Label l, int pos) {
+        Score[] scores = readHighscore();
+
+        scores[pos] = readHighscore1()[pos];
+        if (scores[pos] != null && scores[pos].getScoreSec() < 10) {
+            l.setText(scores[pos].getScoreMin() + ":0" + scores[pos].getScoreSec() + " | " + scores[pos].getPlayerName());
+        } else if (scores[pos] != null) {
+            l.setText(scores[pos].getScoreMin() + ":" + scores[pos].getScoreSec() + " | " + scores[pos].getPlayerName());
+        }
+
+    }
+    public static Score[] readHighscore(){
+        Score[] out = new Score[5];
+
+
+        try {
+            FileInputStream fileIn = new FileInputStream(txtFileTwoCards);
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            out = (Score[]) in.readObject();
+        } catch (Exception e){
+            System.out.println("Array is empty why");
+        }
+
+        return out;
+    }
+    public static Score[] readHighscore1(){
+        Score[] out = new Score[5];
+
+
+        try {
+            FileInputStream fileIn = new FileInputStream(txtFileThreeCards);
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            out = (Score[]) in.readObject();
+        } catch (Exception e){
+            System.out.println("Array is empty why");
+        }
+
+        return out;
     }
 
 }

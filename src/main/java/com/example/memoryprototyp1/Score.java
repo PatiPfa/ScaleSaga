@@ -87,6 +87,7 @@ public class Score implements Serializable{
  }
 
 
+
     public int scoreToNumber(){
         String temp;
         if (this.scoreSec < 10){
@@ -97,6 +98,8 @@ public class Score implements Serializable{
 
         return Integer.parseInt(temp);
     }
+
+
 
 }
 
