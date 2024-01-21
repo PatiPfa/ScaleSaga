@@ -45,7 +45,7 @@ public class Score implements Serializable{
             out.close();
             fileOut.close();
         } catch (Exception e) {
-            System.out.println("Irdendwos geht nit ");
+            System.out.println("Irdendwos geht ni ");
             throw new RuntimeException(e);
         }
     }
