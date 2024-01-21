@@ -35,7 +35,6 @@ public class Score implements Serializable{
     public int getScoreSec() {
         return scoreSec;
     }
-
     public String getPlayerName(){
         return this.player;
     }
