@@ -104,6 +104,8 @@ public class MemoryController implements Initializable {
     @FXML
     private Text name2;
 
+
+
     private static String highscoreNameS;
     private Timeline timeline;
     private static int seconds = 0;
@@ -112,7 +114,9 @@ public class MemoryController implements Initializable {
     private Scene scene;
     private Parent root;
     private Image curser = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/sword.png")));
-    private boolean alreadyEnteredName;
+    private boolean alreadyEnteredName;//verhindert mehrfacheingabe im ScoreBoard
+
+
     public static int getSeconds() {
         return seconds;
     }
@@ -124,6 +128,8 @@ public class MemoryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        //1: Singleplayer 2 Cards, 2: Singleplayer 3 Cards
+        //3: Multiplayer 2 Cards, 4: Multiplayer 3 Cards
         switch (getGamemode()) {
             case "Singleplayer2Cards":
                 this.game = new Singleplayer_2Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, displayImageView, highscoreName, placeFive, placeFour, placeOne, placeThree, placeTwo, highscoreAnchorPane, yourScoreLabel);
@@ -150,7 +156,7 @@ public class MemoryController implements Initializable {
     }
 
 
-    //   Timer
+    //    Timer
     private void timer() {
         if (timeline != null) {
             timeline.stop();
