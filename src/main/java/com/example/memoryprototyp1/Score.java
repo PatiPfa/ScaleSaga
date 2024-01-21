@@ -12,6 +12,7 @@ public class Score implements Serializable{
     private String player;
 
 
+
     private static Score[] scoreBoard = new Score[5];
 
 
