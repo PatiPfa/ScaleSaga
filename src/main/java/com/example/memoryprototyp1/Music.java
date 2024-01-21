@@ -41,7 +41,7 @@ public class Music {
             if (isMuted) {
                 setBackgroundMusicVolume(mute);
             } else {
-                setBackgroundMusicVolume(0.4);
+                setBackgroundMusicVolume(volumeBackground);
                 
             }
         }
@@ -51,7 +51,7 @@ public class Music {
             Media sound = new Media(Objects.requireNonNull(Music.class.getResource(soundPath)).toExternalForm());
             MediaPlayer mediaPlayer = new MediaPlayer(sound);
             if(!isMuted) {
-                mediaPlayer.setVolume(0.5);
+                mediaPlayer.setVolume(0.1);
                 mediaPlayer.play();
             }else {
                 mediaPlayer.setVolume(mute);
