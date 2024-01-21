@@ -16,6 +16,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 
@@ -70,6 +71,11 @@ public class MainMenuController {
 
     @FXML
     private Label two5;
+    @FXML
+    private VBox scoreBoardthreeCards;
+
+    @FXML
+    private VBox scoreBoardtwoCards;
 
 
 
@@ -113,13 +119,14 @@ public class MainMenuController {
     public void singleplayer(){
         playButtonSound();
         singleplayer = true;
-
         switchToSubmenu();
     }
 
     public void multiplayer(){
         playButtonSound();
         switchToSubmenu();
+        scoreBoardtwoCards.setVisible(false);
+        scoreBoardthreeCards.setVisible(false);
     }
 
     public void switchToSubmenu(){
@@ -278,10 +285,8 @@ public class MainMenuController {
         }
 
     }
+    //Speichert die Highscore namen in die Labels
     public void scoreDisplay(){
-
-
-
 
         setScoreLabel(one1, 0);
         setScoreLabel(one2, 1);
@@ -289,15 +294,12 @@ public class MainMenuController {
         setScoreLabel(one4, 3);
         setScoreLabel(one5,4);
 
-
         setScoreLabel1(two1, 0);
         setScoreLabel1(two2, 1);
         setScoreLabel1(two3, 2);
         setScoreLabel1(two4, 3);
         setScoreLabel1(two5,4);
-
     }
-
     public void returnFromNames(){
         playButtonSound();
         tf_player1.setText("Player 1");
@@ -306,7 +308,6 @@ public class MainMenuController {
 
         switchMainToNames();
     }
-
 
     //The following method has been copied from ChatGPT: https://chat.openai.com/share/62ddc123-fe7c-4f0d-9e13-9c5c91bab0a5 (20.01.2024
     private void writeInLog(Exception e, String Fehlerseite) {

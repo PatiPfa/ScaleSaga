@@ -43,6 +43,8 @@ public class Score implements Serializable{
     public static Score[] getScoreBoard() {
         return scoreBoard;
     }
+
+   //Gibt den Pfad zur Textdatei des aktuellen Spielmodus zurück.
     public static String getCurrentGameMode() {
         String currentGameMode = getGamemode();
         switch (currentGameMode) {
@@ -54,14 +56,14 @@ public class Score implements Serializable{
                 return null;
         }
     }
-
+//Serialisiert den Score-Array und speichert es in der entsprechenden Textdatei des aktuellen Spielmodus.
  public static void serializeScore(Score[] s){
      String txtFile = getCurrentGameMode();
 
      try {
          FileOutputStream fileOut = new FileOutputStream(txtFile);
          ObjectOutputStream out = new ObjectOutputStream(fileOut);
-         out.writeObject(s);
+         out.writeObject(s);                                            // Schreibt das Score-Array in die Textdatei
          out.close();
          fileOut.close();
      } catch (Exception e) {
@@ -70,7 +72,7 @@ public class Score implements Serializable{
 
      }
  }
-
+//Deserialisiert das Score-Array aus der entsprechenden Textdatei des aktuellen Spielmodus.
  public static Score[] deserializeScore(){
      Score[] out = new Score[5];
      String txtFile = getCurrentGameMode();

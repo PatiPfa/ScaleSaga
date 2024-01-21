@@ -151,7 +151,7 @@
                   <Font name="Imprint MT Shadow" size="15.0" />
                </font>
             </Button>
-            <VBox layoutX="84.0" layoutY="97.0" prefHeight="300.0" prefWidth="200.0">
+            <VBox fx:id="scoreBoardtwoCards" layoutX="84.0" layoutY="97.0" prefHeight="300.0" prefWidth="200.0">
                <children>
                   <Label alignment="TOP_CENTER" maxHeight="-Infinity" text=" HIGHSCORE 2 CARDS" textFill="WHITE">
                      <font>
@@ -237,7 +237,7 @@
                   </GridPane>
                </children>
             </VBox>
-            <VBox layoutX="923.0" layoutY="97.0" prefHeight="300.0" prefWidth="200.0">
+            <VBox fx:id="scoreBoardthreeCards" layoutX="923.0" layoutY="97.0" prefHeight="300.0" prefWidth="200.0">
                <children>
                   <Label alignment="CENTER" text="HIGHSCORE 3 CARDS" textAlignment="CENTER" textFill="WHITE">
                      <font>
