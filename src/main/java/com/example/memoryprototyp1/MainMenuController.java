@@ -80,7 +80,6 @@ public class MainMenuController {
         singleplayer = newState;
     }
 
-
     public static String getGamemode() {
         return gamemode;
     }
