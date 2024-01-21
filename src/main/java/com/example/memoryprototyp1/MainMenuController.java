@@ -267,7 +267,6 @@ public class MainMenuController {
      * Button um die Namenseingabe zu bestätigen
      **/
     public void submitNames(ActionEvent event){
-
         //speichert die Eingabe der Textfelder in eine Variable
         player1name = tf_player1.getText();
         player2name = tf_player2.getText();

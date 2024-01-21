@@ -15,7 +15,6 @@ public class Score implements Serializable{
     private String player;
     private static String txtFile;
 
-
     private static Score[] scoreBoard = new Score[5];
 
     public static void setScoreBoard(Score[] scoreBoard) {
