@@ -104,8 +104,6 @@ public class MemoryController implements Initializable {
     @FXML
     private Text name2;
 
-
-
     private static String highscoreNameS;
     private Timeline timeline;
     private static int seconds = 0;

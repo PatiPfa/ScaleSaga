@@ -439,7 +439,6 @@ public class MainMenuController {
     public static Score[] readHighscore(String path) {
         Score[] out = new Score[5];
 
-
         try {
             FileInputStream fileIn = new FileInputStream(path);
             ObjectInputStream in = new ObjectInputStream(fileIn);
