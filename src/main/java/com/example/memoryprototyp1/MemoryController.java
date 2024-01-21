@@ -19,7 +19,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 
@@ -230,7 +229,7 @@ public class MemoryController implements Initializable {
 
             for (int i = 0; i < 5; i++) {
                 if (getScoreBoard()[i] != null) {
-                    if (getScoreBoard()[i].getScoreMin() >= score.getScoreMin() && getScoreBoard()[i].getScoreSec() >= score.getScoreSec() && !alreadyEnteredName) {
+                    if (score.scoreToNumber() < getScoreBoard()[i].scoreToNumber() && !alreadyEnteredName) {
                         alreadyEnteredName = true;
                         for (int j = 4; j > i; j--) {
                             getScoreBoard()[j] = getScoreBoard()[j - 1];
@@ -247,18 +246,20 @@ public class MemoryController implements Initializable {
 
         serializeScore(getScoreBoard());
 
-        setLabel(placeOne, 0);
-        setLabel(placeTwo, 1);
-        setLabel(placeThree, 2);
-        setLabel(placeFour, 3);
-        setLabel(placeFive, 4);
+        setScoreLabel(placeOne, 0);
+        setScoreLabel(placeTwo, 1);
+        setScoreLabel(placeThree, 2);
+        setScoreLabel(placeFour, 3);
+        setScoreLabel(placeFive, 4);
     }
 
-    private void setLabel(Label l, int pos) {
+    private void setScoreLabel(Label l, int pos) {
         Score[] scores = new Score[5];
 
         scores[pos] = deserializeScore()[pos];
-        if (scores[pos] != null) {
+        if (scores[pos] != null && scores[pos].getScoreSec() < 10) {
+            l.setText(scores[pos].getScoreMin() + ":0" + scores[pos].getScoreSec() + " | " + scores[pos].getPlayerName());
+        } else if (scores[pos] != null) {
             l.setText(scores[pos].getScoreMin() + ":" + scores[pos].getScoreSec() + " | " + scores[pos].getPlayerName());
         }
     }

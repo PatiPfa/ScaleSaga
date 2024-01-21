@@ -180,14 +180,15 @@ public class Singleplayer_2Cards extends BaseGame {
         });
     }
 
-    private void setScoreLabel(Label l, int pos){
+    private void setScoreLabel(Label l, int pos) {
         Score[] scores = new Score[5];
 
         scores[pos] = deserializeScore()[pos];
-        if (scores[pos] != null && scores[pos].getScoreSec()< 10){
+        if (scores[pos] != null && scores[pos].getScoreSec() < 10) {
             l.setText(scores[pos].getScoreMin() + ":0" + scores[pos].getScoreSec() + " | " + scores[pos].getPlayerName());
         } else if (scores[pos] != null) {
             l.setText(scores[pos].getScoreMin() + ":" + scores[pos].getScoreSec() + " | " + scores[pos].getPlayerName());
         }
+
     }
 }
