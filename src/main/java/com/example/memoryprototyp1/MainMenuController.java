@@ -94,6 +94,11 @@ public class MainMenuController {
         double volume = sliderVolume.getValue();
         Music.MusicPlayer.setBackgroundMusicVolume(volume/100);
         System.out.println("Volume: " + volume);
+        if(volume > 0.0){
+            buttonSoundOnOff.setText("ON");
+        }else{
+            buttonSoundOnOff.setText("OFF");
+        }
     }
 
     private static String player1name;
