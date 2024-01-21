@@ -147,14 +147,10 @@ public class Singleplayer_2Cards extends BaseGame {
         firstCard = null;
         secondCard = null;
         PauseTransition delay = new PauseTransition(Duration.millis(1500));
-
-        if (cardsAreFlipped){
-            delay.play();
-            delay.setOnFinished(delayEvent -> {
-                cardsAreFlipped = false;
-            });
-        }
-
+        delay.play();
+        delay.setOnFinished(delayEvent -> {
+            cardsAreFlipped = false;
+        });
     }
 
     /**
