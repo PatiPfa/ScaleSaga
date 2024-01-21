@@ -78,7 +78,7 @@ public class MainMenuController {
     @FXML
     private void handleVolumeChange(MouseEvent event) {
         double volume = sliderVolume.getValue();
-        Music.MusicPlayer.setBackgroundMusicVolume(volume/100);
+        Music.MusicPlayer.setBackgroundMusicVolume(volume/120);
         System.out.println("Volume: " + volume);
         if(volume > 0.0){
             buttonSoundOnOff.setText("ON");
