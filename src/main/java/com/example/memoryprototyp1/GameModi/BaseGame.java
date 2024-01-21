@@ -65,6 +65,7 @@ public abstract class BaseGame {
 
     /**
      * Methode wird am Start des Spiels automatisch ausgeführt
+     * Weißt jeder Karte eine userData zu und bestimmt die Aktionen, wenn Karten mit der Maus interagieren
      */
     public void initializeImageView() {
 
@@ -153,12 +154,16 @@ public abstract class BaseGame {
 
         firstCard = null;
         secondCard = null;
-        PauseTransition delay = new PauseTransition(Duration.millis(1500));
+
+        PauseTransition delay = new PauseTransition(Duration.millis(timeCardsAreReveledInMillSec));
+
         if (cardsAreFlipped){
             delay.play();
+            delay.setOnFinished(delayEvent ->{
+                cardsAreFlipped = false;});
         }
-        delay.setOnFinished(delayEvent ->{
-            cardsAreFlipped = false;});
+
+
     }
 
     /**
@@ -212,15 +217,14 @@ public abstract class BaseGame {
 
         int indexFirstCard = cardsInGame.indexOf(firstCard);
         int indexSecondCard = cardsInGame.indexOf(secondCard);
-        PauseTransition delay = new PauseTransition(Duration.millis(1500)); //<-time how long the cards are revealed
+        PauseTransition delay = new PauseTransition(Duration.millis(timeCardsAreReveledInMillSec)); //<-Zeit wie lange Karten aufgedeckt sind
         delay.play();
         delay.setOnFinished(delayEvent ->{
             rotate(indexFirstCard, getBackOfCardsImage(), 0);
             rotate(indexSecondCard, getBackOfCardsImage(), 0);
-            PauseTransition delay2 = new PauseTransition(Duration.millis(485));//<- after delay setRevealed is set
-                                                                                // false, this prevents card flip bugs
-            delay2.play();
-            delay2.setOnFinished(cardsAreFlippedBack ->{
+            PauseTransition delay2 = new PauseTransition(Duration.millis(485));//<- nach diesem Delay wird setReveald
+            delay2.play();                                                        // wieder auf false gesetzt, dass
+            delay2.setOnFinished(cardsAreFlippedBack ->{                           // verhindert umdreh Bugs
                 cardsInGame.get(indexFirstCard).setRevealed(false);
                 cardsInGame.get(indexSecondCard).setRevealed(false);
             });
