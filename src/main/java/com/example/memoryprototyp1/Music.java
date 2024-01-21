@@ -12,24 +12,25 @@ public class Music {
 
         private static MediaPlayer backgroundMusic;
         private static boolean isMuted;
-
+        //Hintergrundmusik ab und setzt eine Endlos-Wiedergabe-Schleife.
         public static void playBackgroundMusic(Media media) {
             if (backgroundMusic != null) {
                 backgroundMusic.stop();
 
             }
             backgroundMusic = new MediaPlayer(media);
+            // Endlos-Wiedergabe-Schleife
             backgroundMusic.setOnEndOfMedia(() -> playBackgroundMusic(backgroundMusic.getMedia()));
             backgroundMusic.setVolume(0.4);
             backgroundMusic.play();
         }
-
+        //Lautstärke der Hintergrundmusik
         public static void setBackgroundMusicVolume(double volume) {
             if (backgroundMusic != null) {
                 backgroundMusic.setVolume(volume);
             }
         }
-
+        //Schaltet die Hintergrundmusik stumm oder an
         public static void toggleMute() {
             isMuted = !isMuted;
 
@@ -40,7 +41,7 @@ public class Music {
                 
             }
         }
-
+        //Spielt den Ton für den Tastendruck ab, wenn nicht stummgeschaltet.
         public static void playButtonSound() {
             String soundPath = "/com/example/memoryprototyp1/sounds/buttonSound.mp3";
             Media sound = new Media(Objects.requireNonNull(Music.class.getResource(soundPath)).toExternalForm());
