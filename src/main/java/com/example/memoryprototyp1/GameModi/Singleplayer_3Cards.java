@@ -154,7 +154,7 @@ public class Singleplayer_3Cards extends BaseGame {
         int indexFirstCard = cardsInGame.indexOf(firstCard);
         int indexSecondCard = cardsInGame.indexOf(secondCard);
         int indexThirdCard = cardsInGame.indexOf(thirdCard);
-        PauseTransition delay = new PauseTransition(Duration.millis(timeCardsAreReveledInMillSec)); //<- time how long the cards are revealed
+        PauseTransition delay = new PauseTransition(Duration.millis(1500)); //<- time how long the cards are revealed
         delay.play();
         delay.setOnFinished(delayEvent ->{
             rotate(indexFirstCard, getBackOfCardsImage(), 0);
