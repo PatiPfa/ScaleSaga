@@ -98,6 +98,7 @@ public class MemoryController implements Initializable {
     private Label yourScoreLabel;
     @FXML
     private Label errorNameTooLong;
+    @FXML
     private Text name2;
 
 
