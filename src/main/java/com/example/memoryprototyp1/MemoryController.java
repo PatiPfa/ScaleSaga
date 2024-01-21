@@ -142,6 +142,7 @@ public class MemoryController implements Initializable {
     }
 
 
+
 //    Timer
     private void timer() {
         if (timeline != null) {

@@ -4,14 +4,13 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.List;
 import java.io.Serializable;
 public class Score implements Serializable{
 
     private int scoreSec;
     private int scoreMin;
     private String player;
+
 
     private static Score[] scoreBoard = new Score[5];
 
