@@ -9,284 +9,398 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="558.0" prefWidth="1200.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.memoryprototyp1.MemoryController">
+
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.memoryprototyp1.MemoryController">
    <children>
-      <ImageView fitHeight="724.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/Background2.png" />
-         </image>
-      </ImageView>
-      <VBox layoutX="-1.6" layoutY="-4.8" prefHeight="536.0" prefWidth="1200.0" AnchorPane.bottomAnchor="160.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <StackPane>
          <children>
-            <FlowPane fx:id="imagesFlowPane" alignment="CENTER" prefHeight="653.0" prefWidth="1060.0">
+            <AnchorPane prefHeight="558.0" prefWidth="1200.0" stylesheets="@styles.css">
                <children>
-                  <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="724.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/back.png" />
+                        <Image url="@images/Background2.png" />
                      </image>
-                     <FlowPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </FlowPane.margin>
                   </ImageView>
-                  <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/back.png" />
-                     </image>
-                     <FlowPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </FlowPane.margin>
-                  </ImageView>
-                  <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/back.png" />
-                     </image>
-                     <FlowPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </FlowPane.margin>
-                  </ImageView>
-                  <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/back.png" />
-                     </image>
-                     <FlowPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </FlowPane.margin>
-                  </ImageView>
-                  <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/back.png" />
-                     </image>
-                     <FlowPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </FlowPane.margin>
-                  </ImageView>
-                  <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/back.png" />
-                     </image>
-                     <FlowPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </FlowPane.margin>
-                  </ImageView>
-                  <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/back.png" />
-                     </image>
-                     <FlowPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </FlowPane.margin>
-                  </ImageView>
-                  <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/back.png" />
-                     </image>
-                     <FlowPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </FlowPane.margin>
-                  </ImageView>
-                  <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/back.png" />
-                     </image>
-                     <FlowPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </FlowPane.margin>
-                  </ImageView>
-                  <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/back.png" />
-                     </image>
-                     <FlowPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </FlowPane.margin>
-                  </ImageView>
-                  <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/back.png" />
-                     </image>
-                     <FlowPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </FlowPane.margin>
-                  </ImageView>
-                  <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/back.png" />
-                     </image>
-                     <FlowPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </FlowPane.margin>
-                  </ImageView>
-                  <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/back.png" />
-                     </image>
-                     <FlowPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </FlowPane.margin>
-                  </ImageView>
-                  <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/back.png" />
-                     </image>
-                     <FlowPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </FlowPane.margin>
-                  </ImageView>
-                  <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/back.png" />
-                     </image>
-                     <FlowPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </FlowPane.margin>
-                  </ImageView>
-                  <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/back.png" />
-                     </image>
-                     <FlowPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </FlowPane.margin>
-                  </ImageView>
-                  <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/back.png" />
-                     </image>
-                     <FlowPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </FlowPane.margin>
-                  </ImageView>
-                  <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/back.png" />
-                     </image>
-                     <FlowPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </FlowPane.margin>
-                  </ImageView>
-                  <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/back.png" />
-                     </image>
-                     <FlowPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </FlowPane.margin>
-                  </ImageView>
-                  <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/back.png" />
-                     </image>
-                     <FlowPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </FlowPane.margin>
-                  </ImageView>
-                  <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/back.png" />
-                     </image>
-                     <FlowPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </FlowPane.margin>
-                  </ImageView>
-                  <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/back.png" />
-                     </image>
-                     <FlowPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </FlowPane.margin>
-                  </ImageView>
-                  <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/back.png" />
-                     </image>
-                     <FlowPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </FlowPane.margin>
-                  </ImageView>
-                  <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/back.png" />
-                     </image>
-                     <FlowPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </FlowPane.margin>
-                  </ImageView>
-                  <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/back.png" />
-                     </image>
-                     <FlowPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </FlowPane.margin>
-                  </ImageView>
-                  <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/back.png" />
-                     </image>
-                     <FlowPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </FlowPane.margin>
-                  </ImageView>
-                  <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/back.png" />
-                     </image>
-                     <FlowPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </FlowPane.margin>
-                  </ImageView>
+                  <VBox layoutX="-1.6" layoutY="-4.8" prefHeight="536.0" prefWidth="1200.0" AnchorPane.bottomAnchor="160.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <FlowPane fx:id="imagesFlowPane" alignment="CENTER" prefHeight="653.0" prefWidth="1060.0">
+                           <children>
+                              <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/back.png" />
+                                 </image>
+                                 <FlowPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </FlowPane.margin>
+                              </ImageView>
+                              <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/back.png" />
+                                 </image>
+                                 <FlowPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </FlowPane.margin>
+                              </ImageView>
+                              <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/back.png" />
+                                 </image>
+                                 <FlowPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </FlowPane.margin>
+                              </ImageView>
+                              <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/back.png" />
+                                 </image>
+                                 <FlowPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </FlowPane.margin>
+                              </ImageView>
+                              <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/back.png" />
+                                 </image>
+                                 <FlowPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </FlowPane.margin>
+                              </ImageView>
+                              <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/back.png" />
+                                 </image>
+                                 <FlowPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </FlowPane.margin>
+                              </ImageView>
+                              <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/back.png" />
+                                 </image>
+                                 <FlowPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </FlowPane.margin>
+                              </ImageView>
+                              <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/back.png" />
+                                 </image>
+                                 <FlowPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </FlowPane.margin>
+                              </ImageView>
+                              <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/back.png" />
+                                 </image>
+                                 <FlowPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </FlowPane.margin>
+                              </ImageView>
+                              <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/back.png" />
+                                 </image>
+                                 <FlowPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </FlowPane.margin>
+                              </ImageView>
+                              <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/back.png" />
+                                 </image>
+                                 <FlowPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </FlowPane.margin>
+                              </ImageView>
+                              <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/back.png" />
+                                 </image>
+                                 <FlowPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </FlowPane.margin>
+                              </ImageView>
+                              <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/back.png" />
+                                 </image>
+                                 <FlowPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </FlowPane.margin>
+                              </ImageView>
+                              <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/back.png" />
+                                 </image>
+                                 <FlowPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </FlowPane.margin>
+                              </ImageView>
+                              <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/back.png" />
+                                 </image>
+                                 <FlowPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </FlowPane.margin>
+                              </ImageView>
+                              <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/back.png" />
+                                 </image>
+                                 <FlowPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </FlowPane.margin>
+                              </ImageView>
+                              <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/back.png" />
+                                 </image>
+                                 <FlowPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </FlowPane.margin>
+                              </ImageView>
+                              <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/back.png" />
+                                 </image>
+                                 <FlowPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </FlowPane.margin>
+                              </ImageView>
+                              <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/back.png" />
+                                 </image>
+                                 <FlowPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </FlowPane.margin>
+                              </ImageView>
+                              <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/back.png" />
+                                 </image>
+                                 <FlowPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </FlowPane.margin>
+                              </ImageView>
+                              <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/back.png" />
+                                 </image>
+                                 <FlowPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </FlowPane.margin>
+                              </ImageView>
+                              <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/back.png" />
+                                 </image>
+                                 <FlowPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </FlowPane.margin>
+                              </ImageView>
+                              <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/back.png" />
+                                 </image>
+                                 <FlowPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </FlowPane.margin>
+                              </ImageView>
+                              <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/back.png" />
+                                 </image>
+                                 <FlowPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </FlowPane.margin>
+                              </ImageView>
+                              <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/back.png" />
+                                 </image>
+                                 <FlowPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </FlowPane.margin>
+                              </ImageView>
+                              <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/back.png" />
+                                 </image>
+                                 <FlowPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </FlowPane.margin>
+                              </ImageView>
+                              <ImageView fitHeight="300.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/back.png" />
+                                 </image>
+                                 <FlowPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </FlowPane.margin>
+                              </ImageView>
+                           </children>
+                        </FlowPane>
+                     </children>
+                  </VBox>
+                  <Button layoutX="838.0" layoutY="514.0" mnemonicParsing="false" onAction="#playAgain" text="PLAY AGAIN" textOverrun="CLIP">
+                     <font>
+                        <Font name="Imprint MT Shadow" size="36.0" />
+                     </font>
+                  </Button>
+                  <FlowPane layoutX="213.0" layoutY="580.0" />
+                  <GridPane layoutX="62.0" layoutY="581.0" prefHeight="30.0" prefWidth="437.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="223.0" minWidth="10.0" prefWidth="223.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="167.0" minWidth="10.0" prefWidth="60.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="10.0" prefWidth="35.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="114.0" minWidth="10.0" prefWidth="114.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Text fx:id="timeText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Time:">
+                           <font>
+                              <Font name="Imprint MT Shadow" size="70.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="min" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="min" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="Imprint MT Shadow" size="70.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text=":" GridPane.columnIndex="2">
+                           <font>
+                              <Font name="Imprint MT Shadow" size="70.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="sec" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="sec" wrappingWidth="195.00390625" GridPane.columnIndex="3">
+                           <font>
+                              <Font name="Imprint MT Shadow" size="70.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </GridPane>
+                  <Button fx:id="btn_return" layoutX="843.0" layoutY="596.0" mnemonicParsing="false" onAction="#returnToMainMenu" prefHeight="67.0" prefWidth="274.0" text="MAIN MENU">
+                     <font>
+                        <Font name="Imprint MT Shadow" size="30.0" />
+                     </font>
+                  </Button>
                </children>
-            </FlowPane>
+            </AnchorPane>
+            <AnchorPane fx:id="highscoreAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="377.0" visible="false">
+               <children>
+                  <ImageView fitHeight="588.0" fitWidth="433.0" layoutY="-63.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/background_sword.jpg" />
+                     </image>
+                  </ImageView>
+                  <Rectangle fx:id="errorNameToLong" arcHeight="5.0" arcWidth="5.0" fill="#56585b" height="588.0" layoutY="-63.0" opacity="0.62" stroke="BLACK" strokeType="INSIDE" width="357.0" />
+                  <GridPane layoutX="61.0" layoutY="125.0" prefHeight="202.0" prefWidth="257.0" AnchorPane.bottomAnchor="200.0" AnchorPane.rightAnchor="59.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="41.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="213.0" minWidth="10.0" prefWidth="213.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label contentDisplay="CENTER" text="1." textFill="#fcfcfc">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label text="2." textFill="#fcfcfc" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label text="3." textFill="#fcfcfc" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label text="4." textFill="#fcfcfc" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label text="5." textFill="#fcfcfc" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="placeOne" text="first place" textFill="#fcfcfc" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="placeTwo" text="second place" textFill="#fcfcfc" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="placeThree" text="third place" textFill="#fcfcfc" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="placeFour" text="fourth place" textFill="#fcfcfc" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="placeFive" text="fifth place" textFill="#fcfcfc" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
+                  <Label alignment="CENTER" layoutX="84.0" layoutY="6.0" text="HIGHSCORE" textFill="#8ac973">
+                     <font>
+                        <Font size="35.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="30.0" layoutY="318.0" prefHeight="36.0" prefWidth="136.0" text="Enter your name:" textFill="WHITE">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="highscoreName" layoutX="27.0" layoutY="354.0" prefHeight="30.0" prefWidth="189.0" />
+                  <Label fx:id="yourScoreLabel" layoutX="98.0" layoutY="283.0" text="New Highscore" textFill="#82ff71">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="buttonReturn" layoutX="139.0" layoutY="434.0" mnemonicParsing="false" onAction="#returnFromScoreBoard" text="return" />
+                  <Button fx:id="buttonSubmit" layoutX="233.0" layoutY="357.0" mnemonicParsing="false" onAction="#submitName" text="Submit" />
+                  <Label fx:id="errorNameTooLong" layoutX="14.0" layoutY="394.0" prefHeight="27.0" prefWidth="335.0" textFill="#ff2828">
+                     <font>
+                        <Font name="Cascadia Code Regular" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </AnchorPane>
          </children>
-      </VBox>
-      <Button layoutX="838.0" layoutY="514.0" mnemonicParsing="false" onAction="#playAgain" text="PLAY AGAIN" textOverrun="CLIP">
-         <font>
-            <Font name="Imprint MT Shadow" size="36.0" />
-         </font>
-      </Button>
-      <FlowPane layoutX="213.0" layoutY="580.0" />
-      <GridPane layoutX="62.0" layoutY="581.0" prefHeight="30.0" prefWidth="437.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="223.0" minWidth="10.0" prefWidth="223.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="167.0" minWidth="10.0" prefWidth="60.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="10.0" prefWidth="35.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="114.0" minWidth="10.0" prefWidth="114.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Text fx:id="timeText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Time:">
-               <font>
-                  <Font name="Imprint MT Shadow" size="70.0" />
-               </font>
-            </Text>
-            <Text fx:id="min" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="min" GridPane.columnIndex="1">
-               <font>
-                  <Font name="Imprint MT Shadow" size="70.0" />
-               </font>
-            </Text>
-            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text=":" GridPane.columnIndex="2">
-               <font>
-                  <Font name="Imprint MT Shadow" size="70.0" />
-               </font>
-            </Text>
-            <Text fx:id="sec" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="sec" wrappingWidth="195.00390625" GridPane.columnIndex="3">
-               <font>
-                  <Font name="Imprint MT Shadow" size="70.0" />
-               </font>
-            </Text>
-         </children>
-      </GridPane>
-      <Button fx:id="btn_return" layoutX="843.0" layoutY="596.0" mnemonicParsing="false" onAction="#returnToMainMenu" prefHeight="67.0" prefWidth="274.0" text="MAIN MENU">
-         <font>
-            <Font name="Imprint MT Shadow" size="30.0" />
-         </font>
-      </Button>
+      </StackPane>
    </children>
-</AnchorPane>
+</VBox>

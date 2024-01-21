@@ -6,11 +6,14 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
+import static com.example.memoryprototyp1.MainMenuController.getGamemode;
+
 public class Score implements Serializable{
 
     private int scoreSec;
     private int scoreMin;
     private String player;
+    private static String txtFile;
 
 
 
@@ -40,32 +43,49 @@ public class Score implements Serializable{
     public static Score[] getScoreBoard() {
         return scoreBoard;
     }
-
-    public static void serializeScore(Score[] s){
-        try {
-            FileOutputStream fileOut = new FileOutputStream("src/main/resources/com/example/memoryprototyp1/score/score.txt");
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(s);
-            out.close();
-            fileOut.close();
-        } catch (Exception e) {
-            System.out.println("Irdendwos geht nit ");
-            throw new RuntimeException(e);
+    public static String getCurrentGameMode() {
+        String currentGameMode = getGamemode();
+        switch (currentGameMode) {
+            case "Singleplayer2Cards":
+                return txtFile =  "src/main/resources/com/example/memoryprototyp1/score/scoreTwoCards.txt";
+            case "Singleplayer3Cards":
+                return txtFile = "src/main/resources/com/example/memoryprototyp1/score/scoreThreeCards.txt";
+            default:
+                return null;
         }
     }
 
-    public static Score[] deserializeScore(){
-        Score[] out = new Score[5];
-        try {
-            FileInputStream fileIn = new FileInputStream("src/main/resources/com/example/memoryprototyp1/score/score.txt");
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            out = (Score[]) in.readObject();
-        } catch (Exception e){
-            System.out.println("Array is empty");
-        }
+ public static void serializeScore(Score[] s){
+     String txtFile = getCurrentGameMode();
 
-        return out;
-    }
+     try {
+         FileOutputStream fileOut = new FileOutputStream(txtFile);
+         ObjectOutputStream out = new ObjectOutputStream(fileOut);
+         out.writeObject(s);
+         out.close();
+         fileOut.close();
+     } catch (Exception e) {
+         System.out.println("Irdendwos geht nit ");
+         throw new RuntimeException(e);
+
+     }
+ }
+
+ public static Score[] deserializeScore(){
+     Score[] out = new Score[5];
+     String txtFile = getCurrentGameMode();
+
+     try {
+         FileInputStream fileIn = new FileInputStream(txtFile);
+         ObjectInputStream in = new ObjectInputStream(fileIn);
+         out = (Score[]) in.readObject();
+     } catch (Exception e){
+         System.out.println("Array is empty");
+     }
+
+     return out;
+ }
+
 
     public int scoreToNumber(){
         String temp;
@@ -77,4 +97,6 @@ public class Score implements Serializable{
 
         return Integer.parseInt(temp);
     }
+
 }
+

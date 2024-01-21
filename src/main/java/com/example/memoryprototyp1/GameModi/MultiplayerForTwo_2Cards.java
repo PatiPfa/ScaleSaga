@@ -101,8 +101,6 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         });
         initialDelay.play();
 
-
-
         player1 = new Player(MainMenuController.getPlayer1name());
         player2 = new Player(MainMenuController.getPlayer2name());
 

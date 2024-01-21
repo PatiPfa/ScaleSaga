@@ -3,8 +3,14 @@ package com.example.memoryprototyp1.GameModi;
 import com.example.memoryprototyp1.Card;
 import com.example.memoryprototyp1.CardDeck;
 import com.example.memoryprototyp1.GameModi.BaseGame;
+import com.example.memoryprototyp1.MemoryController;
+import com.example.memoryprototyp1.Score;
 import javafx.animation.PauseTransition;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.util.Duration;
 
@@ -13,12 +19,37 @@ import java.util.Collections;
 
 import static com.example.memoryprototyp1.Card.getBackOfCardsImage;
 import static com.example.memoryprototyp1.Music.MusicPlayer.playButtonSound;
+import static com.example.memoryprototyp1.Score.deserializeScore;
+
 
 public class Singleplayer_3Cards extends BaseGame {
 
     private Card thirdCard;
-    public Singleplayer_3Cards(int flowPaneSize, FlowPane imagesFlowPane) {
+    private ImageView displayImageView;
+    private TextField highscoreName;
+    private Label placeFive;
+    private Label placeFour;
+
+    private Label placeOne;
+
+    private Label placeThree;
+
+    private Label placeTwo;
+
+    private Label yourScoreLabel;
+    private AnchorPane highscoreAnchorPane;
+    public Singleplayer_3Cards(int flowPaneSize, FlowPane imagesFlowPane, ImageView displayImageView, TextField highscoreName, Label placeFive, Label placeFour, Label placeOne, Label placeThree, Label placeTwo, AnchorPane highscoreAnchorPane, Label yourScoreLabel)
+    {
         super(flowPaneSize, imagesFlowPane);
+        this.displayImageView = displayImageView;
+        this.highscoreName = highscoreName;
+        this.placeFive = placeFive;
+        this.placeFour = placeFour;
+        this.placeOne = placeOne;
+        this.placeThree = placeThree;
+        this.placeTwo = placeTwo;
+        this.highscoreAnchorPane = highscoreAnchorPane;
+        this.yourScoreLabel = yourScoreLabel;
     }
 
     @Override
@@ -76,15 +107,23 @@ public class Singleplayer_3Cards extends BaseGame {
 
 
         } else {
-            rotateBack();
+         //   rotateBack();   <- auskommentieren !!!!!!!!!!!!!!!!!!!!!!!!!!
         }
 
         if (gameFinished()) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Winner!");
-            alert.setHeaderText(null);
-            alert.setContentText("You have won :D");
-            alert.showAndWait();
+            highscoreAnchorPane.setVisible(true);
+            if (MemoryController.getSeconds() < 10){
+                yourScoreLabel.setText("YOUR TIME: " + MemoryController.getMinutes() + ":0" + MemoryController.getSeconds());
+            } else {
+                yourScoreLabel.setText("YOUR TIME: " + MemoryController.getMinutes() + ":" + MemoryController.getSeconds());
+            }
+
+            Score.setScoreBoard(Score.deserializeScore());
+            setScoreLabel(placeOne, 0);
+            setScoreLabel(placeTwo, 1);
+            setScoreLabel(placeThree, 2);
+            setScoreLabel(placeFour, 3);
+            setScoreLabel(placeFive,4);
         }
 
         firstCard = null;
@@ -98,6 +137,8 @@ public class Singleplayer_3Cards extends BaseGame {
         delay.setOnFinished(delayEvent ->{
             cardsAreFlipped = false;});
     }
+
+
 
     @Override
     public void rotateBack(){
@@ -119,5 +160,16 @@ public class Singleplayer_3Cards extends BaseGame {
                 cardsInGame.get(indexThirdCard).setRevealed(false);
             });
         });
+    }
+    private void setScoreLabel(Label l, int pos) {
+        Score[] scores = new Score[5];
+
+        scores[pos] = deserializeScore()[pos];
+        if (scores[pos] != null && scores[pos].getScoreSec() < 10) {
+            l.setText(scores[pos].getScoreMin() + ":0" + scores[pos].getScoreSec() + " | " + scores[pos].getPlayerName());
+        } else if (scores[pos] != null) {
+            l.setText(scores[pos].getScoreMin() + ":" + scores[pos].getScoreSec() + " | " + scores[pos].getPlayerName());
+        }
+
     }
 }
