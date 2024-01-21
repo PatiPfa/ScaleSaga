@@ -217,6 +217,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
 
 
         updatePlayerOnTurnLabel();
+        switchCursor();
     }
 
 
