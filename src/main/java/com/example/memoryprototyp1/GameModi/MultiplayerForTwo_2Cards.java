@@ -207,11 +207,14 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         System.out.println("Player 1: " + player1.getPoints());
         System.out.println("Player 2: " + player2.getPoints());
 
-        PauseTransition delay = new PauseTransition(Duration.millis(1500));                                          //pause bis Karten umgedreht werden
-        delay.play();
-        delay.setOnFinished(delayEvent ->{
-            cardsAreFlipped = false;
-        });
+        PauseTransition delay = new PauseTransition(Duration.millis(1500));//pause bis Karten umgedreht werden
+        if (cardsAreFlipped){
+            delay.play();
+            delay.setOnFinished(delayEvent ->{
+                cardsAreFlipped = false;
+            });
+        }
+
 
         updatePlayerOnTurnLabel();
     }
