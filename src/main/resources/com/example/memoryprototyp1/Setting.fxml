@@ -22,7 +22,7 @@
                 <Font size="39.0" />
             </font>
         </Label>
-        <Button fx:id="buttonSoundOnOff" layoutX="564.0" layoutY="137.0" mnemonicParsing="false" onAction="#toggleMute" prefHeight="38.0" prefWidth="81.0" text="on/off" />
+        <Button fx:id="buttonSoundOnOff" layoutX="564.0" layoutY="137.0" mnemonicParsing="false" onAction="#toggleMute" prefHeight="38.0" prefWidth="81.0" text="ON" />
         <Slider fx:id="sliderVolume" layoutX="535.0" layoutY="239.0" onMouseReleased="#handleVolumeChange" />
         <Label layoutX="382.0" layoutY="133.0" prefHeight="45.0" prefWidth="92.0" text="Sound:" textFill="WHITE">
             <font>

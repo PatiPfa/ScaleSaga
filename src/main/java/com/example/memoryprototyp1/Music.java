@@ -14,7 +14,7 @@ public class Music {
         private static double mute = 0.0;
 
         private static MediaPlayer backgroundMusic;
-        private static boolean isMuted;
+        static boolean isMuted;
         //Hintergrundmusik ab und setzt eine Endlos-Wiedergabe-Schleife.
         public static void playBackgroundMusic(Media media) {
             if (backgroundMusic != null) {

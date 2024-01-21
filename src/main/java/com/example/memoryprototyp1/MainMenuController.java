@@ -77,8 +77,16 @@ public class MainMenuController {
     @FXML
     private VBox scoreBoardtwoCards;
     @FXML
+    private Button buttonSoundOnOff;
+    @FXML
     private void toggleMute(ActionEvent event) {
         Music.MusicPlayer.toggleMute();
+        if (Music.MusicPlayer.isMuted) {
+            buttonSoundOnOff.setText("OFF");
+        } else {
+            buttonSoundOnOff.setText("ON");
+        }
+
     }
 
     @FXML
