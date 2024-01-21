@@ -42,8 +42,6 @@ public class MainMenuController {
     @FXML
     private Slider sliderVolume;
     @FXML
-    private Label label_errormessage;
-    @FXML
     private Label one1;
     @FXML
     private Label one2;
@@ -367,19 +365,6 @@ public class MainMenuController {
         double volume = sliderVolume.getValue();
         Music.MusicPlayer.setBackgroundMusicVolume(volume);
     }
-    private void setScoreLabel(Label l, int pos) {
-        Score[] scores = readHighscore();
-
-        scores[pos] = readHighscore()[pos];
-        if (scores[pos] != null && scores[pos].getScoreSec() < 10) {
-            l.setText(scores[pos].getScoreMin() + ":0" + scores[pos].getScoreSec() + " | " + scores[pos].getPlayerName());
-        } else if (scores[pos] != null) {
-            l.setText(scores[pos].getScoreMin() + ":" + scores[pos].getScoreSec() + " | " + scores[pos].getPlayerName());
-        }
-
-    }
-    private void setScoreLabel1(Label l, int pos) {
-        Score[] scores = readHighscore();
 
     private void setScoreLabel(Label l, int pos, String path) {
         Score[] scores = readHighscore(path);
@@ -390,7 +375,6 @@ public class MainMenuController {
         } else if (scores[pos] != null) {
             l.setText(scores[pos].getScoreMin() + ":" + scores[pos].getScoreSec() + " | " + scores[pos].getPlayerName());
         }
-
     }
 
     public static Score[] readHighscore(String path) {
@@ -409,4 +393,4 @@ public class MainMenuController {
     }
 }
 
-}
+
