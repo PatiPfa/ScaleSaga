@@ -27,7 +27,6 @@ import static com.example.memoryprototyp1.Score.deserializeScore;
 
 public class MainMenuController {
 
-
     @FXML
     private TextField tf_player1;
     @FXML

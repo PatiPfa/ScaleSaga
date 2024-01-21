@@ -115,7 +115,6 @@ public class MemoryController implements Initializable {
     private Parent root;
     private Image curser = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/sword.png")));
     private boolean alreadyEnteredName;
-
     public static int getSeconds() {
         return seconds;
     }
