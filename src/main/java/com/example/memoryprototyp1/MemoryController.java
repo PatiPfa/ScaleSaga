@@ -158,6 +158,7 @@ public class MemoryController implements Initializable {
 
     //    Timer
     private void timer() {
+
         if (timeline != null) {
             timeline.stop();
         }
@@ -195,6 +196,7 @@ public class MemoryController implements Initializable {
     public void playAgain() {
         game.playAgain();
         if(getGamemode().equals("Singleplayer2Cards") || getGamemode().equals("Singleplayer3Cards")){
+            timeline.stop();
             timer();
             alreadyEnteredName = false; //Wichtig für namenseingabe im Scoreboard
         }
@@ -202,6 +204,7 @@ public class MemoryController implements Initializable {
     }
 
     public void returnToMainMenu(ActionEvent event) {
+        timeline.stop();
         MainMenuController.setSingleplayer(false);
         try {
             root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
