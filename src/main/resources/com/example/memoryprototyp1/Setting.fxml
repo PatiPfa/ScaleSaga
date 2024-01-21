@@ -22,18 +22,18 @@
                 <Font size="39.0" />
             </font>
         </Label>
-        <Button fx:id="buttonSoundOnOff" layoutX="575.0" layoutY="136.0" mnemonicParsing="false" onAction="#toggleMute" text="on/off" />
-        <Slider fx:id="sliderVolume" layoutX="530.0" layoutY="194.0" onMouseReleased="#handleVolumeChange" />
-        <Label layoutX="409.0" layoutY="136.0" text="Sound:">
+        <Button fx:id="buttonSoundOnOff" layoutX="564.0" layoutY="137.0" mnemonicParsing="false" onAction="#toggleMute" prefHeight="38.0" prefWidth="81.0" text="on/off" />
+        <Slider fx:id="sliderVolume" layoutX="535.0" layoutY="239.0" onMouseReleased="#handleVolumeChange" />
+        <Label layoutX="382.0" layoutY="133.0" prefHeight="45.0" prefWidth="92.0" text="Sound:" textFill="WHITE">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <Label layoutX="409.0" layoutY="189.0" text="Volume:">
+        <Label layoutX="382.0" layoutY="231.0" text="Volume:" textFill="WHITE">
             <font>
                 <Font size="20.0" />
             </font>
         </Label>
-        <Button fx:id="buttonReturnFromSetting" layoutX="577.0" layoutY="266.0" mnemonicParsing="false" onAction="#switchToMenu" text="Back" />
+        <Button fx:id="buttonReturnFromSetting" layoutX="580.0" layoutY="308.0" mnemonicParsing="false" onAction="#switchToMenu" text="Back" />
     </children>
 </AnchorPane>
