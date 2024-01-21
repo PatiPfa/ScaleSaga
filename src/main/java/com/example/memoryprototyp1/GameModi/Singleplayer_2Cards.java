@@ -106,7 +106,7 @@ public class Singleplayer_2Cards extends BaseGame {
     @Override
     public void checkForMatch() {
 
-        //cardsAreFlipped = false; //<- löschen !!!!!!!!!!!!!!!!!!!!
+        cardsAreFlipped = false; //<- löschen !!!!!!!!!!!!!!!!!!!!
 
         if (firstCard.sameCardAs(secondCard)) {
             System.out.println("same");
@@ -122,7 +122,12 @@ public class Singleplayer_2Cards extends BaseGame {
 
         if (gameFinished()) {
             highscoreAnchorPane.setVisible(true);
-            yourScoreLabel.setText("YOUR TIME: " + MemoryController.getMinutes() + ":" + MemoryController.getSeconds());
+            if (MemoryController.getSeconds() < 10){
+                yourScoreLabel.setText("YOUR TIME: " + MemoryController.getMinutes() + ":0" + MemoryController.getSeconds());
+            } else {
+                yourScoreLabel.setText("YOUR TIME: " + MemoryController.getMinutes() + ":" + MemoryController.getSeconds());
+            }
+
             Score.setScoreBoard(Score.deserializeScore());
             setScoreLabel(placeOne, 0);
             setScoreLabel(placeTwo, 1);

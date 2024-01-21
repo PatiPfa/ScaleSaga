@@ -148,18 +148,27 @@ public class MemoryController implements Initializable {
         }
         seconds = 0;
         minutes = 0;
-        sec.setText(String.valueOf(seconds));
+        sec.setText("0" + String.valueOf(seconds));
         min.setText(String.valueOf(minutes));
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
-            if (game.gameFinished())
+            if (game.gameFinished()){
                 timeline.stop();
-            else
-                seconds++;
-            if (seconds >= 60) {
-                seconds = 0;
-                minutes++;
             }
-            sec.setText(String.valueOf(seconds));
+            else {
+                seconds++;
+                if (seconds >= 60) {
+                    seconds = 0;
+                    minutes++;
+                }
+            }
+
+
+            if (seconds < 10){
+                sec.setText("0" + String.valueOf(seconds));
+            } else {
+                sec.setText(String.valueOf(seconds));
+            }
+
             min.setText(String.valueOf(minutes));
         }));
 
