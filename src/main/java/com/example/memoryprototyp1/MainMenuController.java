@@ -77,8 +77,6 @@ public class MainMenuController {
     @FXML
     private VBox scoreBoardtwoCards;
 
-
-
     private static String player1name;
     private static String player2name;
 
@@ -86,8 +84,7 @@ public class MainMenuController {
     private Scene scene;
     private Parent root;
     private static boolean singleplayer = false;
-    private static String scoreThreeCardsContent;
-    private static String  scoreTwoCardsContent;
+
     private static String txtFileTwoCards = "src/main/resources/com/example/memoryprototyp1/score/scoreTwoCards.txt";
     private static String txtFileThreeCards = "src/main/resources/com/example/memoryprototyp1/score/scoreThreeCards.txt";
     private String txtFile;
@@ -166,8 +163,6 @@ public class MainMenuController {
         }
 
     }
-
-
     public void switchToMenu(ActionEvent event){
         try {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainMenu.fxml")));
@@ -179,7 +174,6 @@ public class MainMenuController {
             writeInLog(e, "MainMenu");
         }
     }
-
     public void twoCards(ActionEvent event){
         if(singleplayer){
             gamemode = "Singleplayer2Cards";
@@ -198,7 +192,6 @@ public class MainMenuController {
             switchMainToNames();
         }
     }
-
     public void threeCards(ActionEvent event){
         if(singleplayer){
             gamemode = "Singleplayer3Cards";
@@ -217,14 +210,11 @@ public class MainMenuController {
             switchMainToNames();
         }
     }
-
-
     public void switchMainToNames(){
         SubMenuAP.setVisible(!SubMenuAP.isVisible());
         nameInputAP.setVisible(!nameInputAP.isVisible());
         label_errormessage.setText(" ");
     }
-
     public void closeGame(){
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Quit game");
@@ -342,18 +332,19 @@ public class MainMenuController {
         }
 
     }
-    private void setScoreLabel1(Label l, int pos) {
-        Score[] scores = readHighscore();
+ //private void setScoreLabel1(Label l, int pos) {
+ //    Score[] scores = readHighscore();
+ //
+ //    scores[pos] = readHighscore1()[pos];
+ //    if (scores[pos] != null && scores[pos].getScoreSec() < 10) {
+ //        l.setText(scores[pos].getScoreMin() + ":0" + scores[pos].getScoreSec() + " | " + scores[pos].getPlayerName());
+ //    } else if (scores[pos] != null) {
+ //        l.setText(scores[pos].getScoreMin() + ":" + scores[pos].getScoreSec() + " | " + scores[pos].getPlayerName());
+ //    }
+ //
+ //}
 
-        scores[pos] = readHighscore1()[pos];
-        if (scores[pos] != null && scores[pos].getScoreSec() < 10) {
-            l.setText(scores[pos].getScoreMin() + ":0" + scores[pos].getScoreSec() + " | " + scores[pos].getPlayerName());
-        } else if (scores[pos] != null) {
-            l.setText(scores[pos].getScoreMin() + ":" + scores[pos].getScoreSec() + " | " + scores[pos].getPlayerName());
-        }
-
-    }
-    public static Score[] readHighscore(){
+    public static Score[] readHighscore(String path){
         Score[] out = new Score[5];
 
 
