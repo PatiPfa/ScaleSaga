@@ -1,11 +1,10 @@
 package com.example.memoryprototyp1.GameModi;
 
-import com.example.memoryprototyp1.Card;
-import com.example.memoryprototyp1.CardDeck;
+import com.example.memoryprototyp1.*;
 import com.example.memoryprototyp1.GameModi.BaseGame;
-import com.example.memoryprototyp1.MemoryController;
-import com.example.memoryprototyp1.Score;
 import javafx.animation.PauseTransition;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -51,6 +50,7 @@ public class Singleplayer_3Cards extends BaseGame {
         this.highscoreAnchorPane = highscoreAnchorPane;
         this.yourScoreLabel = yourScoreLabel;
     }
+
 
     @Override
     public void play(){
