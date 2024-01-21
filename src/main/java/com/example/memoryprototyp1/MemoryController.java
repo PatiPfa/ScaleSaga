@@ -19,6 +19,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 
@@ -67,30 +68,38 @@ public class MemoryController implements Initializable {
     private AnchorPane highscoreAnchorPane;
     @FXML
     private TextField highscoreName;
-    @FXML
-    private Label placeFive;
-    @FXML
-    private Label placeFour;
-    @FXML
-    private Label placeOne;
-    @FXML
-    private Label placeThree;
-    @FXML
-    private Label placeTwo;
-    private boolean alreadyEnteredName;
 
     @FXML
-    private Button btn_mainMenu_2;
+    private Label placeFive;
+
     @FXML
-    private Button btn_playAgain2;
+    private Label placeFour;
+
+    @FXML
+    private Label placeOne;
+
+    @FXML
+    private Label placeThree;
+
+    @FXML
+    private Label placeTwo;
+
     @FXML
     private AnchorPane popUp;
+    @FXML
+    private AnchorPane popUp2;
+
+
+    @FXML
+    private Text name;
     @FXML
     private ImageView imagePopUp;
     @FXML
     private Label yourScoreLabel;
     @FXML
     private Label errorNameTooLong;
+    private Text name2;
+
 
 
     private static String highscoreNameS;
@@ -123,10 +132,10 @@ public class MemoryController implements Initializable {
                 this.game = new Singleplayer_3Cards(imagesFlowPane.getChildren().size(), imagesFlowPane);
                 break;
             case "Multiplayer2Cards":
-                this.game = new MultiplayerForTwo_2Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, player1PointsLabel, player2PointsLabel, playerOnTurnLabel, player1name, player2name, iv_lastcardp1, iv_lastcardp2, popUp);
+                this.game = new MultiplayerForTwo_2Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, player1PointsLabel, player2PointsLabel, playerOnTurnLabel, player1name, player2name, iv_lastcardp1, iv_lastcardp2, popUp, name);
                 break;
             case "Multiplayer3Cards":
-                this.game = new MultiplayerForTwo_3Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, player1PointsLabel, player2PointsLabel, playerOnTurnLabel, player1name, player2name);
+                this.game = new MultiplayerForTwo_3Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, player1PointsLabel, player2PointsLabel, playerOnTurnLabel, player1name, player2name, popUp2, name2);
                 break;
         }
 
@@ -213,10 +222,15 @@ public class MemoryController implements Initializable {
     public void playAgainPopUp() {
         popUp.setVisible(false);
         game.playAgain();
-        timer();
-
 
     }
+    public void playAgainPopUp2(){
+        popUp2.setVisible(false);
+        game.playAgain();
+
+    }
+
+
 
     public void submitName() {
 
