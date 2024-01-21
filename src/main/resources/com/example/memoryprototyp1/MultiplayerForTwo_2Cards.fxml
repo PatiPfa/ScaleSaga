@@ -270,9 +270,9 @@
                         <Font name="Imprint MT Shadow" size="30.0" />
                      </font>
                   </Button>
-                  <Text fx:id="name" layoutX="223.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" textAlignment="CENTER">
+                  <Text fx:id="name" layoutX="204.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" textAlignment="CENTER">
                      <font>
-                        <Font name="Imprint MT Shadow" size="60.0" />
+                        <Font name="Imprint MT Shadow" size="34.0" />
                      </font>
                   </Text>
                </children>

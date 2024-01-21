@@ -147,7 +147,6 @@ public abstract class BaseGame {
             playButtonSound();
             cardsAreFlipped = false;
 
-
         } else {
             rotateBack();
         }

@@ -230,15 +230,17 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
 
         if (player1.getPoints() > player2.getPoints()) {
             winner = player1.getName();
+            name2.setText(winner);
         } else if (player1.getPoints() < player2.getPoints()) {
             winner = player2.getName();
+            name2.setText(winner);
         } else {
             winner = "DRAW";
         }
         System.out.println(winner);
 
         popUp2.setVisible(!popUp2.isVisible());
-        name2.setText(winner);
+
     }
 
     public void switchCursor(){
