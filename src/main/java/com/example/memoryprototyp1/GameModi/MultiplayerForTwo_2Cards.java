@@ -7,12 +7,14 @@ import com.example.memoryprototyp1.*;
 import javafx.animation.PauseTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
+import javafx.scene.ImageCursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
 import javafx.scene.transform.Rotate;
@@ -21,6 +23,7 @@ import javafx.util.Duration;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Objects;
 import java.util.Random;
 
 import static com.example.memoryprototyp1.Card.getBackOfCardsImage;
@@ -42,10 +45,14 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
     private ImageView iv_lastcardp1;
     private ImageView iv_lastcardp2;
     private int lastClickedCard;
-
+    private AnchorPane popUp;
+    private String currentCursor = "sword";
+    private final Image CURSOR_SWORD = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/sword.png")));
+    private final Image CURSOR_AXE = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/axe.png")));
+    //https://www.pngwing.com/de/free-png-tatpt/download?height=114
     private static boolean delayStart = false;
 
-    public MultiplayerForTwo_2Cards(int size, FlowPane imagesFlowPane, Label player1PointsLabel, Label player2PointsLabel, Label playerOnTurnLabel, Label player1name, Label player2name, ImageView iv_lastcardp1, ImageView iv_lastcardp2) {
+    public MultiplayerForTwo_2Cards(int size, FlowPane imagesFlowPane, Label player1PointsLabel, Label player2PointsLabel, Label playerOnTurnLabel, Label player1name, Label player2name, ImageView iv_lastcardp1, ImageView iv_lastcardp2, AnchorPane popUp) {
         super(size, imagesFlowPane);
         this.player1PointsLabel = player1PointsLabel;
         this.player2PointsLabel = player2PointsLabel;
@@ -54,6 +61,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         this.player2name = player2name;
         this.iv_lastcardp1 = iv_lastcardp1;
         this.iv_lastcardp2 = iv_lastcardp2;
+        this.popUp = popUp;
     }
 
     @Override
@@ -92,6 +100,8 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
             delayStart = true;
         });
         initialDelay.play();
+
+
 
         player1 = new Player(MainMenuController.getPlayer1name());
         player2 = new Player(MainMenuController.getPlayer2name());
@@ -140,8 +150,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
             System.out.println("same");
             playButtonSound();
             cardsAreFlipped = false;
-            //firstCard.setCorrectPair(true);
-            //secondCard.setCorrectPair(true);
+
             if(playerOnTurn.equals(player1)){
                 player1.addOnePoint();
                 rotateDisplayImageView(iv_lastcardp1, cardsInGame.get(lastClickedCard).getFrontOfCards());
@@ -177,6 +186,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         });
 
         updatePlayerOnTurnLabel();
+        switchCursor();
     }
 
     private void updatePointsLabels(){
@@ -199,11 +209,19 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         }
         System.out.println(winner);
 
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Winner!");
-        alert.setHeaderText(null);
-        alert.setContentText("Winner: " + winner);
-        alert.showAndWait();
+        popUp.setVisible(!popUp.isVisible());
+    }
+
+    public void switchCursor(){
+        scene = iv_lastcardp1.getScene();
+
+        if(currentCursor.equals("sword")){
+            scene.setCursor(new ImageCursor(CURSOR_AXE));
+            currentCursor = "axe";
+        }else{
+            scene.setCursor(new ImageCursor(CURSOR_SWORD));
+            currentCursor = "sword";
+        }
     }
 
     public void updatePlayerOnTurn(){
@@ -254,5 +272,6 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
             rotateSecondHalf.play();
         });
     }
+
 
 }

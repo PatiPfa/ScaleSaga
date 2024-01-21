@@ -82,6 +82,16 @@ public class MemoryController implements Initializable {
     @FXML
     private Label placeTwo;
 
+    @FXML
+    private Button btn_mainMenu_2;
+    @FXML
+    private Button btn_playAgain2;
+    @FXML
+    private AnchorPane popUp;
+    @FXML
+    private ImageView imagePopUp;
+
+
 
 
 
@@ -114,7 +124,7 @@ public class MemoryController implements Initializable {
                 this.game = new Singleplayer_3Cards(imagesFlowPane.getChildren().size(), imagesFlowPane);
                 break;
             case "Multiplayer2Cards":
-                this.game = new MultiplayerForTwo_2Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, player1PointsLabel, player2PointsLabel, playerOnTurnLabel, player1name, player2name, iv_lastcardp1, iv_lastcardp2);
+                this.game = new MultiplayerForTwo_2Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, player1PointsLabel, player2PointsLabel, playerOnTurnLabel, player1name, player2name, iv_lastcardp1, iv_lastcardp2, popUp);
                 break;
             case "Multiplayer3Cards":
                 this.game = new MultiplayerForTwo_3Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, player1PointsLabel, player2PointsLabel, playerOnTurnLabel, player1name, player2name);
@@ -161,9 +171,10 @@ public class MemoryController implements Initializable {
     public void playAgain(){
         game.playAgain();
         timer();
+
     }
 
-    public void returnToMainMenu(ActionEvent event) throws IOException {
+    public void returnToMainMenu(ActionEvent event){
         MainMenuController.setSingleplayer(false);
         try{
             root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
@@ -189,6 +200,13 @@ public class MemoryController implements Initializable {
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
+    }
+    public void playAgainPopUp(){
+        popUp.setVisible(false);
+        game.playAgain();
+        timer();
+
+
     }
 
 }
