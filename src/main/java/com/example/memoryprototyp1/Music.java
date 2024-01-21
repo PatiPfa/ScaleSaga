@@ -10,7 +10,8 @@ public class Music {
 
     public static class MusicPlayer {
 
-        private static double volumeBackground = 0.4;
+        private static double volumeBackground = 0.3;
+        private static double mute = 0.0;
 
         private static MediaPlayer backgroundMusic;
         private static boolean isMuted;
@@ -38,7 +39,7 @@ public class Music {
             isMuted = !isMuted;
 
             if (isMuted) {
-                setBackgroundMusicVolume(0.0);
+                setBackgroundMusicVolume(mute);
             } else {
                 setBackgroundMusicVolume(0.4);
                 
@@ -52,7 +53,8 @@ public class Music {
             if(!isMuted) {
                 mediaPlayer.setVolume(0.5);
                 mediaPlayer.play();
-
+            }else {
+                mediaPlayer.setVolume(mute);
             }
 
 

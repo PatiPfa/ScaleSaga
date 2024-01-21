@@ -74,27 +74,31 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         this.iv_player2symbol = iv_player2symbol;
     }
 
+
+    /**
+     *  Methode initialisiert ImageView-Objekte, die in einem FlowPane angeordnet sind.
+     */
     @Override
     public void initializeImageView() {
 
 
-        for (int i = 0; i < imagesFlowPane.getChildren().size(); i++) {
-            ImageView imageView = (ImageView) imagesFlowPane.getChildren().get(i);
-            imageView.setImage(getBackOfCardsImage());
+        for (int i = 0; i < imagesFlowPane.getChildren().size(); i++) {                                                 //startet for schleife welche alle ImageView Objekte des FlowPanes durchläuft
+            ImageView imageView = (ImageView) imagesFlowPane.getChildren().get(i);                                      //holt i-tes ImageView Objekt aus FlowPane und wandelt es in ImageView um
+            imageView.setImage(getBackOfCardsImage());                                                                  //Setzt Bild des ImageViews auf Rückseite der Karte
             imageView.setUserData(i);
 
-            imageView.setOnMouseEntered(mouseEnteredEvent ->{
+            imageView.setOnMouseEntered(mouseEnteredEvent ->{                                                           //Karte wird leicht vergroßert wenn Maus drüberfahrt und sie noch nicht aufgedeckt ist
                 if (!this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()){
                     this.setImageScale((int) imageView.getUserData(), 1.05);
                 }
             });
 
-            imageView.setOnMouseExited(mouseEnteredEvent ->{
+            imageView.setOnMouseExited(mouseEnteredEvent ->{                                                            //macht Karten kleiner wieder wenn Maus weg ist
                 this.setImageScale((int) imageView.getUserData(), 1);
             });
 
-            imageView.setOnMouseClicked(mouseEvent -> {
-                if ((delayStart && !this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()) && !this.getCardsAreFlipped()){
+            imageView.setOnMouseClicked(mouseEvent -> {                                                                 //bei Mausklick wird geprüft ob KArte noch nicht aufgedeckt ist, ob keine andere Karten gerade umgedreht werden
+                if ((delayStart && !this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()) && !this.getCardsAreFlipped()){                             //Bedingungen erfüllt = Karte umgedreht
                     this.flipCard((int) imageView.getUserData());
                     lastClickedCard = (int) imageView.getUserData();
                 }
@@ -102,24 +106,26 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         }
     }
 
-
+    /**
+     * Gamelogic von Multiplayer
+     */
     @Override
     public void play() {
         delayStart = false;
-        PauseTransition initialDelay = new PauseTransition(Duration.seconds(3));
+        PauseTransition initialDelay = new PauseTransition(Duration.seconds(3));                                     //delay von 3 Sek am Anfang des Spiels
         initialDelay.setOnFinished(event -> {
             delayStart = true;
         });
         initialDelay.play();
 
-        player1 = new Player(MainMenuController.getPlayer1name());
+        player1 = new Player(MainMenuController.getPlayer1name());                                                      //Spieler Objekte erstellt; Namen aus MainMenuController geholt
         player2 = new Player(MainMenuController.getPlayer2name());
 
-        Random random = new Random();
+        Random random = new Random();                                                                                   //Zufällig entschieden welcher Spieler drankommt
         int randomStart = random.nextInt(2) + 1;
         playerOnTurn = (randomStart == 1) ? player1 : player2;
 
-        if(firstRound && randomStart == 1){
+        if(firstRound && randomStart == 1){                                                                             //welcher Spieler welcher Cursor
             CursorPlayer1 = "sword";
             CursorPlayer2 = "axe";
             firstRound = false;
@@ -133,7 +139,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
             switchCursor();
         }
 
-        player1name.setText(player1.getName());
+        player1name.setText(player1.getName());                                                                         //Text als Spielername und Farbe des aktiven Spieler
         player2name.setText(player2.getName());
 
         if(playerOnTurn.equals(player1)){
@@ -142,7 +148,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
             player2name.setTextFill(Color.DARKGREEN);
         }
 
-        updatePointsLabels();
+        updatePointsLabels();                                                                                           //aktualisiert Punltezahl der Spieler
         updatePlayerOnTurnLabel();
 
         firstCard = null;
@@ -152,25 +158,29 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         cardsInGame = new ArrayList<>();
         cardsAreFlipped = false;
 
-        for (int i = 0; i < flowPaneSize / 2; i++) {
+        for (int i = 0; i < flowPaneSize / 2; i++) {                                                                    //fügt Paare von Karten dem Spiel zu
             Card topCardFromDeck = deck.giveTopCard();
 
             cardsInGame.add(new Card(topCardFromDeck.getName(), topCardFromDeck.getFrontOfCards()));
             cardsInGame.add(new Card(topCardFromDeck.getName(), topCardFromDeck.getFrontOfCards()));
 
         }
-        Collections.shuffle(cardsInGame);
+        Collections.shuffle(cardsInGame);                                                                               //dreht Karten wieder um
         System.out.println(cardsInGame);
         rotateAllCardsToBackSide();
         rotateDisplayImageView(iv_lastcardp1, getBackOfCardsImage());
         rotateDisplayImageView(iv_lastcardp2, getBackOfCardsImage());
     }
+
+    /**
+     * checkt ob Karten gleich sind
+     */
     @Override
-    public void checkForMatch(){
+    public void checkForMatch(){                                                                                        //überprüft ob aufgedeckte Karten gleich sind
         if (firstCard.sameCardAs(secondCard)){
             System.out.println("same");
             playButtonSound();
-            cardsAreFlipped = false;
+            cardsAreFlipped = false;                                                                                    //setzt das alle Karten umgedreht sind
 
             if(playerOnTurn.equals(player1)){
                 player1.addOnePoint();
@@ -180,7 +190,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
                 rotateDisplayImageView(iv_lastcardp2, cardsInGame.get(lastClickedCard).getFrontOfCards());
             }
             updatePlayerOnTurn();
-        } else {
+        } else {                                                                                                        //wenn Karten nicht matchen dann wieder umdrehen
             rotateBack();
         }
 
@@ -189,16 +199,16 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
 
         updatePointsLabels();
 
-        if(allCardsFlipped()){
+        if(allCardsFlipped()){                                                                                          //checkt ob alle Karten umgedreht sind; Methode Winner wird aufgerufen
             winner();
         }
 
-        updatePlayerOnTurn();
+        updatePlayerOnTurn();                                                                                           //aktualisiert wer dran is
         System.out.println(playerOnTurn.getName());
         System.out.println("Player 1: " + player1.getPoints());
         System.out.println("Player 2: " + player2.getPoints());
 
-        PauseTransition delay = new PauseTransition(Duration.millis(1500));
+        PauseTransition delay = new PauseTransition(Duration.millis(1500));                                          //pause bis Karten umgedreht werden
         delay.play();
         delay.setOnFinished(delayEvent ->{
             cardsAreFlipped = false;
@@ -207,14 +217,26 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         updatePlayerOnTurnLabel();
     }
 
+
+    /**
+     * Updated Punkte der Player
+     */
     private void updatePointsLabels(){
         player1PointsLabel.setText(Integer.toString(player1.getPoints()));
         player2PointsLabel.setText(Integer.toString(player2.getPoints()));
     }
 
+
+    /**
+     * Updated Player Namen
+     */
     private void updatePlayerOnTurnLabel(){
         playerOnTurnLabel.setText(playerOnTurn.getName());
     }
+
+    /**
+     * Erkennt welcher Spieler gewonnen hat und lässt PopUp mit Gewinnbenachrichtigung erscheinen
+     */
     private void winner(){
         String winner;
 
@@ -234,9 +256,12 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         popUp.setVisible(!popUp.isVisible());
     }
 
+    /**
+     * ändert Cursor
+     */
     public void switchCursor(){
         try{
-            Scene scene =  playerOnTurnLabel.getScene();
+            Scene scene =  playerOnTurnLabel.getScene();                                                                //wenn currentCursor sword dann auf axe geswitched und wenn axe dann auf sword
             if(currentCursor.equals("sword")){
                 scene.setCursor(new ImageCursor(CURSOR_AXE));
                 currentCursor = "axe";
@@ -250,6 +275,9 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
 
     }
 
+    /**
+     * Spieler, der an der Reihe ist, zu wechseln
+     */
     public void updatePlayerOnTurn(){
         if(playerOnTurn.equals(player1)){
             playerOnTurn = player2;
@@ -262,10 +290,13 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         }
     }
 
+    /**
+     * animierte Rotation der Karten
+     */
     public void rotateDisplayImageView(ImageView imageView, Image imageToBeShown) {
 
 
-        TranslateTransition translate = new TranslateTransition();
+        TranslateTransition translate = new TranslateTransition();                                                      //bewegt die Karte leicht anch oben und dann nach unten
         RotateTransition rotateFirstHalf = new RotateTransition();
 
 
@@ -283,13 +314,13 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
             translateBack.play();
         });
 
-        rotateFirstHalf.setNode(imageView);
+        rotateFirstHalf.setNode(imageView);                                                                             //erste Hälfte der Drehung wird ausgeführt
         rotateFirstHalf.setDuration(Duration.millis(200));
         rotateFirstHalf.setByAngle(90);
         rotateFirstHalf.setAxis(Rotate.Y_AXIS);
         rotateFirstHalf.play();
         rotateFirstHalf.setOnFinished(eventRotateSecondHalf -> {
-            RotateTransition rotateSecondHalf = new RotateTransition();
+            RotateTransition rotateSecondHalf = new RotateTransition();                                                 //Drehung wird vervollständigt
             rotateSecondHalf.setNode(imageView);
             imageView.setImage(imageToBeShown);
             rotateSecondHalf.setDelay(Duration.seconds(0));
