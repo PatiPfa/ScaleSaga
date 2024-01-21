@@ -140,7 +140,7 @@ public class MemoryController implements Initializable {
                 this.game = new MultiplayerForTwo_2Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, player1PointsLabel, player2PointsLabel, playerOnTurnLabel, player1name, player2name, iv_lastcardp1, iv_lastcardp2, popUp, name, iv_player1symbol, iv_player2symbol);
                 break;
             case "Multiplayer3Cards":
-                this.game = new MultiplayerForTwo_3Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, player1PointsLabel, player2PointsLabel, playerOnTurnLabel, player1name, player2name, popUp2, name2);
+                this.game = new MultiplayerForTwo_3Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, player1PointsLabel, player2PointsLabel, playerOnTurnLabel, player1name, player2name, popUp2, name2, iv_player1symbol, iv_player2symbol);
                 break;
         }
 

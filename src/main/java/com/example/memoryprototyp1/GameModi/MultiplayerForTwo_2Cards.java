@@ -249,7 +249,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
                 currentCursor = "sword";
             }
         }catch (Exception e){
-            MainMenuController.writeInLog(e, "SetCursor");
+            MainMenuController.writeInLog(e, "switchCursor");
         }
 
     }
