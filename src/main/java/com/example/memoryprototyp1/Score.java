@@ -15,6 +15,9 @@ public class Score implements Serializable{
 
     private static Score[] scoreBoard = new Score[5];
 
+    public static void setScoreBoard(Score[] scoreBoard) {
+        Score.scoreBoard = scoreBoard;
+    }
 
     public Score(int scoreMin, int scoreSec, String player) {
         this.scoreMin = scoreMin;

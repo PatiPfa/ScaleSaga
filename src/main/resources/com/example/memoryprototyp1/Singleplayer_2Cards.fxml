@@ -331,12 +331,12 @@
                      </font>
                   </Label>
                   <TextField fx:id="highscoreName" layoutX="27.0" layoutY="383.0" prefHeight="30.0" prefWidth="189.0" />
-                  <Label layoutX="98.0" layoutY="283.0" text="New Highscore" textFill="#82ff71">
+                  <Label fx:id="yourScoreLabel" layoutX="98.0" layoutY="283.0" text="New Highscore" textFill="#82ff71">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Button fx:id="buttonReturn" layoutX="139.0" layoutY="434.0" mnemonicParsing="false" text="return" />
+                  <Button fx:id="buttonReturn" layoutX="139.0" layoutY="434.0" mnemonicParsing="false" onAction="#returnFromScoreBoard" text="return" />
                   <Button fx:id="buttonSubmit" layoutX="230.0" layoutY="386.0" mnemonicParsing="false" onAction="#submitName" text="Submit" />
                </children>
                <opaqueInsets>

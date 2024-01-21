@@ -91,6 +91,8 @@ public class MemoryController implements Initializable {
     private AnchorPane popUp;
     @FXML
     private ImageView imagePopUp;
+    @FXML
+    private Label yourScoreLabel;
 
 
 
@@ -119,7 +121,7 @@ public class MemoryController implements Initializable {
         //3: Multiplayer 2 Cards, 4: Multiplayer 3 Cards
         switch (getGamemode()){
             case "Singleplayer2Cards":
-                this.game = new Singleplayer_2Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, displayImageView, highscoreName, placeFive, placeFour, placeOne, placeThree, placeTwo, highscoreAnchorPane);
+                this.game = new Singleplayer_2Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, displayImageView, highscoreName, placeFive, placeFour, placeOne, placeThree, placeTwo, highscoreAnchorPane, yourScoreLabel);
                 break;
             case "Singleplayer3Cards":
                 this.game = new Singleplayer_3Cards(imagesFlowPane.getChildren().size(), imagesFlowPane);
@@ -173,7 +175,7 @@ public class MemoryController implements Initializable {
     public void playAgain(){
         game.playAgain();
         timer();
-
+        alreadyEnteredName = false;
     }
 
     public void returnToMainMenu(ActionEvent event){
@@ -213,20 +215,27 @@ public class MemoryController implements Initializable {
 
     public void submitName(){
         Score score = new Score(getMinutes(), getSeconds(), highscoreName.getText());
+
+        setScoreBoard(deserializeScore());
+
         for (int i = 0; i < 5; i++) {
-            getScoreBoard()[i] = deserializeScore()[i];
             if (getScoreBoard()[i] != null){
-                if (getScoreBoard()[i].getScoreMin()< getMinutes() && getScoreBoard()[i].getScoreSec() < getSeconds()){
+                if (getScoreBoard()[i].getScoreMin() >= score.getScoreMin() && getScoreBoard()[i].getScoreSec() >= score.getScoreSec() && !alreadyEnteredName){
+                    alreadyEnteredName = true;
+                    for (int j = 4; j > i; j--) {
+                        getScoreBoard()[j] = getScoreBoard()[j-1];
+                    }
                     getScoreBoard()[i] = score;
+                    break;
                 }
-            } else {
+            } else if (!alreadyEnteredName){
                 getScoreBoard()[i] = score;
+                alreadyEnteredName = true;
                 break;
             }
         }
 
-        serializeScore(getScoreBoard());
-
+       serializeScore(getScoreBoard());
 
         setLabel(placeOne, 0);
         setLabel(placeTwo, 1);
