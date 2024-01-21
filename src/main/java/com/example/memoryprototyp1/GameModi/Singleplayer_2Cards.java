@@ -37,8 +37,9 @@ public class Singleplayer_2Cards extends BaseGame {
 
     private Label placeTwo;
     private ImageView displayImageView;
+    private Label yourScoreLabel;
 
-    public Singleplayer_2Cards(int flowPaneSize, FlowPane imagesFlowPane, ImageView displayImageView, TextField highscoreName, Label placeFive, Label placeFour, Label placeOne, Label placeThree, Label placeTwo, AnchorPane highscoreAnchorPane) {
+    public Singleplayer_2Cards(int flowPaneSize, FlowPane imagesFlowPane, ImageView displayImageView, TextField highscoreName, Label placeFive, Label placeFour, Label placeOne, Label placeThree, Label placeTwo, AnchorPane highscoreAnchorPane, Label yourScoreLabel) {
         super(flowPaneSize, imagesFlowPane);
         this.displayImageView = displayImageView;
         this.highscoreName = highscoreName;
@@ -48,6 +49,7 @@ public class Singleplayer_2Cards extends BaseGame {
         this.placeThree = placeThree;
         this.placeTwo = placeTwo;
         this.highscoreAnchorPane = highscoreAnchorPane;
+        this.yourScoreLabel = yourScoreLabel;
     }
 
     @Override
@@ -119,12 +121,13 @@ public class Singleplayer_2Cards extends BaseGame {
 
         if (gameFinished()) {
             highscoreAnchorPane.setVisible(true);
-
-            setLabel(placeOne, 0);
-            setLabel(placeTwo, 1);
-            setLabel(placeThree, 2);
-            setLabel(placeFour, 3);
-            setLabel(placeFive,4);
+            yourScoreLabel.setText("YOUR TIME: " + MemoryController.getMinutes() + ":" + MemoryController.getSeconds());
+            Score.setScoreBoard(Score.deserializeScore());
+            setScoreLabel(placeOne, 0);
+            setScoreLabel(placeTwo, 1);
+            setScoreLabel(placeThree, 2);
+            setScoreLabel(placeFour, 3);
+            setScoreLabel(placeFive,4);
         }
 
         firstCard = null;
@@ -176,10 +179,12 @@ public class Singleplayer_2Cards extends BaseGame {
         });
     }
 
-    private void setLabel(Label l, int pos) {
-        if (Score.getScoreBoard()[pos] != null) {
-            l.setText(Integer.toString(deserializeScore()[pos].getScoreMin()) + " : " +
-                    Integer.toString(deserializeScore()[pos].getScoreSec()) + deserializeScore()[pos].getPlayerName());
+    private void setScoreLabel(Label l, int pos){
+        Score[] scores = new Score[5];
+
+        scores[pos] = deserializeScore()[pos];
+        if (scores[pos] != null){
+            l.setText(scores[pos].getScoreMin() + ":" + scores[pos].getScoreSec() + " | " + scores[pos].getPlayerName());
         }
 
 

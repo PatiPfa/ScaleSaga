@@ -63,25 +63,22 @@ public class MemoryController implements Initializable {
     private ImageView iv_lastcardp1;
     @FXML
     private ImageView iv_lastcardp2;
+
     @FXML
     private AnchorPane highscoreAnchorPane;
     @FXML
     private TextField highscoreName;
-
     @FXML
     private Label placeFive;
-
     @FXML
     private Label placeFour;
-
     @FXML
     private Label placeOne;
-
     @FXML
     private Label placeThree;
-
     @FXML
     private Label placeTwo;
+    private boolean alreadyEnteredName;
 
     @FXML
     private Button btn_mainMenu_2;
@@ -249,9 +246,12 @@ public class MemoryController implements Initializable {
 
         scores[pos] = deserializeScore()[pos];
         if (scores[pos] != null){
-            l.setText(scores[pos].getScoreMin() + " : " + scores[pos].getScoreSec() + " " + scores[pos].getPlayerName());
+            l.setText(scores[pos].getScoreMin() + ":" + scores[pos].getScoreSec() + " | " + scores[pos].getPlayerName());
         }
+    }
 
+    public void returnFromScoreBoard(){
+        highscoreAnchorPane.setVisible(false);
     }
 
 }
