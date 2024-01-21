@@ -75,6 +75,7 @@ public class Singleplayer_2Cards extends BaseGame {
                 if ((!this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()) && !this.getCardsAreFlipped()) {
                     this.flipCard((int) imageView.getUserData());
                     lastClickedCard = (int) imageView.getUserData();
+
                 }
             });
         }
@@ -105,7 +106,7 @@ public class Singleplayer_2Cards extends BaseGame {
     @Override
     public void checkForMatch() {
 
-        cardsAreFlipped = false; //<- löschen !!!!!!!!!!!!!!!!!!!!
+        //cardsAreFlipped = false; //<- löschen !!!!!!!!!!!!!!!!!!!!
 
         if (firstCard.sameCardAs(secondCard)) {
             System.out.println("same");
@@ -116,7 +117,7 @@ public class Singleplayer_2Cards extends BaseGame {
             //hier noch Player update einfügen
 
         } else {
-            //rotateBack(); <- auskommentieren !!!!!!!!!!!!!!!!!!!!!!!!!!
+            //rotateBack(); //<- auskommentieren !!!!!!!!!!!!!!!!!!!!!!!!!!
         }
 
         if (gameFinished()) {
@@ -183,10 +184,10 @@ public class Singleplayer_2Cards extends BaseGame {
         Score[] scores = new Score[5];
 
         scores[pos] = deserializeScore()[pos];
-        if (scores[pos] != null){
+        if (scores[pos] != null && scores[pos].getScoreSec()< 10){
+            l.setText(scores[pos].getScoreMin() + ":0" + scores[pos].getScoreSec() + " | " + scores[pos].getPlayerName());
+        } else if (scores[pos] != null) {
             l.setText(scores[pos].getScoreMin() + ":" + scores[pos].getScoreSec() + " | " + scores[pos].getPlayerName());
         }
-
-
     }
 }
