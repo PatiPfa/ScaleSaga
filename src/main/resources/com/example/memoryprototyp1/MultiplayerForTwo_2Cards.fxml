@@ -257,14 +257,9 @@
                <children>
                   <ImageView fx:id="imagePopUp" fitHeight="400.0" fitWidth="600.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/popUp.jpg" />
+                        <Image url="@images/winscreen.png" />
                      </image>
                   </ImageView>
-                  <Text layoutX="170.0" layoutY="99.0" stroke="WHITE" strokeLineCap="ROUND" strokeType="OUTSIDE" strokeWidth="10.0" text="You have won!" textAlignment="CENTER">
-                     <font>
-                        <Font name="Imprint MT Shadow" size="41.0" />
-                     </font>
-                  </Text>
                   <Button fx:id="btn_playAgain2" layoutX="362.0" layoutY="258.0" mnemonicParsing="false" onAction="#playAgainPopUp" text="Play Again">
                      <font>
                         <Font name="Imprint MT Shadow" size="30.0" />
@@ -275,9 +270,9 @@
                         <Font name="Imprint MT Shadow" size="30.0" />
                      </font>
                   </Button>
-                  <Text fx:id="name" layoutX="238.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+                  <Text fx:id="name" layoutX="223.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name" textAlignment="CENTER">
                      <font>
-                        <Font name="Imprint MT Shadow" size="48.0" />
+                        <Font name="Imprint MT Shadow" size="60.0" />
                      </font>
                   </Text>
                </children>

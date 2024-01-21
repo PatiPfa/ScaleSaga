@@ -68,6 +68,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         this.iv_lastcardp1 = iv_lastcardp1;
         this.iv_lastcardp2 = iv_lastcardp2;
         this.popUp = popUp;
+        this.name = name;
     }
 
     @Override
@@ -208,12 +209,16 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
 
         if(player1.getPoints() > player2.getPoints()){
             winner = player1.getName();
+            name.setText(winner);
         }else if(player1.getPoints() < player2.getPoints()){
             winner = player2.getName();
+            name.setText(winner);
         }else{
             winner = "draw";
+            name.setText(winner);
         }
         System.out.println(winner);
+
 
         popUp.setVisible(!popUp.isVisible());
     }

@@ -84,15 +84,15 @@ public class MemoryController implements Initializable {
     private Label placeTwo;
 
     @FXML
-    private Button btn_mainMenu_2;
-    @FXML
-    private Button btn_playAgain2;
-    @FXML
     private AnchorPane popUp;
+    @FXML
+    private AnchorPane popUp2;
 
 
     @FXML
     private Text name;
+    @FXML
+    private Text name2;
 
 
 
@@ -130,7 +130,7 @@ public class MemoryController implements Initializable {
                 this.game = new MultiplayerForTwo_2Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, player1PointsLabel, player2PointsLabel, playerOnTurnLabel, player1name, player2name, iv_lastcardp1, iv_lastcardp2, popUp, name);
                 break;
             case "Multiplayer3Cards":
-                this.game = new MultiplayerForTwo_3Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, player1PointsLabel, player2PointsLabel, playerOnTurnLabel, player1name, player2name);
+                this.game = new MultiplayerForTwo_3Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, player1PointsLabel, player2PointsLabel, playerOnTurnLabel, player1name, player2name, popUp2, name2);
                 break;
         }
 
@@ -208,9 +208,14 @@ public class MemoryController implements Initializable {
     public void playAgainPopUp(){
         popUp.setVisible(false);
         game.playAgain();
-        timer();
 
     }
+    public void playAgainPopUp2(){
+        popUp2.setVisible(false);
+        game.playAgain();
+
+    }
+
 
 
     public void submitName(){
