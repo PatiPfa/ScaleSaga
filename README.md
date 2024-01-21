@@ -13,20 +13,24 @@ It's memory. You now memory
 
 There are different game modes.
 
-Singleplayer and multiplayer, with each 2 or 3 cards to guess (not all Modis are finished!!)
-
-**************************
-What will be added in the future:
-=
-Scoreboard
-
-Custom name for Player
-
-Fancy main menu background
+Singleplayer and multiplayer, with each 2 or 3 cards to guess
 
 **************************************************
 Credit:
 =
+* Basis for the Game
+
+  Jaret Wright
+
+  https://www.youtube.com/playlist?list=PLoodc-fmtJNbeL8P1DizFcgjp62UjvJ3t
+  
+  for the Classes:
+  * Card
+  * CardDeck
+  * Methods in BaseGame
+  
+***
+
 * Game Background:
 
     Artist:

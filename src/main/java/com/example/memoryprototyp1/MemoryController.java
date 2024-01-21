@@ -161,6 +161,7 @@ public class MemoryController implements Initializable {
         minutes = 0;
         sec.setText("0" + String.valueOf(seconds));
         min.setText(String.valueOf(minutes));
+
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
             if (game.gameFinished()){
                 timeline.stop();
@@ -190,7 +191,7 @@ public class MemoryController implements Initializable {
     public void playAgain() {
         game.playAgain();
         timer();
-        alreadyEnteredName = false;
+        alreadyEnteredName = false; //Wichtig für namenseingabe im Scoreboard
     }
 
     public void returnToMainMenu(ActionEvent event) {
@@ -226,16 +227,13 @@ public class MemoryController implements Initializable {
         game.playAgain();
 
     }
+
     public void playAgainPopUp2(){
         popUp2.setVisible(false);
         game.playAgain();
-
     }
 
-
-
     public void submitName() {
-
 
         highscoreNameS = highscoreName.getText();
 
@@ -248,26 +246,27 @@ public class MemoryController implements Initializable {
         }else{
             errorNameTooLong.setText((" "));
         }
-            setScoreBoard(deserializeScore());
 
-            Score score = new Score(getMinutes(), getSeconds(), highscoreNameS);
+        setScoreBoard(deserializeScore());
 
-            for (int i = 0; i < 5; i++) {
-                if (getScoreBoard()[i] != null) {
-                    if (score.scoreToNumber() < getScoreBoard()[i].scoreToNumber() && !alreadyEnteredName) {
-                        alreadyEnteredName = true;
-                        for (int j = 4; j > i; j--) {
-                            getScoreBoard()[j] = getScoreBoard()[j - 1];
-                        }
-                        getScoreBoard()[i] = score;
-                        break;
-                    }
-                } else if (!alreadyEnteredName) {
-                    getScoreBoard()[i] = score;
+        Score score = new Score(getMinutes(), getSeconds(), highscoreNameS);
+
+        for (int i = 0; i < 5; i++) {
+            if (getScoreBoard()[i] != null) {
+                if (score.scoreToNumber() < getScoreBoard()[i].scoreToNumber() && !alreadyEnteredName) {
                     alreadyEnteredName = true;
+                    for (int j = 4; j > i; j--) {
+                        getScoreBoard()[j] = getScoreBoard()[j - 1];
+                    }
+                    getScoreBoard()[i] = score;
                     break;
                 }
+            } else if (!alreadyEnteredName) {
+                getScoreBoard()[i] = score;
+                alreadyEnteredName = true;
+                break;
             }
+        }
 
         serializeScore(getScoreBoard());
 
@@ -293,9 +292,5 @@ public class MemoryController implements Initializable {
         highscoreAnchorPane.setVisible(false);
     }
 
-
-
-
-
-    }
+}
 
