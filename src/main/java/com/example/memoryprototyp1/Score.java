@@ -8,6 +8,7 @@ import java.io.Serializable;
 
 import static com.example.memoryprototyp1.MainMenuController.getGamemode;
 
+
 public class Score implements Serializable{
     private int scoreSec;
     private int scoreMin;
