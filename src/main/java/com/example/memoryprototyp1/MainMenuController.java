@@ -132,7 +132,6 @@ public class MainMenuController {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainMenu.fxml")));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
-
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {
@@ -204,6 +203,7 @@ public class MainMenuController {
     public void submitNames(ActionEvent event){
         player1name = tf_player1.getText();
         player2name = tf_player2.getText();
+
         //TODO:  schauen ob die Namenslängen passen
         if(player1name.length() < 3 || player2name.length() < 3){
             label_errormessage.setText("All names must contain at least 3 characters!");
