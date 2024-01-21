@@ -214,7 +214,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
             winner = player2.getName();
             name.setText(winner);
         }else{
-            winner = "draw";
+            winner = "DRAW";
             name.setText(winner);
         }
         System.out.println(winner);
