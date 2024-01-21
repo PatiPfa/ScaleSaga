@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -35,6 +36,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import static com.example.memoryprototyp1.MainMenuController.getGamemode;
+import static com.example.memoryprototyp1.Score.*;
 
 public class MemoryController implements Initializable {
 
@@ -62,6 +64,26 @@ public class MemoryController implements Initializable {
     @FXML
     private ImageView iv_lastcardp2;
     @FXML
+    private AnchorPane highscoreAnchorPane;
+    @FXML
+    private TextField highscoreName;
+
+    @FXML
+    private Label placeFive;
+
+    @FXML
+    private Label placeFour;
+
+    @FXML
+    private Label placeOne;
+
+    @FXML
+    private Label placeThree;
+
+    @FXML
+    private Label placeTwo;
+
+    @FXML
     private Button btn_mainMenu_2;
     @FXML
     private Button btn_playAgain2;
@@ -77,13 +99,20 @@ public class MemoryController implements Initializable {
 
 
     private Timeline timeline;
-    int seconds = 0;
-    int minutes= 0;
+    private static int seconds = 0;
+    private static int minutes= 0;
     private Stage stage;
     private Scene scene;
     private Parent root;
     private Image curser = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/sword.png")));
 
+    public static int getSeconds() {
+        return seconds;
+    }
+
+    public static int getMinutes() {
+        return minutes;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -91,29 +120,30 @@ public class MemoryController implements Initializable {
         //1: Singleplayer 2 Cards, 2: Singleplayer 3 Cards
         //3: Multiplayer 2 Cards, 4: Multiplayer 3 Cards
         switch (getGamemode()){
-            case 1:
-                this.game = new Singleplayer_2Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, displayImageView);
+            case "Singleplayer2Cards":
+                this.game = new Singleplayer_2Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, displayImageView, highscoreName, placeFive, placeFour, placeOne, placeThree, placeTwo, highscoreAnchorPane);
                 break;
-            case 2:
+            case "Singleplayer3Cards":
                 this.game = new Singleplayer_3Cards(imagesFlowPane.getChildren().size(), imagesFlowPane);
                 break;
-            case 3:
+            case "Multiplayer2Cards":
                 this.game = new MultiplayerForTwo_2Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, player1PointsLabel, player2PointsLabel, playerOnTurnLabel, player1name, player2name, iv_lastcardp1, iv_lastcardp2, popUp, name);
                 break;
-            case 4:
+            case "Multiplayer3Cards":
                 this.game = new MultiplayerForTwo_3Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, player1PointsLabel, player2PointsLabel, playerOnTurnLabel, player1name, player2name);
                 break;
         }
 
       game.playTheGame();
 
-        if ( getGamemode() == 1 || getGamemode() == 2) {
+        if ( getGamemode().equals("Singleplayer2Cards") || getGamemode().equals("Singleplayer3Cards")) {
             timer();
         }else {
             player1PointsLabel.setText("0");
             player2PointsLabel.setText("0");
         }
     }
+
 
 
 //    Timer
@@ -148,7 +178,7 @@ public class MemoryController implements Initializable {
 
     }
 
-    public void returnToMainMenu(ActionEvent event) throws IOException {
+    public void returnToMainMenu(ActionEvent event){
         MainMenuController.setSingleplayer(false);
         try{
             root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
@@ -182,6 +212,40 @@ public class MemoryController implements Initializable {
 
     }
 
+
+    public void submitName(){
+        Score score = new Score(getMinutes(), getSeconds(), highscoreName.getText());
+        for (int i = 0; i < 5; i++) {
+            getScoreBoard()[i] = deserializeScore()[i];
+            if (getScoreBoard()[i] != null){
+                if (getScoreBoard()[i].getScoreMin()< getMinutes() && getScoreBoard()[i].getScoreSec() < getSeconds()){
+                    getScoreBoard()[i] = score;
+                }
+            } else {
+                getScoreBoard()[i] = score;
+                break;
+            }
+        }
+
+        serializeScore(getScoreBoard());
+
+
+        setLabel(placeOne, 0);
+        setLabel(placeTwo, 1);
+        setLabel(placeThree, 2);
+        setLabel(placeFour, 3);
+        setLabel(placeFive,4);
+    }
+
+    private void setLabel(Label l, int pos){
+        Score[] scores = new Score[5];
+
+        scores[pos] = deserializeScore()[pos];
+        if (scores[pos] != null){
+            l.setText(scores[pos].getScoreMin() + " : " + scores[pos].getScoreSec() + " " + scores[pos].getPlayerName());
+        }
+
+    }
 
 }
 

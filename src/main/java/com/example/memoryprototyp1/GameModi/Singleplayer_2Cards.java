@@ -5,8 +5,11 @@ import javafx.animation.PauseTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
@@ -16,16 +19,37 @@ import java.util.Collections;
 
 import static com.example.memoryprototyp1.Card.getBackOfCardsImage;
 import static com.example.memoryprototyp1.Music.MusicPlayer.playButtonSound;
+import static com.example.memoryprototyp1.Score.deserializeScore;
 
 
-public class Singleplayer_2Cards extends BaseGame{
+public class Singleplayer_2Cards extends BaseGame {
     private int lastClickedCard;
+
+    private AnchorPane highscoreAnchorPane;
+    private TextField highscoreName;
+    private Label placeFive;
+
+    private Label placeFour;
+
+    private Label placeOne;
+
+    private Label placeThree;
+
+    private Label placeTwo;
     private ImageView displayImageView;
 
-    public Singleplayer_2Cards(int flowPaneSize, FlowPane imagesFlowPane, ImageView displayImageView) {
+    public Singleplayer_2Cards(int flowPaneSize, FlowPane imagesFlowPane, ImageView displayImageView, TextField highscoreName, Label placeFive, Label placeFour, Label placeOne, Label placeThree, Label placeTwo, AnchorPane highscoreAnchorPane) {
         super(flowPaneSize, imagesFlowPane);
         this.displayImageView = displayImageView;
+        this.highscoreName = highscoreName;
+        this.placeFive = placeFive;
+        this.placeFour = placeFour;
+        this.placeOne = placeOne;
+        this.placeThree = placeThree;
+        this.placeTwo = placeTwo;
+        this.highscoreAnchorPane = highscoreAnchorPane;
     }
+
     @Override
     public void initializeImageView() {
 
@@ -35,18 +59,18 @@ public class Singleplayer_2Cards extends BaseGame{
             imageView.setImage(getBackOfCardsImage());
             imageView.setUserData(i);
 
-            imageView.setOnMouseEntered(mouseEnteredEvent ->{
-                if (!this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()){
+            imageView.setOnMouseEntered(mouseEnteredEvent -> {
+                if (!this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()) {
                     this.setImageScale((int) imageView.getUserData(), 1.05);
                 }
             });
 
-            imageView.setOnMouseExited(mouseEnteredEvent ->{
+            imageView.setOnMouseExited(mouseEnteredEvent -> {
                 this.setImageScale((int) imageView.getUserData(), 1);
             });
 
             imageView.setOnMouseClicked(mouseEvent -> {
-                if ((!this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()) && !this.getCardsAreFlipped()){
+                if ((!this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()) && !this.getCardsAreFlipped()) {
                     this.flipCard((int) imageView.getUserData());
                     lastClickedCard = (int) imageView.getUserData();
                 }
@@ -55,7 +79,7 @@ public class Singleplayer_2Cards extends BaseGame{
     }
 
     @Override
-    public void play(){
+    public void play() {
         firstCard = null;
         secondCard = null;
         CardDeck deck = new CardDeck();
@@ -77,38 +101,43 @@ public class Singleplayer_2Cards extends BaseGame{
     }
 
     @Override
-    public void checkForMatch(){
+    public void checkForMatch() {
 
-        if (firstCard.sameCardAs(secondCard)){
+        cardsAreFlipped = false; //<- löschen !!!!!!!!!!!!!!!!!!!!
+
+        if (firstCard.sameCardAs(secondCard)) {
             System.out.println("same");
-            rotateDisplayImageView(displayImageView ,cardsInGame.get(lastClickedCard).getFrontOfCards());
+            rotateDisplayImageView(displayImageView, cardsInGame.get(lastClickedCard).getFrontOfCards());
             playButtonSound();
             cardsAreFlipped = false;
 
             //hier noch Player update einfügen
 
         } else {
-            rotateBack();
+            //rotateBack(); <- auskommentieren !!!!!!!!!!!!!!!!!!!!!!!!!!
         }
 
         if (gameFinished()) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Winner!");
-            alert.setHeaderText(null);
-            alert.setContentText("You have won :D");
-            alert.showAndWait();
+            highscoreAnchorPane.setVisible(true);
+
+            setLabel(placeOne, 0);
+            setLabel(placeTwo, 1);
+            setLabel(placeThree, 2);
+            setLabel(placeFour, 3);
+            setLabel(placeFive,4);
         }
 
         firstCard = null;
         secondCard = null;
         PauseTransition delay = new PauseTransition(Duration.millis(1500));
         delay.play();
-        delay.setOnFinished(delayEvent ->{
-            cardsAreFlipped = false;});
+        delay.setOnFinished(delayEvent -> {
+            cardsAreFlipped = false;
+        });
     }
 
     /**
-     *rotiert die Große Display Karte neben dem Spielfeld
+     * rotiert die Große Display Karte neben dem Spielfeld
      */
     public void rotateDisplayImageView(ImageView imageView, Image imageToBeShown) {
 
@@ -147,5 +176,12 @@ public class Singleplayer_2Cards extends BaseGame{
         });
     }
 
+    private void setLabel(Label l, int pos) {
+        if (Score.getScoreBoard()[pos] != null) {
+            l.setText(Integer.toString(deserializeScore()[pos].getScoreMin()) + " : " +
+                    Integer.toString(deserializeScore()[pos].getScoreSec()) + deserializeScore()[pos].getPlayerName());
+        }
 
+
+    }
 }
