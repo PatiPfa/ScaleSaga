@@ -16,7 +16,7 @@
    <children>
       <StackPane prefHeight="430.0" prefWidth="805.0">
          <children>
-            <AnchorPane prefHeight="558.0" prefWidth="1200.0" stylesheets="@styles.css" visible="false">
+            <AnchorPane prefHeight="558.0" prefWidth="1200.0" stylesheets="@styles.css">
                <children>
                   <ImageView fitHeight="724.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -253,7 +253,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="popUp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="600.0" stylesheets="@styles.css">
+            <AnchorPane fx:id="popUp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="600.0" stylesheets="@styles.css" visible="false">
                <children>
                   <ImageView fx:id="imagePopUp" fitHeight="400.0" fitWidth="600.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
                      <image>
