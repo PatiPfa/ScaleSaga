@@ -141,9 +141,10 @@ public class Singleplayer_3Cards extends BaseGame {
         PauseTransition delay = new PauseTransition(Duration.millis(1500));
         if (cardsAreFlipped){
             delay.play();
+            delay.setOnFinished(delayEvent ->{
+                cardsAreFlipped = false;});
         }
-        delay.setOnFinished(delayEvent ->{
-            cardsAreFlipped = false;});
+
     }
 
 
