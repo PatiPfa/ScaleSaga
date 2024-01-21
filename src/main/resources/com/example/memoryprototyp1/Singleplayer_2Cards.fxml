@@ -254,7 +254,7 @@
                         <Image url="@images/background_sword.jpg" />
                      </image>
                   </ImageView>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#56585b" height="588.0" layoutY="-63.0" opacity="0.62" stroke="BLACK" strokeType="INSIDE" width="357.0" />
+                  <Rectangle fx:id="errorNameToLong" arcHeight="5.0" arcWidth="5.0" fill="#56585b" height="588.0" layoutY="-63.0" opacity="0.62" stroke="BLACK" strokeType="INSIDE" width="357.0" />
                   <GridPane layoutX="61.0" layoutY="125.0" prefHeight="202.0" prefWidth="257.0" AnchorPane.bottomAnchor="200.0" AnchorPane.rightAnchor="59.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="41.0" />
@@ -325,19 +325,24 @@
                         <Font size="35.0" />
                      </font>
                   </Label>
-                  <Label layoutX="27.0" layoutY="339.0" prefHeight="36.0" prefWidth="136.0" text="Enter your name:" textFill="WHITE">
+                  <Label layoutX="30.0" layoutY="318.0" prefHeight="36.0" prefWidth="136.0" text="Enter your name:" textFill="WHITE">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="highscoreName" layoutX="27.0" layoutY="383.0" prefHeight="30.0" prefWidth="189.0" />
+                  <TextField fx:id="highscoreName" layoutX="27.0" layoutY="354.0" prefHeight="30.0" prefWidth="189.0" />
                   <Label fx:id="yourScoreLabel" layoutX="98.0" layoutY="283.0" text="New Highscore" textFill="#82ff71">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
                   <Button fx:id="buttonReturn" layoutX="139.0" layoutY="434.0" mnemonicParsing="false" onAction="#returnFromScoreBoard" text="return" />
-                  <Button fx:id="buttonSubmit" layoutX="230.0" layoutY="386.0" mnemonicParsing="false" onAction="#submitName" text="Submit" />
+                  <Button fx:id="buttonSubmit" layoutX="233.0" layoutY="357.0" mnemonicParsing="false" onAction="#submitName" text="Submit" />
+                  <Label fx:id="errorNameTooLong" layoutX="14.0" layoutY="394.0" prefHeight="27.0" prefWidth="335.0" textFill="#ff2828">
+                     <font>
+                        <Font name="Cascadia Code Regular" size="14.0" />
+                     </font>
+                  </Label>
                </children>
                <opaqueInsets>
                   <Insets />

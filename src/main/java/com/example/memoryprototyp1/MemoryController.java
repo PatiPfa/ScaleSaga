@@ -90,14 +90,14 @@ public class MemoryController implements Initializable {
     private ImageView imagePopUp;
     @FXML
     private Label yourScoreLabel;
+    @FXML
+    private Label errorNameTooLong;
 
 
-
-
-
+    private static String highscoreNameS;
     private Timeline timeline;
     private static int seconds = 0;
-    private static int minutes= 0;
+    private static int minutes = 0;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -116,7 +116,7 @@ public class MemoryController implements Initializable {
 
         //1: Singleplayer 2 Cards, 2: Singleplayer 3 Cards
         //3: Multiplayer 2 Cards, 4: Multiplayer 3 Cards
-        switch (getGamemode()){
+        switch (getGamemode()) {
             case "Singleplayer2Cards":
                 this.game = new Singleplayer_2Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, displayImageView, highscoreName, placeFive, placeFour, placeOne, placeThree, placeTwo, highscoreAnchorPane, yourScoreLabel);
                 break;
@@ -131,19 +131,18 @@ public class MemoryController implements Initializable {
                 break;
         }
 
-      game.playTheGame();
+        game.playTheGame();
 
-        if ( getGamemode().equals("Singleplayer2Cards") || getGamemode().equals("Singleplayer3Cards")) {
+        if (getGamemode().equals("Singleplayer2Cards") || getGamemode().equals("Singleplayer3Cards")) {
             timer();
-        }else {
+        } else {
             player1PointsLabel.setText("0");
             player2PointsLabel.setText("0");
         }
     }
 
 
-
-//    Timer
+    //    Timer
     private void timer() {
         if (timeline != null) {
             timeline.stop();
@@ -156,11 +155,11 @@ public class MemoryController implements Initializable {
             if (game.gameFinished())
                 timeline.stop();
             else
-            seconds++;
-                if(seconds >= 60) {
-                    seconds = 0;
-                    minutes++;
-                }
+                seconds++;
+            if (seconds >= 60) {
+                seconds = 0;
+                minutes++;
+            }
             sec.setText(String.valueOf(seconds));
             min.setText(String.valueOf(minutes));
         }));
@@ -169,15 +168,15 @@ public class MemoryController implements Initializable {
         timeline.play();
     }
 
-    public void playAgain(){
+    public void playAgain() {
         game.playAgain();
         timer();
         alreadyEnteredName = false;
     }
 
-    public void returnToMainMenu(ActionEvent event){
+    public void returnToMainMenu(ActionEvent event) {
         MainMenuController.setSingleplayer(false);
-        try{
+        try {
             root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setTitle("ScaleSaga!");
@@ -185,7 +184,7 @@ public class MemoryController implements Initializable {
             scene.setCursor(new ImageCursor(curser));
             stage.setScene(scene);
             stage.show();
-        }catch (Exception e){
+        } catch (Exception e) {
             writeInLog(e, "Main Menu");
         }
     }
@@ -195,14 +194,15 @@ public class MemoryController implements Initializable {
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
             String timestamp = dateFormat.format(new Date());
 
-            writer.println("["+ timestamp + "] Fehler beim Wechseln zur " + Fehlerseite + "-Seite:");
+            writer.println("[" + timestamp + "] Fehler beim Wechseln zur " + Fehlerseite + "-Seite:");
             e.printStackTrace(writer);
             writer.println();
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
     }
-    public void playAgainPopUp(){
+
+    public void playAgainPopUp() {
         popUp.setVisible(false);
         game.playAgain();
         timer();
@@ -210,49 +210,66 @@ public class MemoryController implements Initializable {
 
     }
 
-    public void submitName(){
-        Score score = new Score(getMinutes(), getSeconds(), highscoreName.getText());
+    public void submitName() {
 
-        setScoreBoard(deserializeScore());
 
-        for (int i = 0; i < 5; i++) {
-            if (getScoreBoard()[i] != null){
-                if (getScoreBoard()[i].getScoreMin() >= score.getScoreMin() && getScoreBoard()[i].getScoreSec() >= score.getScoreSec() && !alreadyEnteredName){
-                    alreadyEnteredName = true;
-                    for (int j = 4; j > i; j--) {
-                        getScoreBoard()[j] = getScoreBoard()[j-1];
+        highscoreNameS = highscoreName.getText();
+
+        if (highscoreNameS.length() < 3) {
+            errorNameTooLong.setText("Name is too short, min 3 characters!");
+            return;
+        } else if (highscoreNameS.length() > 12) {
+            errorNameTooLong.setText("The name is too long, max 10 characters!");
+            return;
+        }else{
+            errorNameTooLong.setText((" "));
+        }
+            setScoreBoard(deserializeScore());
+
+            Score score = new Score(getMinutes(), getSeconds(), highscoreNameS);
+
+            for (int i = 0; i < 5; i++) {
+                if (getScoreBoard()[i] != null) {
+                    if (getScoreBoard()[i].getScoreMin() >= score.getScoreMin() && getScoreBoard()[i].getScoreSec() >= score.getScoreSec() && !alreadyEnteredName) {
+                        alreadyEnteredName = true;
+                        for (int j = 4; j > i; j--) {
+                            getScoreBoard()[j] = getScoreBoard()[j - 1];
+                        }
+                        getScoreBoard()[i] = score;
+                        break;
                     }
+                } else if (!alreadyEnteredName) {
                     getScoreBoard()[i] = score;
+                    alreadyEnteredName = true;
                     break;
                 }
-            } else if (!alreadyEnteredName){
-                getScoreBoard()[i] = score;
-                alreadyEnteredName = true;
-                break;
             }
-        }
 
-       serializeScore(getScoreBoard());
+        serializeScore(getScoreBoard());
 
         setLabel(placeOne, 0);
         setLabel(placeTwo, 1);
         setLabel(placeThree, 2);
         setLabel(placeFour, 3);
-        setLabel(placeFive,4);
+        setLabel(placeFive, 4);
     }
 
-    private void setLabel(Label l, int pos){
+    private void setLabel(Label l, int pos) {
         Score[] scores = new Score[5];
 
         scores[pos] = deserializeScore()[pos];
-        if (scores[pos] != null){
+        if (scores[pos] != null) {
             l.setText(scores[pos].getScoreMin() + ":" + scores[pos].getScoreSec() + " | " + scores[pos].getPlayerName());
         }
     }
 
-    public void returnFromScoreBoard(){
+    public void returnFromScoreBoard() {
         highscoreAnchorPane.setVisible(false);
     }
 
-}
+
+
+
+
+    }
 
