@@ -155,7 +155,7 @@ public class MemoryController implements Initializable {
     }
 
 
-    //    Timer
+    //   Timer
     private void timer() {
         if (timeline != null) {
             timeline.stop();

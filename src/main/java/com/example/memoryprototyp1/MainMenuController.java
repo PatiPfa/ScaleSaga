@@ -166,13 +166,13 @@ public class MainMenuController {
      * wechselt (von den Einstellungen) zurück zum Hauptmenü
      **/
     public void switchToMenu(ActionEvent event){
-        try {                                   //probieren, ob er wechseln kann
+        try {                                    //probieren, ob er wechseln kann
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainMenu.fxml")));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-        } catch (Exception e) {                 //Falls die Einstellungen nicht geöffnet werden kann, wird der Fehler in die Logdatei gespeichert
+        } catch (Exception e) {                  //Falls die Einstellungen nicht geöffnet werden kann, wird der Fehler in die Logdatei gespeichert
             writeInLog(e, "MainMenu");
         }
     }
