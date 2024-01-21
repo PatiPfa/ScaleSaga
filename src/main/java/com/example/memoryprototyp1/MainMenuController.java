@@ -291,7 +291,6 @@ public class MainMenuController {
             }
 
         }
-
     }
 
     //Speichert die Highscore namen in die Labels

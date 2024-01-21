@@ -50,7 +50,6 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
     private String currentCursor = "sword";
     private final Image CURSOR_SWORD = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/sword.png")));
     private final Image CURSOR_AXE = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/axe.png")));
-    //https://www.pngwing.com/de/free-png-tatpt/download?height=114
     private Text name;
     private String CursorPlayer1;
     private String CursorPlayer2;
