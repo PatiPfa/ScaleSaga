@@ -9,7 +9,7 @@ import java.util.Objects;
 public class CardDeck {
     private ArrayList<Card> deck;
 
-    private static final int NUMBER_OF_IMAGES = 15; //<-- Anzahl der benutzbaren Karten in
+    private static final int NUMBER_OF_IMAGES = 17; //<-- Anzahl der benutzbaren Karten in
                                                     // src/main/resources/com/example/memoryprototyp1/images
 
     public static int getNUMBER_OF_IMAGES() {
