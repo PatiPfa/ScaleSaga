@@ -76,6 +76,17 @@ public class MainMenuController {
 
     @FXML
     private VBox scoreBoardtwoCards;
+    @FXML
+    private void toggleMute(ActionEvent event) {
+        Music.MusicPlayer.toggleMute();
+    }
+
+    @FXML
+    private void handleVolumeChange(MouseEvent event) {
+        double volume = sliderVolume.getValue();
+        Music.MusicPlayer.setBackgroundMusicVolume(volume/100);
+        System.out.println("Volume: " + volume);
+    }
 
     private static String player1name;
     private static String player2name;
@@ -322,16 +333,7 @@ public class MainMenuController {
         }
     }
 
-    @FXML
-    private void toggleMute(ActionEvent event) {
-        Music.MusicPlayer.toggleMute();
-    }
 
-    @FXML
-    private void handleVolumeChange(MouseEvent event) {
-        double volume = sliderVolume.getValue();
-        Music.MusicPlayer.setBackgroundMusicVolume(volume);
-    }
 
     private void setScoreLabel(Label l, int pos, String path) {
         Score[] scores = readHighscore(path);
