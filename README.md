@@ -5,7 +5,6 @@ Go to main and run it!!
 If the game does not start and some media imports are displayed in red,
 you may have to RELOAD ALL MAVEN PROJECTS!!
 
-Turn on the sound because we added cool music!
 **************************
 About the game:
 =
