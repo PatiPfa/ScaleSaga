@@ -8,8 +8,9 @@ import java.io.Serializable;
 
 import static com.example.memoryprototyp1.MainMenuController.getGamemode;
 
-public class Score implements Serializable{
 
+
+public class Score implements Serializable{
     private int scoreSec;
     private int scoreMin;
     private String player;
@@ -70,7 +71,7 @@ public class Score implements Serializable{
 
      }
  }
-//Deserialisiert das Score-Array aus der entsprechenden Textdatei des aktuellen Spielmodus.
+//Deserialisiert das Score-Array aus der entsprechenden Textdatei des aktuellen Spielmodus
  public static Score[] deserializeScore(){
      Score[] out = new Score[5];
      String txtFile = getCurrentGameMode();
