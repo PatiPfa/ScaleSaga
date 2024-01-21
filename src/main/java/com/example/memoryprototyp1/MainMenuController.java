@@ -180,6 +180,7 @@ public class MainMenuController {
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
+            scene.setCursor(new ImageCursor(CURSOR));
             stage.show();
         }catch (Exception e){                   //Falls die Einstellungen nicht geöffnet werden kann, wird der Fehler in die Logdatei gespeichert
             writeInLog(e, "Setting");
