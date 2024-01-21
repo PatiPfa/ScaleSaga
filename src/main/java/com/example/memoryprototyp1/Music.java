@@ -10,6 +10,8 @@ public class Music {
 
     public static class MusicPlayer {
 
+        private static double volumeBackground = 0.4;
+
         private static MediaPlayer backgroundMusic;
         private static boolean isMuted;
         //Hintergrundmusik ab und setzt eine Endlos-Wiedergabe-Schleife.
@@ -21,13 +23,14 @@ public class Music {
             backgroundMusic = new MediaPlayer(media);
             // Endlos-Wiedergabe-Schleife
             backgroundMusic.setOnEndOfMedia(() -> playBackgroundMusic(backgroundMusic.getMedia()));
-            backgroundMusic.setVolume(0.4);
+            backgroundMusic.setVolume(volumeBackground);
             backgroundMusic.play();
         }
         //Lautstärke der Hintergrundmusik
         public static void setBackgroundMusicVolume(double volume) {
             if (backgroundMusic != null) {
                 backgroundMusic.setVolume(volume);
+                volumeBackground = volume;
             }
         }
         //Schaltet die Hintergrundmusik stumm oder an
