@@ -256,7 +256,7 @@ public class MainMenuController {
 
 
     //The following method has been copied from ChatGPT: https://chat.openai.com/share/62ddc123-fe7c-4f0d-9e13-9c5c91bab0a5 (20.01.2024
-    private void writeInLog(Exception e, String Fehlerseite) {
+    public static void writeInLog(Exception e, String Fehlerseite) {
         try (PrintWriter writer = new PrintWriter(new FileWriter("test.log", true))) {
             SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
             String timestamp = dateFormat.format(new Date());

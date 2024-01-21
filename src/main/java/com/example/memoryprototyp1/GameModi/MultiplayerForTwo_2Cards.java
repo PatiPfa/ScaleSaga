@@ -7,10 +7,10 @@ import com.example.memoryprototyp1.*;
 import javafx.animation.PauseTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
+import javafx.fxml.FXML;
 import javafx.scene.ImageCursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -52,13 +52,18 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
     private final Image CURSOR_AXE = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/axe.png")));
     //https://www.pngwing.com/de/free-png-tatpt/download?height=114
     private Text name;
+    private String CursorPlayer1;
+    private String CursorPlayer2;
+    private boolean firstRound = true;
+    private ImageView iv_player1symbol;
+    private ImageView iv_player2symbol;
 
 
 
 
     private static boolean delayStart = false;
 
-    public MultiplayerForTwo_2Cards(int size, FlowPane imagesFlowPane, Label player1PointsLabel, Label player2PointsLabel, Label playerOnTurnLabel, Label player1name, Label player2name, ImageView iv_lastcardp1, ImageView iv_lastcardp2, AnchorPane popUp, Text name) {
+    public MultiplayerForTwo_2Cards(int size, FlowPane imagesFlowPane, Label player1PointsLabel, Label player2PointsLabel, Label playerOnTurnLabel, Label player1name, Label player2name, ImageView iv_lastcardp1, ImageView iv_lastcardp2, AnchorPane popUp, Text name, ImageView iv_player1symbol, ImageView iv_player2symbol) {
         super(size, imagesFlowPane);
         this.player1PointsLabel = player1PointsLabel;
         this.player2PointsLabel = player2PointsLabel;
@@ -69,6 +74,8 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         this.iv_lastcardp2 = iv_lastcardp2;
         this.popUp = popUp;
         this.name = name;
+        this.iv_player1symbol = iv_player1symbol;
+        this.iv_player2symbol = iv_player2symbol;
     }
 
     @Override
@@ -102,6 +109,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
 
     @Override
     public void play() {
+        delayStart = false;
         PauseTransition initialDelay = new PauseTransition(Duration.seconds(3));
         initialDelay.setOnFinished(event -> {
             delayStart = true;
@@ -113,11 +121,23 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
 
         Random random = new Random();
         int randomStart = random.nextInt(2) + 1;
-        System.out.println(randomStart);
         playerOnTurn = (randomStart == 1) ? player1 : player2;
 
-        player1name.setText(player1.getName());
+        if(firstRound && randomStart == 1){
+            CursorPlayer1 = "sword";
+            CursorPlayer2 = "axe";
+            firstRound = false;
+        }else if (firstRound){
+            CursorPlayer1 = "axe";
+            CursorPlayer2 = "sword";
+            iv_player1symbol.setImage(CURSOR_AXE);
+            iv_player2symbol.setImage(CURSOR_SWORD);
+            firstRound = false;
+        }else if((randomStart == 1 && !currentCursor.equals(CursorPlayer1)) || (randomStart == 1 && !currentCursor.equals(CursorPlayer2))){
+            switchCursor();
+        }
 
+        player1name.setText(player1.getName());
         player2name.setText(player2.getName());
 
         if(playerOnTurn.equals(player1)){
@@ -163,8 +183,6 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
                 player2.addOnePoint();
                 rotateDisplayImageView(iv_lastcardp2, cardsInGame.get(lastClickedCard).getFrontOfCards());
             }
-
-            //Ev durch ne Variable ersetzen und unten abfragen?
             updatePlayerOnTurn();
         } else {
             rotateBack();
@@ -191,7 +209,6 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         });
 
         updatePlayerOnTurnLabel();
-        switchCursor();
     }
 
     private void updatePointsLabels(){
@@ -222,15 +239,19 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
     }
 
     public void switchCursor(){
-        scene = iv_lastcardp1.getScene();
-
-        if(currentCursor.equals("sword")){
-            scene.setCursor(new ImageCursor(CURSOR_AXE));
-            currentCursor = "axe";
-        }else{
-            scene.setCursor(new ImageCursor(CURSOR_SWORD));
-            currentCursor = "sword";
+        try{
+            Scene scene =  playerOnTurnLabel.getScene();
+            if(currentCursor.equals("sword")){
+                scene.setCursor(new ImageCursor(CURSOR_AXE));
+                currentCursor = "axe";
+            } else {
+                scene.setCursor(new ImageCursor(CURSOR_SWORD));
+                currentCursor = "sword";
+            }
+        }catch (Exception e){
+            MainMenuController.writeInLog(e, "SetCursor");
         }
+
     }
 
     public void updatePlayerOnTurn(){

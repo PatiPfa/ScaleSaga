@@ -86,6 +86,7 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
     }
     @Override
     public void play(){
+        delayStart = false;
         PauseTransition initialDelay = new PauseTransition(Duration.seconds(3));
         initialDelay.setOnFinished(event -> {
             delayStart = true;
@@ -111,6 +112,9 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
 
         updatePointsLabels();
         updatePlayerOnTurnLabel();
+        if((playerOnTurn.equals(player1) && currentCursor.equals("axe"))|| playerOnTurn.equals(player2) && currentCursor.equals("sword")){
+            switchCursor();
+        }
 
         firstCard = null;
         secondCard = null;

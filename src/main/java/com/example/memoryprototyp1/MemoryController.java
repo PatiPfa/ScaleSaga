@@ -63,6 +63,10 @@ public class MemoryController implements Initializable {
     private ImageView iv_lastcardp1;
     @FXML
     private ImageView iv_lastcardp2;
+    @FXML
+    private ImageView iv_player1symbol;
+    @FXML
+    private ImageView iv_player2symbol;
 
     @FXML
     private AnchorPane highscoreAnchorPane;
@@ -88,7 +92,6 @@ public class MemoryController implements Initializable {
     private AnchorPane popUp;
     @FXML
     private AnchorPane popUp2;
-
 
     @FXML
     private Text name;
@@ -134,7 +137,7 @@ public class MemoryController implements Initializable {
                 this.game = new Singleplayer_3Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, displayImageView, highscoreName, placeFive, placeFour, placeOne, placeThree, placeTwo, highscoreAnchorPane, yourScoreLabel);
                 break;
             case "Multiplayer2Cards":
-                this.game = new MultiplayerForTwo_2Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, player1PointsLabel, player2PointsLabel, playerOnTurnLabel, player1name, player2name, iv_lastcardp1, iv_lastcardp2, popUp, name);
+                this.game = new MultiplayerForTwo_2Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, player1PointsLabel, player2PointsLabel, playerOnTurnLabel, player1name, player2name, iv_lastcardp1, iv_lastcardp2, popUp, name, iv_player1symbol, iv_player2symbol);
                 break;
             case "Multiplayer3Cards":
                 this.game = new MultiplayerForTwo_3Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, player1PointsLabel, player2PointsLabel, playerOnTurnLabel, player1name, player2name, popUp2, name2);
@@ -190,8 +193,11 @@ public class MemoryController implements Initializable {
 
     public void playAgain() {
         game.playAgain();
-        timer();
-        alreadyEnteredName = false; //Wichtig für namenseingabe im Scoreboard
+        if(getGamemode().equals("Singleplayer2Cards") || getGamemode().equals("Singleplayer3Cards")){
+            timer();
+            alreadyEnteredName = false; //Wichtig für namenseingabe im Scoreboard
+        }
+
     }
 
     public void returnToMainMenu(ActionEvent event) {
@@ -205,20 +211,7 @@ public class MemoryController implements Initializable {
             stage.setScene(scene);
             stage.show();
         } catch (Exception e) {
-            writeInLog(e, "Main Menu");
-        }
-    }
-
-    private void writeInLog(Exception e, String Fehlerseite) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter("test.log", true))) {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-            String timestamp = dateFormat.format(new Date());
-
-            writer.println("[" + timestamp + "] Fehler beim Wechseln zur " + Fehlerseite + "-Seite:");
-            e.printStackTrace(writer);
-            writer.println();
-        } catch (IOException ioException) {
-            ioException.printStackTrace();
+            MainMenuController.writeInLog(e, "Main Menu");
         }
     }
 
