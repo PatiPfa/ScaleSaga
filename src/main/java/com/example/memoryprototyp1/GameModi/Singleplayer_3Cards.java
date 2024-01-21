@@ -107,7 +107,7 @@ public class Singleplayer_3Cards extends BaseGame {
 
 
         } else {
-         //   rotateBack();   <- auskommentieren !!!!!!!!!!!!!!!!!!!!!!!!!!
+          rotateBack();
         }
 
         if (gameFinished()) {

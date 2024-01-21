@@ -106,7 +106,7 @@ public class Singleplayer_2Cards extends BaseGame {
     @Override
     public void checkForMatch() {
 
-        cardsAreFlipped = false; //<- löschen !!!!!!!!!!!!!!!!!!!!
+
 
         if (firstCard.sameCardAs(secondCard)) {
             System.out.println("same");
@@ -117,7 +117,7 @@ public class Singleplayer_2Cards extends BaseGame {
             //hier noch Player update einfügen
 
         } else {
-            //rotateBack(); //<- auskommentieren !!!!!!!!!!!!!!!!!!!!!!!!!!
+            rotateBack();
         }
 
         if (gameFinished()) {
