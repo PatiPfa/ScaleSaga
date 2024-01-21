@@ -9,13 +9,13 @@ import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -44,13 +44,14 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
     private ImageView iv_lastcardp2;
     private int lastClickedCard;
     private AnchorPane popUp;
+    private Text name;
 
 
 
 
     private static boolean delayStart = false;
 
-    public MultiplayerForTwo_2Cards(int size, FlowPane imagesFlowPane, Label player1PointsLabel, Label player2PointsLabel, Label playerOnTurnLabel, Label player1name, Label player2name, ImageView iv_lastcardp1, ImageView iv_lastcardp2, AnchorPane popUp) {
+    public MultiplayerForTwo_2Cards(int size, FlowPane imagesFlowPane, Label player1PointsLabel, Label player2PointsLabel, Label playerOnTurnLabel, Label player1name, Label player2name, ImageView iv_lastcardp1, ImageView iv_lastcardp2, AnchorPane popUp, Text name) {
         super(size, imagesFlowPane);
         this.player1PointsLabel = player1PointsLabel;
         this.player2PointsLabel = player2PointsLabel;

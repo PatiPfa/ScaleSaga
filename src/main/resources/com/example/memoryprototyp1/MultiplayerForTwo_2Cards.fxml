@@ -253,28 +253,33 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="popUp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="600.0" visible="false">
+            <AnchorPane fx:id="popUp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="372.0" prefWidth="600.0" stylesheets="@styles.css" visible="false">
                <children>
                   <ImageView fx:id="imagePopUp" fitHeight="400.0" fitWidth="600.0" layoutX="-1.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/popUp.jpg" />
                      </image>
                   </ImageView>
-                  <Text layoutX="170.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You have won!" textAlignment="CENTER">
+                  <Text layoutX="170.0" layoutY="99.0" stroke="WHITE" strokeLineCap="ROUND" strokeType="OUTSIDE" strokeWidth="10.0" text="You have won!" textAlignment="CENTER">
                      <font>
                         <Font name="Imprint MT Shadow" size="41.0" />
                      </font>
                   </Text>
-                  <Button fx:id="btn_playAgain2" layoutX="404.0" layoutY="255.0" mnemonicParsing="false" onAction="#playAgainPopUp" text="Play Again">
+                  <Button fx:id="btn_playAgain2" layoutX="362.0" layoutY="258.0" mnemonicParsing="false" onAction="#playAgainPopUp" text="Play Again">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Imprint MT Shadow" size="30.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btn_mainMenu_2" layoutX="93.0" layoutY="258.0" mnemonicParsing="false" onAction="#returnToMainMenu" text="Main Menu">
+                  <Button fx:id="btn_mainMenu_2" layoutX="68.0" layoutY="258.0" mnemonicParsing="false" onAction="#returnToMainMenu" text="Main Menu">
                      <font>
-                        <Font size="22.0" />
+                        <Font name="Imprint MT Shadow" size="30.0" />
                      </font>
                   </Button>
+                  <Text fx:id="name" layoutX="238.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+                     <font>
+                        <Font name="Imprint MT Shadow" size="48.0" />
+                     </font>
+                  </Text>
                </children>
             </AnchorPane>
          </children>
