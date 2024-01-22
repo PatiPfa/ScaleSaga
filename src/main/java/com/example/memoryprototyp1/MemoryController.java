@@ -154,7 +154,7 @@ public class MemoryController implements Initializable {
         seconds = 0;
         minutes = 0;
         sec.setText("0" + String.valueOf(seconds));
-        min.setText(String.valueOf(minutes));
+        min.setText("0" + String.valueOf(minutes));
 
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
             if (game.gameFinished()){
@@ -175,7 +175,13 @@ public class MemoryController implements Initializable {
                 sec.setText(String.valueOf(seconds));
             }
 
-            min.setText(String.valueOf(minutes));
+            if (minutes < 10){
+                min.setText("0" + String.valueOf(minutes));
+            }else {
+                min.setText(String.valueOf(minutes));
+            }
+
+
         }));
 
         timeline.setCycleCount(Animation.INDEFINITE);
