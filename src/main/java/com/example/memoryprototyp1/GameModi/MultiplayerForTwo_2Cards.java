@@ -218,7 +218,6 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
             });
         }
 
-
         updatePlayerOnTurnLabel();
         switchCursor();
     }
@@ -234,7 +233,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
 
 
     /**
-     * Updated Player Namen
+     * Updated Player Namen vom Spieler am Zug
      */
     private void updatePlayerOnTurnLabel(){
         playerOnTurnLabel.setText(playerOnTurn.getName());

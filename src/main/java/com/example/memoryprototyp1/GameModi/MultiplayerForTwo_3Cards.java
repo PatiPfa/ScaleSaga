@@ -3,7 +3,6 @@ package com.example.memoryprototyp1.GameModi;
 import com.example.memoryprototyp1.*;
 import javafx.animation.PauseTransition;
 import javafx.scene.ImageCursor;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -12,9 +11,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import javafx.util.Duration;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Objects;
@@ -24,37 +21,34 @@ import static com.example.memoryprototyp1.Card.getBackOfCardsImage;
 import static com.example.memoryprototyp1.Music.MusicPlayer.playButtonSound;
 
 public class MultiplayerForTwo_3Cards extends BaseGame {
-
-    private Card thirdCard;
-
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-    Player player1;
-    Player player2;
-    Player playerOnTurn;
-
+    private AnchorPane popUp2;
+    private ImageView iv_player1symbol;
+    private ImageView iv_player2symbol;
     private Label player1PointsLabel;
     private Label player2PointsLabel;
     private Label playerOnTurnLabel;
     private Label player1name;
     private Label player2name;
-
-    private AnchorPane popUp2;
     private Text name2;
 
+    private Card thirdCard;
+    Player player1;
+    Player player2;
+    Player playerOnTurn;
+
+    private boolean firstRound = true;
+    private boolean delayStart = false;
     private String currentCursor = "sword";
+    private String CursorPlayer1;
+    private String CursorPlayer2;
+
     private final Image CURSOR_SWORD = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/sword.png")));
     private final Image CURSOR_AXE = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/axe.png")));
 
-    private boolean delayStart = false;
 
-    private String CursorPlayer1;
-    private String CursorPlayer2;
-    private boolean firstRound = true;
-    private ImageView iv_player1symbol;
-    private ImageView iv_player2symbol;
-
+    /**
+     * constructer
+     **/
     public MultiplayerForTwo_3Cards(int flowPaneSize, FlowPane imagesFlowPane, Label player1PointsLabel, Label player2PointsLabel, Label playerOnTurnLabel, Label player1name, Label player2name, AnchorPane popUp2, Text name2, ImageView iv_player1symbol, ImageView iv_player2symbol) {
         super(flowPaneSize, imagesFlowPane);
         this.player1PointsLabel = player1PointsLabel;
@@ -93,6 +87,10 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
             });
         }
     }
+
+    /**
+     * Gamelogic von Multiplayer
+     */
     @Override
     public void play(){
         delayStart = false;
@@ -157,6 +155,11 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
         System.out.println(cardsInGame);
         rotateAllCardsToBackSide();
     }
+
+    /**
+     *
+     * flipt die Karte
+     **/
     @Override
     public void flipCard(int cardPosition) {
 
@@ -175,6 +178,10 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
             checkForMatch();
         }
     }
+
+    /**
+     * checkt ob Karten gleich sind
+     */
     @Override
     public void checkForMatch(){
 
@@ -223,6 +230,9 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
 
     }
 
+    /**
+     * dreht die Karten wieder um
+     **/
     public void rotateBack(){
 
         int indexFirstCard = cardsInGame.indexOf(firstCard);
@@ -244,14 +254,24 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
         });
     }
 
+    /**
+     * Updated Punkte der Player
+     */
     private void updatePointsLabels(){
         player1PointsLabel.setText(Integer.toString(player1.getPoints()));
         player2PointsLabel.setText(Integer.toString(player2.getPoints()));
     }
 
+    /**
+     * Updated Player Namen vom Spieler am Zug
+     */
     private void updatePlayerOnTurnLabel(){
         playerOnTurnLabel.setText(playerOnTurn.getName());
     }
+
+    /**
+     * Erkennt welcher Spieler gewonnen hat und lässt PopUp mit Gewinnbenachrichtigung erscheinen
+     */
     private void winner() {
         String winner;
 
@@ -270,6 +290,9 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
 
     }
 
+    /**
+     * ändert Cursor
+     */
     public void switchCursor() {
         try {
             Scene scene = playerOnTurnLabel.getScene();
@@ -285,6 +308,9 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
         }
     }
 
+    /**
+     * Spieler, der an der Reihe ist, zu wechseln
+     */
     public void updatePlayerOnTurn(){
         if(playerOnTurn.equals(player1)){
             playerOnTurn = player2;
