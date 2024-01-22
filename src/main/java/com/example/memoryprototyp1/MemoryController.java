@@ -40,16 +40,32 @@ import static com.example.memoryprototyp1.MainMenuController.getGamemode;
 import static com.example.memoryprototyp1.Score.*;
 
 public class MemoryController implements Initializable {
-
+    @FXML
+    private AnchorPane highscoreAnchorPane;
+    @FXML
+    private AnchorPane popUp;
+    @FXML
+    private AnchorPane popUp2;
     @FXML
     private FlowPane imagesFlowPane;
-    private BaseGame game;
+    @FXML
+    private ImageView displayImageView;
+    @FXML
+    private ImageView iv_lastcardp1;
+    @FXML
+    private ImageView iv_lastcardp2;
+    @FXML
+    private ImageView iv_player1symbol;
+    @FXML
+    private ImageView iv_player2symbol;
     @FXML
     private Text sec;
     @FXML
     private Text min;
     @FXML
-    private ImageView displayImageView;
+    private Text name2;
+    @FXML
+    private Text name;
     @FXML
     private Label player1PointsLabel;
     @FXML
@@ -61,76 +77,49 @@ public class MemoryController implements Initializable {
     @FXML
     private Label player2name;
     @FXML
-    private ImageView iv_lastcardp1;
-    @FXML
-    private ImageView iv_lastcardp2;
-    @FXML
-    private ImageView iv_player1symbol;
-    @FXML
-    private ImageView iv_player2symbol;
-
-    @FXML
-    private AnchorPane highscoreAnchorPane;
-    @FXML
-    private TextField highscoreName;
-
-    @FXML
     private Label placeFive;
-
     @FXML
     private Label placeFour;
-
     @FXML
     private Label placeOne;
-
     @FXML
     private Label placeThree;
-
     @FXML
     private Label placeTwo;
-
-    @FXML
-    private AnchorPane popUp;
-    @FXML
-    private AnchorPane popUp2;
-
-    @FXML
-    private Text name;
-    @FXML
-    private ImageView imagePopUp;
     @FXML
     private Label yourScoreLabel;
     @FXML
     private Label errorNameTooLong;
     @FXML
-    private Text name2;
+    private TextField highscoreName;
 
-
-
-    private static String highscoreNameS;
-    private Timeline timeline;
-    private static int seconds = 0;
-    private static int minutes = 0;
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    private BaseGame game;
+    private Timeline timeline;
+    private boolean alreadyEnteredName; //verhindert mehrfacheingabe im ScoreBoard
+    private static String highscoreNameS;
+    private static int seconds = 0;
+    private static int minutes = 0;
+
     private Image curser = new Image(Objects.requireNonNull(Card.class.getResourceAsStream("images/sword.png")));
-    private boolean alreadyEnteredName;//verhindert mehrfacheingabe im ScoreBoard
 
 
     public static int getSeconds() {
         return seconds;
     }
-
     public static int getMinutes() {
         return minutes;
     }
 
+    /**
+     * Methode wird am Start des Spiels automatisch ausgeführt
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
-        //1: Singleplayer 2 Cards, 2: Singleplayer 3 Cards
-        //3: Multiplayer 2 Cards, 4: Multiplayer 3 Cards
+        //Je nachdem welcher Modi gewählt wurde, wird das entsprechende Spiel erstellt
         switch (getGamemode()) {
             case "Singleplayer2Cards":
                 this.game = new Singleplayer_2Cards(imagesFlowPane.getChildren().size(), imagesFlowPane, displayImageView, highscoreName, placeFive, placeFour, placeOne, placeThree, placeTwo, highscoreAnchorPane, yourScoreLabel);
@@ -148,16 +137,15 @@ public class MemoryController implements Initializable {
 
         game.playTheGame();
 
+        //im Singleplayermodus wird der Timer gestartet
         if (getGamemode().equals("Singleplayer2Cards") || getGamemode().equals("Singleplayer3Cards")) {
             timer();
-        } else {
-            player1PointsLabel.setText("0");
-            player2PointsLabel.setText("0");
         }
     }
 
-
-    //    Timer
+    /**
+     * Timer
+     **/
     private void timer() {
 
         if (timeline != null) {
@@ -195,8 +183,13 @@ public class MemoryController implements Initializable {
 
     }
 
+    /**
+     * Play again Button
+     **/
     public void playAgain() {
+        //startet Spiel neu
         game.playAgain();
+        //im Singleplayer wird der Timer neu gestartet
         if(getGamemode().equals("Singleplayer2Cards") || getGamemode().equals("Singleplayer3Cards")){
             timeline.stop();
             timer();
@@ -205,11 +198,17 @@ public class MemoryController implements Initializable {
 
     }
 
+    /**
+     * Button um zum Hauptmenü zu wechseln
+     **/
     public void returnToMainMenu(ActionEvent event) {
+        //Im Singleplayer wird der Timer gestoppt
         if(getGamemode().equals("Singleplayer2Cards") || getGamemode().equals("Singleplayer3Cards")){
             timeline.stop();
         }
+        //Singleplayer im MainMenuController wird wieder auf false gesetzt um neu auswählen zu können
         MainMenuController.setSingleplayer(false);
+
         try {
             root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -223,30 +222,41 @@ public class MemoryController implements Initializable {
         }
     }
 
+    /**
+     * play again Button im PopUp
+     **/
     public void playAgainPopUp() {
         popUp.setVisible(false);
         game.playAgain();
 
     }
 
+    /**
+     * play again Button im zweiten PopUp
+     **/
     public void playAgainPopUp2(){
         popUp2.setVisible(false);
         game.playAgain();
     }
 
+    /**
+     * submit Button im Highscore Board um den Namen zu bestätigen
+     **/
     public void submitName() {
-
+        //Input vom Textfeld in eine Variable speichern
         highscoreNameS = highscoreName.getText();
 
+        //länge des Namen überprüfen
         if (highscoreNameS.length() < 3) {
             errorNameTooLong.setText("Name is too short, min 3 characters!");
             return;
-        } else if (highscoreNameS.length() > 12) {
+        } else if (highscoreNameS.length() > 10) {
             errorNameTooLong.setText("The name is too long, max 10 characters!");
             return;
         }else{
             errorNameTooLong.setText((" "));
         }
+
 
         setScoreBoard(deserializeScore());
 
@@ -278,6 +288,10 @@ public class MemoryController implements Initializable {
         setScoreLabel(placeFive, 4);
     }
 
+
+    /**
+     * setzt alle Score Label
+     **/
     private void setScoreLabel(Label l, int pos) {
         Score[] scores = new Score[5];
 
@@ -289,6 +303,10 @@ public class MemoryController implements Initializable {
         }
     }
 
+
+    /**
+     * schließt das Scoreboard
+     **/
     public void returnFromScoreBoard() {
         highscoreAnchorPane.setVisible(false);
     }
