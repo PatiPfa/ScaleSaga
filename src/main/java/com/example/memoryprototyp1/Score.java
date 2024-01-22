@@ -82,7 +82,7 @@ public class Score implements Serializable{
          ObjectInputStream in = new ObjectInputStream(fileIn);
          out = (Score[]) in.readObject();
      } catch (Exception e){
-         System.out.println("Array is empty");
+         //System.out.println("Array is empty");
      }
 
      return out;
