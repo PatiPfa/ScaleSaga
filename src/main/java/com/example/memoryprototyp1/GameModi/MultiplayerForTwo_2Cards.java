@@ -191,6 +191,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
                 player2.addOnePoint();
                 rotateDisplayImageView(iv_lastcardp2, cardsInGame.get(lastClickedCard).getFrontOfCards());
             }
+            switchCursor();
             updatePlayerOnTurn();
         } else {                                                                                                        //wenn Karten nicht matchen dann wieder umdrehen
             rotateBack();
