@@ -5,10 +5,12 @@ Go to main and run it!!
 If the game does not start and some media imports are displayed in red,
 you may have to RELOAD ALL MAVEN PROJECTS!!
 
+JDK: OpenJDK-21
+Tested on Windows
 **************************
 About the game:
 =
-It's memory. You now memory
+It's memory. You know memory
 
 There are different game modes.
 
@@ -48,7 +50,7 @@ Credit:
     https://icons8.com/icon/7806/left-2
 ***
 
-* Axt-Icon
+* Axe-Icon
 
     https://www.pngwing.com/de/free-png-tatpt/download?height=114
 ***
