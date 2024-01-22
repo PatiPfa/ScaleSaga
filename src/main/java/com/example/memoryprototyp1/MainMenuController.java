@@ -123,6 +123,8 @@ public class MainMenuController {
         playButtonSound();
         singleplayer = true;
         switchToSubmenu();
+        scoreBoardtwoCards.setVisible(true);
+        scoreBoardthreeCards.setVisible(true);
     }
 
     /**
