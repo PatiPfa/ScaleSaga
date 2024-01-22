@@ -196,9 +196,8 @@ public class MultiplayerForTwo_3Cards extends BaseGame {
             }else{
                 player2.addOnePoint();
             }
-
-            //Ev durch ne Variable ersetzen und unten abfragen?
             updatePlayerOnTurn();
+            switchCursor();
         } else {
             rotateBack();
         }
