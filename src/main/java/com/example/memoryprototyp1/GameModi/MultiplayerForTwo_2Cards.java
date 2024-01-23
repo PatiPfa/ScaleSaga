@@ -32,9 +32,6 @@ import static com.example.memoryprototyp1.Music.MusicPlayer.playButtonSound;
 
 public class MultiplayerForTwo_2Cards extends BaseGame {
 
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
     Player player1;
     Player player2;
     Player playerOnTurn;

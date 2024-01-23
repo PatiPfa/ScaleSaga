@@ -58,7 +58,7 @@ public class Score implements Serializable{
     }
 //Serialisiert den Score-Array und speichert es in der entsprechenden Textdatei des aktuellen Spielmodus.
  public static void serializeScore(Score[] s){
-     String txtFile = getCurrentGameMode();
+     txtFile = getCurrentGameMode();
 
      try {
          FileOutputStream fileOut = new FileOutputStream(txtFile);
@@ -75,7 +75,7 @@ public class Score implements Serializable{
 //Deserialisiert das Score-Array aus der entsprechenden Textdatei des aktuellen Spielmodus.
  public static Score[] deserializeScore(){
      Score[] out = new Score[5];
-     String txtFile = getCurrentGameMode();
+     txtFile = getCurrentGameMode();
 
      try {
          FileInputStream fileIn = new FileInputStream(txtFile);
