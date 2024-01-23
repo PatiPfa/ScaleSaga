@@ -269,7 +269,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Text fx:id="timeText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Time:">
+                        <Text fx:id="timeText" fill="WHITE" onMouseClicked="#timerStop" strokeType="OUTSIDE" strokeWidth="0.0" text="Time:">
                            <font>
                               <Font name="Imprint MT Shadow" size="70.0" />
                            </font>
@@ -289,6 +289,14 @@
                               <Font name="Imprint MT Shadow" size="70.0" />
                            </font>
                         </Text>
+                        <Button mnemonicParsing="false" onAction="#timerStop" text="PAUSE" GridPane.columnIndex="3">
+                           <font>
+                              <Font name="Imprint MT Shadow" size="25.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets left="100.0" />
+                           </GridPane.margin>
+                        </Button>
                      </children>
                   </GridPane>
                   <Button fx:id="btn_return" layoutX="843.0" layoutY="596.0" mnemonicParsing="false" onAction="#returnToMainMenu" prefHeight="67.0" prefWidth="274.0" text="MAIN MENU">

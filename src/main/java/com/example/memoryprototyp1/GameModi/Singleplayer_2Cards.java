@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import static com.example.memoryprototyp1.Card.getBackOfCardsImage;
+import static com.example.memoryprototyp1.MemoryController.isTimelineIsStopped;
 import static com.example.memoryprototyp1.Music.MusicPlayer.playButtonSound;
 import static com.example.memoryprototyp1.Score.deserializeScore;
 
@@ -63,7 +64,7 @@ public class Singleplayer_2Cards extends BaseGame {
             imageView.setUserData(i);
 
             imageView.setOnMouseEntered(mouseEnteredEvent -> {
-                if (!this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()) {
+                if (!this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()&& !isTimelineIsStopped()) {
                     this.setImageScale((int) imageView.getUserData(), 1.05);
                 }
             });
@@ -73,7 +74,7 @@ public class Singleplayer_2Cards extends BaseGame {
             });
 
             imageView.setOnMouseClicked(mouseEvent -> {
-                if ((delayStart &&!this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()) && !this.getCardsAreFlipped()) {
+                if ((delayStart &&!this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()) && !this.getCardsAreFlipped() && !isTimelineIsStopped()) {
                     this.flipCard((int) imageView.getUserData());
                     lastClickedCard = (int) imageView.getUserData();
 

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import static com.example.memoryprototyp1.Card.getBackOfCardsImage;
+import static com.example.memoryprototyp1.MemoryController.isTimelineIsStopped;
 import static com.example.memoryprototyp1.Music.MusicPlayer.playButtonSound;
 
 
@@ -74,7 +75,7 @@ public abstract class BaseGame {
             imageView.setUserData(i);
 
             imageView.setOnMouseEntered(mouseEnteredEvent ->{
-                if (!this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()){
+                if (!this.getCardsInGame().get((int) imageView.getUserData()).getRevealed() && !isTimelineIsStopped()){
                     this.setImageScale((int) imageView.getUserData(), 1.05);
                 }
             });
@@ -84,7 +85,7 @@ public abstract class BaseGame {
             });
 
             imageView.setOnMouseClicked(mouseEvent -> {
-                if ((delayStart && !this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()) && !cardsAreFlipped){
+                if ((delayStart && !this.getCardsInGame().get((int) imageView.getUserData()).getRevealed()) && !cardsAreFlipped && !isTimelineIsStopped()){
                     this.flipCard((int) imageView.getUserData());
                 }
             });
