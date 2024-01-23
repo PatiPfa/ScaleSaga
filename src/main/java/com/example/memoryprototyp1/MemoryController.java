@@ -99,6 +99,7 @@ public class MemoryController implements Initializable {
 
     private BaseGame game;
     private Timeline timeline;
+    private static boolean timelineIsStopped;
     private boolean alreadyEnteredName; //verhindert mehrfacheingabe im ScoreBoard
     private static String highscoreNameS;
     private static int seconds = 0;
@@ -112,6 +113,10 @@ public class MemoryController implements Initializable {
     }
     public static int getMinutes() {
         return minutes;
+    }
+
+    public static boolean isTimelineIsStopped() {
+        return timelineIsStopped;
     }
 
     /**
@@ -147,7 +152,7 @@ public class MemoryController implements Initializable {
      * Timer
      **/
     private void timer() {
-
+        timelineIsStopped = false;
         if (timeline != null) {
             timeline.stop();
         }
@@ -315,6 +320,16 @@ public class MemoryController implements Initializable {
      **/
     public void returnFromScoreBoard() {
         highscoreAnchorPane.setVisible(false);
+    }
+
+    public void timerStop(){
+        if (timelineIsStopped){
+            timeline.play();
+            timelineIsStopped = false;
+        } else {
+            timeline.stop();
+            timelineIsStopped = true;
+        }
     }
 
 }
