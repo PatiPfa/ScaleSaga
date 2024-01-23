@@ -153,14 +153,18 @@ public class MemoryController implements Initializable {
      **/
     private void timer() {
         timelineIsStopped = false;
+        //wird überprüft ob ein Timeline Objekt existiert; wenn ja wird es gestoppt
         if (timeline != null) {
             timeline.stop();
         }
+        //Variablen werden auf 0 gesetzt; Text felder werden aktualisiert
         seconds = 0;
         minutes = 0;
         sec.setText("0" + String.valueOf(seconds));
         min.setText("0" + String.valueOf(minutes));
 
+        //neues Timeline Objekt wird erstellt; Keyframe wird Timeline hinzugefügt, wird jede Sekunde ausgelöst
+        //'e ->' definiert was bei jedem Tick des Timers passiert
         timeline = new Timeline(new KeyFrame(Duration.seconds(1), e -> {
             if (game.gameFinished()){
                 timeline.stop();
@@ -189,6 +193,7 @@ public class MemoryController implements Initializable {
 
         }));
 
+        //timer läuft unendlich bis stop ausgelöst wird
         timeline.setCycleCount(Animation.INDEFINITE);
             timeline.play();
 
@@ -198,7 +203,7 @@ public class MemoryController implements Initializable {
      * Play again Button
      **/
     public void playAgain() {
-        //startet Spiel neu
+        //ruft die playAgain-Methode des aktuellen Spielobjekts auf
         game.playAgain();
         //im Singleplayer wird der Timer neu gestartet
         if(getGamemode().equals("Singleplayer2Cards") || getGamemode().equals("Singleplayer3Cards")){
