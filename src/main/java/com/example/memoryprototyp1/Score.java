@@ -43,8 +43,9 @@ public class Score implements Serializable{
     public static Score[] getScoreBoard() {
         return scoreBoard;
     }
-
-   //Gibt den Pfad zur Textdatei des aktuellen Spielmodus zurück.
+/**
+  *Gibt den Pfad zur Textdatei des aktuellen Spielmodus zurück für den Richtigen Modus.
+ **/
     public static String getCurrentGameMode() {
         String currentGameMode = getGamemode();
         switch (currentGameMode) {
@@ -56,13 +57,15 @@ public class Score implements Serializable{
                 return null;
         }
     }
-//Serialisiert den Score-Array und speichert es in der entsprechenden Textdatei des aktuellen Spielmodus.
- public static void serializeScore(Score[] s){
+    /**
+    *Serialisiert den Score-Array und speichert die Textdatei des aktuellen Spielmodus.
+    **/
+    public static void serializeScore(Score[] s){
      txtFile = getCurrentGameMode();
 
      try {
-         FileOutputStream fileOut = new FileOutputStream(txtFile);
-         ObjectOutputStream out = new ObjectOutputStream(fileOut);
+         FileOutputStream fileOut = new FileOutputStream(txtFile);  //von byte in datein
+         ObjectOutputStream out = new ObjectOutputStream(fileOut);  //objekten in datein
          out.writeObject(s);                                            // Schreibt das Score-Array in die Textdatei
          out.close();
          fileOut.close();
@@ -72,24 +75,27 @@ public class Score implements Serializable{
 
      }
  }
-//Deserialisiert das Score-Array aus der entsprechenden Textdatei des aktuellen Spielmodus.
+/**
+*Deserialisiert das Score-Array aus der entsprechenden Textdatei des aktuellen Spielmodus.
+**/
  public static Score[] deserializeScore(){
      Score[] out = new Score[5];
      txtFile = getCurrentGameMode();
 
      try {
-         FileInputStream fileIn = new FileInputStream(txtFile);
-         ObjectInputStream in = new ObjectInputStream(fileIn);
-         out = (Score[]) in.readObject();
+         assert txtFile != null;
+         FileInputStream fileIn = new FileInputStream(txtFile);     //auslesen von byte
+         ObjectInputStream in = new ObjectInputStream(fileIn);      //lesen von objekten
+         out = (Score[]) in.readObject();                           // wird hier ausgelesen
      } catch (Exception e){
-         //System.out.println("Array is empty");
+         System.out.println("Array is empty");
      }
 
      return out;
  }
-
-
-
+/**
+* Fügt eine Null bei den Sekunden hinzu, dass es zweistellig bleibt
+**/
     public int scoreToNumber(){
         String temp;
         if (this.scoreSec < 10){
@@ -100,8 +106,5 @@ public class Score implements Serializable{
 
         return Integer.parseInt(temp);
     }
-
-
-
 }
 

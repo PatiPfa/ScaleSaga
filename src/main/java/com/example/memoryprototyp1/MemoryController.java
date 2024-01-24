@@ -327,6 +327,7 @@ public class MemoryController implements Initializable {
         highscoreAnchorPane.setVisible(false);
     }
 
+
     public void timerStop(){
         if (timelineIsStopped){
             timeline.play();
