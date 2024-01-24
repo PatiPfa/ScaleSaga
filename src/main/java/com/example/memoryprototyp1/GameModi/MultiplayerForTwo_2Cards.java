@@ -73,7 +73,6 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         this.iv_player2symbol = iv_player2symbol;
     }
 
-
     /**
      *  Methode initialisiert ImageView-Objekte, die in einem FlowPane angeordnet sind.
      */
@@ -112,7 +111,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
     }
 
     /**
-     * Startmethode von Multiplayer
+     * Startmethode von Multiplayer 2 Cards
      */
     @Override
     public void play() {
@@ -128,7 +127,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         player1 = new Player(MainMenuController.getPlayer1name());
         player2 = new Player(MainMenuController.getPlayer2name());
 
-        //Zufällig entschieden welcher Spieler drankommt
+        //Zufällig entschieden welcher Spieler beginnt
         Random random = new Random();
         int randomStart = random.nextInt(2) + 1;
         playerOnTurn = (randomStart == 1) ? player1 : player2;
@@ -146,7 +145,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
             iv_player2symbol.setImage(CURSOR_SWORD);
             firstRound = false;
             //falls es nicht die erste Runde ist (sondern play again gedrückt wurde), wird überprüft ob der Spieler der beginnt, den selben Cursor hat und wenn nötig der Cursor getauscht
-        }else if((randomStart == 1 && !currentCursor.equals(CursorPlayer1)) || (randomStart == 1 && !currentCursor.equals(CursorPlayer2))){
+        }else if((randomStart == 1 && !currentCursor.equals(CursorPlayer1)) || (randomStart == 2 && !currentCursor.equals(CursorPlayer2))){
             switchCursor();
         }
 
@@ -215,7 +214,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
             rotateBack();
         }
 
-        //beide karten wieder "null" setzen
+        //beide Karten wieder "null" setzen
         firstCard = null;
         secondCard = null;
 
@@ -243,7 +242,6 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         switchCursor();
     }
 
-
     /**
      * Updated Punkte der Player Labels
      */
@@ -251,7 +249,6 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
         player1PointsLabel.setText(Integer.toString(player1.getPoints()));
         player2PointsLabel.setText(Integer.toString(player2.getPoints()));
     }
-
 
     /**
      * Updated Player Namen vom Spieler am Zug
@@ -278,6 +275,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
             name.setText(winner);
         }
 
+        //zeigt das gewinner Popup an
         popUp.setVisible(!popUp.isVisible());
     }
 
@@ -287,6 +285,7 @@ public class MultiplayerForTwo_2Cards extends BaseGame {
     public void switchCursor(){
         try{
             Scene scene =  playerOnTurnLabel.getScene();
+
             //wenn currentCursor sword dann auf axe geswitched und wenn axe dann auf sword
             if(currentCursor.equals("sword")){
                 scene.setCursor(new ImageCursor(CURSOR_AXE));
